@@ -1,0 +1,190 @@
+﻿@model IEnumerable<WebBanBanhConnection.PRODUCT>
+@{
+    ViewBag.Title = "Home";
+}
+<section class="hero">
+    <div class="hero__slider owl-carousel">
+        <div class="hero__item set-bg" data-setbg="../../Content/img/hero/hero-1.jpg">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="hero__text">
+                            <h2>Making your life sweeter one bite at a time!</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero__item set-bg" data-setbg="../../Content/img/hero/hero-2.png">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="hero__text">
+                            <h2>Making your life sweeter one bite at a time!</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section Begin -->
+<div class="categories">
+    <div class="container">
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                <div class="categories__item">
+                    <div class="categories__item__icon">
+                        <span class="flaticon-029-cupcake-3"></span>
+                        <h5>Cupcake</h5>
+                    </div>
+                </div>
+                <div class="categories__item">
+                    <div class="categories__item__icon">
+                        <span class="flaticon-034-chocolate-roll"></span>
+                        <h5>Butter</h5>
+                    </div>
+                </div>
+                <div class="categories__item">
+                    <div class="categories__item__icon">
+                        <span class="flaticon-005-pancake"></span>
+                        <h5>Red Velvet</h5>
+                    </div>
+                </div>
+                <div class="categories__item">
+                    <div class="categories__item__icon">
+                        <span class="flaticon-030-cupcake-2"></span>
+                        <h5>Biscuit</h5>
+                    </div>
+                </div>
+                <div class="categories__item">
+                    <div class="categories__item__icon">
+                        <span class="flaticon-006-macarons"></span>
+                        <h5>Donut</h5>
+                    </div>
+                </div>
+                <div class="categories__item">
+                    <div class="categories__item__icon">
+                        <span class="flaticon-006-macarons"></span>
+                        <h5>Cupcake</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Categories Section End -->
+<!-- Product Section Begin -->
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            @{ var counter = 0; }
+            @foreach (var item in Model)
+            {
+                if (counter >= 8)
+                {
+                    break; // Exit the loop if 8 items have been displayed
+                }
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="../../Content/img/shop/@item.Image">
+                            <div class="product__label">
+                                <span>Cupcake</span>
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="@Url.Action("../Shop/Details", new { id = @item.ProductID})">@item.ProductName</a></h6>
+                            <div class="product__item__price">@((item.Price - item.Price/item.Discount).ToString()) VND</div>
+                            <div class="cart_add">
+                                <a href="#">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                counter++;
+            }
+
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
+<!-- Instagram Section Begin -->
+<section class="instagram spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 p-0">
+                <div class="instagram__text">
+                    <div class="section-title">
+                        <span>Theo dõi instagram chúng tôi</span>
+                        <h2>
+                            Những khoảnh khắc ngọt ngào được lưu lại làm kỷ niệm.
+                        </h2>
+                    </div>
+                    <h5><i class="fa fa-instagram"></i> &#64yummycookie</h5>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic">
+                            <img src="~/Content/img/instagram/instagram-1.jpg" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic middle__pic">
+                            <img src="~/Content/img/instagram/instagram-2.jpg" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic">
+                            <img src="~/Content/img/instagram/instagram-3.jpg" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic">
+                            <img src="~/Content/img/instagram/instagram-4.jpg" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic middle__pic">
+                            <img src="~/Content/img/instagram/instagram-5.jpg" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                        <div class="instagram__pic">
+                            <img src="~/Content/img/instagram/instagram-3.jpg" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Instagram Section End -->
+<!-- Map Begin -->
+<div class="map">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-7">
+                <div class="map__inner">
+                    <h6>Yummy Cookie Store</h6>
+                    <ul>
+                        <li>1A Đ. Số 385, Tăng Nhơn Phú A, Thành phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</li>
+                        <li>YummyCookie@support.com</li>
+                        <li>+1 800-786-1000</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="map__iframe">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15674.140063272473!2d106.77768742811487!3d10.84685198454512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175271415d87313%3A0x1d4ed3bb500c67b3!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBUw6BpIGNow61uaCAtIE1hcmtldGluZyBDxqEgc-G7nyBUaOG7pyDEkOG7qWM!5e0!3m2!1svi!2s!4v1688489982706!5m2!1svi!2s"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                aria-hidden="false"
+                tabindex="0"></iframe>
+    </div>
+</div>
+<!-- Map End -->
