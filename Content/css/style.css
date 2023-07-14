@@ -134,8 +134,8 @@ ol {
 }
 
 .spad {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 75px;
+  padding-bottom: 75px;
 }
 
 .text-white h1,
@@ -1412,7 +1412,7 @@ ol {
   border: none;
   background: transparent;
   display: inline-block;
-  width: 25%;
+  width: 90%;
   height: 44px;
   line-height: 44px;
   padding-left: 30px;
@@ -1565,12 +1565,13 @@ ol {
 }
 
 .product__details__big__img {
-  width: calc(84% - 20px);
-  float: left;
-  margin-right: 20px;
+  width: 100%;
+/*  float: left;
+  margin-right: 20px;*/
 }
 .product__details__big__img img {
   min-width: 100%;
+  border-radius: 12px;
 }
 
 .product__details__thumb {
@@ -1722,7 +1723,7 @@ ol {
 .product__details__tab .tab-content p {
   color: #444444;
   line-height: 30px;
-  text-align: center;
+  text-align: justify;
   padding-top: 44px;
   margin-bottom: 0;
 }
@@ -3153,7 +3154,7 @@ ol {
   }
 
   .shop__option__search form .nice-select {
-    width: 30%;
+    width: 90%;
   }
 
   .shop__option__search form input {

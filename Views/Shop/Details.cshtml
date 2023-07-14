@@ -29,29 +29,7 @@
             <div class="col-lg-6">
                 <div class="product__details__img">
                     <div class="product__details__big__img">
-                        <img class="big_img" src="~/Content/img/shop/@Model.Image" alt="">
-                    </div>
-                    <div class="product__details__thumb">
-                        <div class="pt__item active">
-                            <img data-imgbigurl="img/shop/details/product-big-2.jpg"
-                                 src="img/shop/details/product-big-2.jpg" alt="">
-                        </div>
-                        <div class="pt__item">
-                            <img data-imgbigurl="img/shop/details/product-big-1.jpg"
-                                 src="img/shop/details/product-big-1.jpg" alt="">
-                        </div>
-                        <div class="pt__item">
-                            <img data-imgbigurl="img/shop/details/product-big-4.jpg"
-                                 src="img/shop/details/product-big-4.jpg" alt="">
-                        </div>
-                        <div class="pt__item">
-                            <img data-imgbigurl="img/shop/details/product-big-3.jpg"
-                                 src="img/shop/details/product-big-3.jpg" alt="">
-                        </div>
-                        <div class="pt__item">
-                            <img data-imgbigurl="img/shop/details/product-big-5.jpg"
-                                 src="img/shop/details/product-big-5.jpg" alt="">
-                        </div>
+                        <img class="big_img" src="~/Content/img/shop/@(Model.Image.ToString())" alt="">
                     </div>
                 </div>
             </div>
@@ -59,7 +37,10 @@
                 <div class="product__details__text">
                     <div class="product__label">Cupcake</div>
                     <h4>@Model.ProductName</h4>
-                    <h5>@((Model.Price - Model.Price/ Model.Discount).ToString()) VND</h5>
+                    @{
+                        var formattedPrice = string.Format("{0:N0}", Model.Price - Model.Price / Model.Discount);
+                    }
+                    <h5>@formattedPrice VND</h5>
                     <p>
                         @Model.ShortDescription
                     </p>

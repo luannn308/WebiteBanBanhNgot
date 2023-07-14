@@ -1,0 +1,94 @@
+﻿@model PagedList.IPagedList<WebBanBanhConnection.PRODUCT>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Category";
+}
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>Shop</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("Shop", "Index", "Shop")
+                    <span>Category</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="shop__option">
+            <div class="row">
+                <div class="col-lg-7 col-md-7">
+                    @Html.Partial("_Category", WebsiteCakeNew.Models.BUS.CategoryBUS.DanhSach())
+                </div>
+                <div class="col-lg-5 col-md-5">
+                    <div class="shop__option__right">
+                        <select>
+                            <option value="">Default sorting</option>
+                            <option value="">A to Z</option>
+                            <option value="">1 - 8</option>
+                            <option value="">Name</option>
+                        </select>
+                        <a href="#"><i class="fa fa-list"></i></a>
+                        <a href="#"><i class="fa fa-reorder"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="../../Content/img/shop/@(item.Image)">
+                            <div class="product__label">
+                                <span>Cupcake</span>
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="@Url.Action("Details", new { id = @item.ProductID})">@item.ProductName</a></h6>
+                            @{
+                                var formattedPrice = string.Format("{0:N0}", item.Price - item.Price / item.Discount);
+                            }
+
+                            <div class="product__item__price">@formattedPrice VND</div>
+                            <div class="cart_add">
+                                <a href="#">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="shop__last__option">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="shop__pagination">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="shop__last__text">
+                        @{
+                            var startProductIndex = (Model.PageNumber - 1) * Model.PageSize + 1;
+                            var endProductIndex = startProductIndex + Model.Count - 1;
+                        }
+                        <p>Showing @startProductIndex-@endProductIndex of @Model.TotalItemCount results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Section End -->

@@ -11,7 +11,7 @@ namespace WebsiteCakeNew.Controllers
     {
         public ActionResult Index()
         {
-            var db = WebBanBanh.DanhSach();
+            var db = ShopBUS.DanhSach();
             return View(db);
         }
         public ActionResult Shop()

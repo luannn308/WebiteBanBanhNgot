@@ -13,14 +13,18 @@ namespace WebsiteCakeNew.Controllers
         // GET: Shop
         public ActionResult Index(int page = 1, int pagesize = 8)
         {
-            var db = WebBanBanh.DanhSach().ToPagedList(page,pagesize);
+            var db = ShopBUS.DanhSach().ToPagedList(page,pagesize);
             return View(db);
         }
-
+        public ActionResult Category(int id, int page = 1, int pagesize = 8)
+        {
+            var db = ShopBUS.DanhMuc(id).ToPagedList(page, pagesize);
+            return View(db);
+        }
         // GET: Shop/Details/5
         public ActionResult Details(int id)
         {
-            var db = WebBanBanh.ChiTiet(id);
+            var db = ShopBUS.ChiTiet(id);
             return View(db);
         }
 

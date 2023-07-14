@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WebBanBanhConnection.CATEGORY>
+<div class="shop__option__search">
+    <form action="@Url.Action("Category", "Shop")" method="get">
+        <select name="id">
+            @foreach (var item in Model)
+            {
+                <option value="@item.CategoryID">@item.CategoryName</option>
+            }
+        </select>
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>
