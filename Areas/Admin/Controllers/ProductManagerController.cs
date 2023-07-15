@@ -65,17 +65,18 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
         // GET: Admin/ProductManager/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var db = ShopBUS.ChiTiet(id);
+            return View(db);
         }
 
         // POST: Admin/ProductManager/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, PRODUCT p)
         {
             try
             {
                 // TODO: Add update logic here
-
+                ShopBUS.UpdateProduct(id, p);
                 return RedirectToAction("Index");
             }
             catch
@@ -87,17 +88,18 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
         // GET: Admin/ProductManager/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var db = ShopBUS.ChiTiet(id);
+            return View(db);
         }
 
         // POST: Admin/ProductManager/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id,PRODUCT p)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                ShopBUS.DeleteProduct(id);
                 return RedirectToAction("Index");
             }
             catch

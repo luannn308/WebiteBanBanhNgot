@@ -37,5 +37,19 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             db.Insert(p);
         }
+        public static void UpdateProduct(int id,PRODUCT p)
+        {
+            var db = new WebBanBanhConnectionDB();
+            db.Update(p, id);
+        }
+        public static void DeleteProduct(int id)
+        {
+            var db = new WebBanBanhConnectionDB();
+            var product = db.SingleOrDefault<PRODUCT>("SELECT * FROM PRODUCT WHERE ProductID = @0", id);
+            if (product != null)
+            {
+                db.Delete(product);
+            }
+        }
     }
 }

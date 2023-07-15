@@ -2355,6 +2355,8 @@
     <Content Include="Areas\Admin\AssetsAdmin\plugins\summernote\summernote.min.js.map" />
     <Content Include="Areas\Admin\AssetsAdmin\plugins\toastr\toastr.js.map" />
     <Content Include="Areas\Admin\Views\ProductManager\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductManager\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductManager\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

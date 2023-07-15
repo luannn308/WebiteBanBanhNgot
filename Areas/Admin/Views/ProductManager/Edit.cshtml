@@ -1,0 +1,61 @@
+﻿@model WebBanBanhConnection.PRODUCT
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title"><em><strong>Chỉnh sửa sản phẩm</strong></em></h3>
+
+        <div class="card-tools">
+            <a style="margin-right:8px;padding:12px" href="@Url.Action("Index","ProductManager")">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Edit", "ProductManager", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Tên sản phẩm</label>
+                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="ProductName" required value="@Model.ProductName">
+            </div>
+            <div class="form-group">
+                <label>Mô tả sản phẩm</label>
+                <textarea class="form-control" rows="4" placeholder="Nhập mô tả dài" name="Description" required>@Model.Description</textarea>
+            </div>
+            <div class="form-group">
+                <label>Mô tả ngắn</label>
+                <textarea class="form-control" rows="4" placeholder="Nhập mô tả ngắn" name="ShortDescription" required>@Model.ShortDescription</textarea>
+            </div>
+            <div class="form-group">
+                <label>Số lượng sản phẩm</label>
+                <input type="number" class="form-control" placeholder="Nhập số lượng" min="0" name="StockNumber" required value="@Model.StockNumber">
+            </div>
+            <div class="form-group">
+                <label>Giá của sản phẩm</label>
+                <input type="number" class="form-control" placeholder="Nhập giá sản phẩm" min="0" name="Price" required value="@Model.Price">
+            </div>
+            <div class="form-group">
+                <label>Phần trăm giảm giá</label>
+                <input type="number" class="form-control" placeholder="Nhập phần trăm giảm giá" min="0" name="Discount" required value="@Model.Discount">
+            </div>
+            <div class="form-group">
+                <label>Ngày tạo sản phẩm</label>
+                <input type="text" class="form-control" placeholder="Ngày tạo sản phẩm" value="@Model.PublicationDate" readonly name="PublicationDate">
+            </div>
+            <div class="form-group d-flex flex-column">
+                <label>Ảnh sản phẩm</label>
+                <img src="~/Content/img/shop/@Model.Image" alt="Ảnh sản phẩm" class="img-thumbnail" style="margin-bottom:12px; width: 600px"/>
+                <div id="dropzoneContainer" class="dropzone"></div>
+                <input type="hidden" id="uploadedImage" name="Image" value="@Model.Image"/>
+            </div>
+            <input type="submit"
+                   value="Lưu thay đổi"
+                   class="btn btn-info float-right" />
+        }
+    </div>
+    <!-- /.card-body -->
+</div>
+
