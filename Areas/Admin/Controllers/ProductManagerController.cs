@@ -21,7 +21,7 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
         // GET: Admin/ProductManager/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(ShopBUS.ChiTiet(id));
         }
 
         // GET: Admin/ProductManager/Create

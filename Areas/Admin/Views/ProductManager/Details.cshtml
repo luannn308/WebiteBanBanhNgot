@@ -1,0 +1,58 @@
+﻿@model WebBanBanhConnection.PRODUCT
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"><em><strong>Thông tin chi tiết</strong></em></h3>
+        <div class="card-tools">
+            <a style="margin-right:8px;padding:12px" href="@Url.Action("Index","ProductManager")">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <h2><label for="description">Tên sản phẩm:</label> @Model.ProductName</h2>
+        <div class="form-group">
+            <label for="description">Mô tả dài:</label>
+            <p id="description">@Model.Description</p>
+        </div>
+        <div class="form-group">
+            <label for="description">Mô tả ngắn:</label>
+            <p id="description">@Model.ShortDescription</p>
+        </div>
+        <div class="form-group d-flex align-items-baseline justify-content-start" style="gap:42px;">
+            <div>
+                <label for="price">Giá:</label>
+                @{
+                    var formattedPrice = string.Format("{0:N0}", Model.Price);
+                }
+                <p id="price">@formattedPrice VNĐ</p>
+            </div>
+            <div>
+                <label for="price">Số lượng:</label>
+                <p id="price">@Model.StockNumber</p>
+            </div>
+            <div>
+                <label for="price">Giảm giá:</label>
+                <p id="price">@Model.Discount%</p>
+            </div>
+            <div>
+                <label for="price">Đánh giá:</label>
+                <p id="price">@Model.Rating / 10</p>
+            </div>
+            <div>
+                <label for="price">Ngày tạo:</label>
+                <p id="price">@Model.PublicationDate</p>
+            </div>
+        </div>
+        <div class="form-group d-flex flex-column">
+            <label for="description">Ảnh sản phẩm:</label>
+            <img src="~/Content/img/shop/@Model.Image" alt="@Model.ProductName" class="img-fluid" style="width: 75%" />
+        </div>
+        <!-- Thêm các thông tin khác về sản phẩm tùy ý -->
+    </div>
+    <!-- /.card-body -->
+</div>
+
