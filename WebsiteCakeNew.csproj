@@ -2152,6 +2152,7 @@
     <Content Include="Content\img\shop\details\thumb-3.jpg" />
     <Content Include="Content\img\shop\details\thumb-4.jpg" />
     <Content Include="Content\img\shop\details\thumb-5.jpg" />
+    <Content Include="Content\img\shop\mousse-cake-1.png" />
     <Content Include="Content\img\shop\piece-cake-1.png" />
     <Content Include="Content\img\shop\piece-cake-2.png" />
     <Content Include="Content\img\shop\piece-cake-3.png" />
@@ -2353,6 +2354,7 @@
     <Content Include="Areas\Admin\AssetsAdmin\plugins\summernote\summernote.js.map" />
     <Content Include="Areas\Admin\AssetsAdmin\plugins\summernote\summernote.min.js.map" />
     <Content Include="Areas\Admin\AssetsAdmin\plugins\toastr\toastr.js.map" />
+    <Content Include="Areas\Admin\Views\ProductManager\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

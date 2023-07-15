@@ -32,5 +32,10 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY Rating DESC");
         }
+        public static void AddProduct(PRODUCT p)
+        {
+            var db = new WebBanBanhConnectionDB();
+            db.Insert(p);
+        }
     }
 }

@@ -38,7 +38,7 @@
                     <div class="product__label">Cupcake</div>
                     <h4>@Model.ProductName</h4>
                     @{
-                        var formattedPrice = string.Format("{0:N0}", Model.Price - Model.Price / Model.Discount);
+                        var formattedPrice = string.Format("{0:N0}", Model.Price - Model.Price * (Model.Discount / (float)100));
                     }
                     <h5>@formattedPrice VND</h5>
                     <p>

@@ -1,20 +1,26 @@
 ﻿@model IEnumerable<WebBanBanhConnection.PRODUCT>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="card">
-    <div class="card-header">
+    <div class="d-flex align-items-center justify-content-between" style="padding: 0.75rem 1.25rem; border-bottom: 1px solid rgba(0, 0, 0, 0.125); background-color: rgba(0, 0, 0, 0.03); ">
         <h3 class="card-title"><strong>Danh sách sản phẩm</strong></h3>
+        <a class="btn btn-success btn-sm" href="@Url.Action("Create","ProductManager")">
+            <i class="fas fa-plus"></i>
+            Thêm
+        </a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <table id="example2" class="table table-bordered table-hover">
+        <table id="example2" class="table table-bordered table-hover text-center">
             <thead>
                 <tr>
                     <th>Tên bánh</th>
-                    <th>Giá bánh</th>
+                    <th>Giá gốc</th>
+                    <th>Giá giảm</th>
                     <th>Mô tả</th>
                     <th>Số lượng</th>
                     <th>Hình ảnh</th>
@@ -24,34 +30,38 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>@item.ProductName</td>
+                 <tr>
                     @{
-                        var formattedPrice = string.Format("{0:N0}", item.Price - item.Price / item.Discount);
+                        var formattedPriceSale = string.Format("{0:N0}", item.Price - item.Price * (item.Discount / (float)100));
+                        var formattedPrice = string.Format("{0:N0}", item.Price);
                     }
+                    <td>@item.ProductName</td>
                     <td>
                         @formattedPrice VND
                     </td>
+                    <td>
+                        @formattedPriceSale VND
+                    </td>
                     <td>@item.ShortDescription</td>
                     <td>@item.StockNumber</td>
-                <td><img src="~/Content/img/shop/@item.Image"/></td>
-                <td class="project-actions text-center">
-                    <a class="btn btn-primary btn-sm" href="#">
-                        <i class="fas fa-folder">
-                        </i>
-                        View
-                    </a>
-                    <a class="btn btn-info btn-sm" href="#">
-                        <i class="fas fa-pencil-alt">
-                        </i>
-                        Edit
-                    </a>
-                    <a class="btn btn-danger btn-sm" href="#">
-                        <i class="fas fa-trash">
-                        </i>
-                        Delete
-                    </a>
-                </td>
+                    <td><img src="~/Content/img/shop/@item.Image" style="width: 100px" /></td>
+                    <td class="project-actions text-center">
+                        <a class="btn btn-primary btn-sm" href="#">
+                            <i class="fas fa-folder">
+                            </i>
+                            Chi tiết
+                        </a>
+                        <a class="btn btn-info btn-sm" href="#">
+                            <i class="fas fa-pencil-alt">
+                            </i>
+                            Sửa
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#">
+                            <i class="fas fa-trash">
+                            </i>
+                            Xóa
+                        </a>
+                    </td>
                 </tr>
                 }
             </tbody>

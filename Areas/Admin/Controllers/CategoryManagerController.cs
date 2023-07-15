@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebsiteCakeNew.Models.BUS;
 
 namespace WebsiteCakeNew.Areas.Admin.Controllers
 {
@@ -11,7 +12,8 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
         // GET: Admin/CategoryManager
         public ActionResult Index()
         {
-            return View();
+            var ds = CategoryBUS.DanhSach();
+            return View(ds);
         }
 
         // GET: Admin/CategoryManager/Details/5
