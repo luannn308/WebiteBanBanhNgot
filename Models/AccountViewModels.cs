@@ -48,53 +48,53 @@ namespace WebsiteCakeNew.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "{0} không được để trống")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0} không được để trống")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Ghi nhớ?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "{0} không được để trống")]
+        [Display(Name = "Tên")]
         public string FirstName { get; set; }
 
-        [Required]
-        [Display(Name = "Last Name")]
+        [Required(ErrorMessage = "{0} không được để trống")]
+        [Display(Name = "Họ và tên đệm")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0} không được để trống")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [Display(Name = "Username")]
+        [Required(ErrorMessage = "{0} không được để trống")]
+        [Display(Name = "Tên đăng nhập")]
         public string UserName { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "{0} không được để trống")]
+        [StringLength(100, ErrorMessage = "{0} phải dài ít nhất {2}", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Xác nhận mật khẩu")]
+        [Compare("Password", ErrorMessage = "Mật khẩu và mật khẩu xác nhận không khớp")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        [Display(Name = "Telephone")]
-        public string Telephone { get; set; }
+        [Display(Name = "Số điện thoại")]
+        public string Telephone { get; set; }  
+        public bool Confirm { get; set; }
     }
 
     public class ResetPasswordViewModel

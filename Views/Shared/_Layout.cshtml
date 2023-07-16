@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Yummy Cookie - Tiệm bánh hạnh phúc</title>
+    <link rel="icon" type="image/x-icon" href="~/Areas/Admin/AssetsAdmin/dist/img/logoSquare.png">
     <link href="~/Content/css/barfiller.css" rel="stylesheet" />
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/elegant-icons.css" rel="stylesheet" />
@@ -25,6 +26,7 @@
     <a href="~/Content/fonts/fontawesome-webfont.woff2"></a>
     <a href="~/Content/fonts/FontAwesome.otf"></a>
     <a href="~/Content/fonts/fontawesome-webfont.ttf"></a>
+    <link href="~/Content/css/more.css" rel="stylesheet" />
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -56,37 +58,30 @@
         <div class="offcanvas__option">
             <ul>
                 <li>
-                    USD <span class="arrow_carrot-down"></span>
+                    VN <span class="arrow_carrot-down"></span>
                     <ul>
-                        <li>EUR</li>
+                        <li>VN</li>
                         <li>USD</li>
-                    </ul>
-                </li>
-                <li>
-                    ENG <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <li>Spanish</li>
-                        <li>ENG</li>
                     </ul>
                 </li>
                 @{
                     if (Session["UserName"] != null)
                     {
-                        if (Session["Role"] == "Administrator")
+                        if (Session["Role"].ToString() == "Administrator")
                         {
-                            <li>@Html.ActionLink("Trang Quản Trị", "Index", "MainAdmin")</li>
-                            <li>@Html.ActionLink("Sign Out", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Trang Quản Trị", "Index", "Admin/MainAdmin")</li>
+                            <li>@Html.ActionLink("Đăng xuất", "Login", "Account")</li>
                         }
                         else
                         {
                             <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "Home")</li>
-                            <li>@Html.ActionLink("Sign Out", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Đăng xuất", "Login", "Account")</li>
                         }
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                        <li>@Html.ActionLink("Đăng nhập", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Đăng ký", "Register", "Account")</li>
                     }
                 }
             </ul>
@@ -103,17 +98,10 @@
                             <div class="header__top__left">
                                 <ul>
                                     <li>
-                                        USD <span class="arrow_carrot-down"></span>
+                                        VN <span class="arrow_carrot-down"></span>
                                         <ul>
-                                            <li>EUR</li>
+                                            <li>VN</li>
                                             <li>USD</li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        ENG <span class="arrow_carrot-down"></span>
-                                        <ul>
-                                            <li>Spanish</li>
-                                            <li>ENG</li>
                                         </ul>
                                     </li>
                                     @{
@@ -122,24 +110,24 @@
                                             if (Session["Role"].ToString() == "Administrator")
                                             {
                                                 <li>@Html.ActionLink("Trang Quản Trị", "Index", "Admin/MainAdmin")</li>
-                                                <li>@Html.ActionLink("Sign Out", "Index", "Home")</li>
+                                                <li>@Html.ActionLink("Đăng xuất", "Login", "Account")</li>
                                             }
                                             else
                                             {
                                                 <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "Home")</li>
-                                                <li>@Html.ActionLink("Sign Out", "Index", "Home")</li>
+                                                <li>@Html.ActionLink("Đăng xuất", "Login", "Account")</li>
                                             }
                                         }
                                         else
                                         {
-                                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                                            <li>@Html.ActionLink("Đăng nhập", "Login", "Account")</li>
+                                            <li>@Html.ActionLink("Đăng ký", "Register", "Account")</li>
                                         }
                                     }
                                 </ul>
                             </div>
                             <div class="header__logo">
-                                <a href="./index.html"><img src="~/Content/img/logo-mini.png" alt=""></a>
+                                <a href="@Url.Action("Index","Home")"><img src="~/Content/img/logo-mini.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
                                 <div class="header__top__right__links">
@@ -163,19 +151,19 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index") ? "active" : "")">
-                                @Html.ActionLink("Home", "Index", "Home")
+                                @Html.ActionLink("Trang chủ", "Index", "Home")
                             </li>
                             <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "Shop") ? "active" : "")">
-                                @Html.ActionLink("Shop", "Index", "Shop")
+                                @Html.ActionLink("Sản phẩm", "Index", "Shop")
                             </li>
                             <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "About") ? "active" : "")">
-                                @Html.ActionLink("About", "Index", "About")
+                                @Html.ActionLink("Giới thiệu", "Index", "About")
                             </li>
                             <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "Blog") ? "active" : "")">
-                                @Html.ActionLink("Blog", "Index", "Blog")
+                                @Html.ActionLink("Bài viết", "Index", "Blog")
                             </li>
                             <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "Contact") ? "active" : "")">
-                                @Html.ActionLink("Contact", "Index", "Contact")
+                                @Html.ActionLink("Liên hệ", "Index", "Contact")
                             </li>
                         </ul>
                     </nav>
@@ -207,7 +195,7 @@
                             <a href="#"><img src="~/Content/img/logo-mini.png" alt="" /></a>
                         </div>
                         <p>
-                            Lorem ipsum dolor amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
+                            Chúng tôi tại tiệm bánh Yummy Cookie rất vui được chào đón bạn! Với tình yêu và đam mê dành cho nghệ thuật làm bánh, chúng tôi tự hào mang đến những chiếc bánh ngọt thơm ngon và hấp dẫn nhất.
                         </p>
                         <div class="footer__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>

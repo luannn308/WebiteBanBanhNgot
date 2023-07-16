@@ -3,62 +3,121 @@
     ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title</h2>
+<div class="container d-flex flex-column" style="padding-top: 3em; padding-bottom: 5em">
+    <h2><strong>Đăng ký</strong></h2>
+    <div class="row">
+        <div class="col-md-6" style="padding:0">
+            <section id="loginForm">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <br />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label word-wrap" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Nhập tên của bạn" })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger list-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label word-wrap" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Nhập họ và tên đệm" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger list-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label word-wrap" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Nhập tên người dùng" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger list-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label word-wrap" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Nhập địa chỉ email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger list-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label word-wrap" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger list-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label word-wrap" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Nhập mật khẩu xác nhận" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger list-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Telephone, new { @class = "col-md-2 control-label word-wrap" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Telephone, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.ValidationSummary(true,"", new { @class = "text-danger list-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10 d-flex align-items-baseline" style="gap:24px">
+                            <div class="checkbox d-flex align-items-baseline" style="gap:12px">
+                                @Html.CheckBoxFor(m => m.Confirm)
+                                <label>Tôi đồng ý với <a href="#" class="register-link">Điều khoản dịch vụ</a> & <a href="#" class="register-link">Chính sách bảo mật</a></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Đăng ký" class="btn btn-secondary" style="background-color: #f08632; border-color: #f08632;" />
+                        </div>
+                    </div>
+                }
+            </section>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic">
+                        <img src="~/Content/img/instagram/instagram-1.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic middle__pic">
+                        <img src="~/Content/img/instagram/instagram-2.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic">
+                        <img src="~/Content/img/instagram/instagram-3.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic">
+                        <img src="~/Content/img/instagram/instagram-4.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic middle__pic">
+                        <img src="~/Content/img/instagram/instagram-5.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic">
+                        <img src="~/Content/img/instagram/instagram-6.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    <div class="form-group">
-        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Telephone, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Telephone, new { @class = "form-control" })
-        </div>
-    </div>
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

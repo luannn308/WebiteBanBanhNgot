@@ -1,6 +1,6 @@
 <#@ include file="PetaPoco.Core.ttinclude" #>
 <#
-	// Settings 
+	// Settings
     ConnectionStringName = "WebBanBanhConnection";			// Uses last connection string in config if not specified
     Namespace = "";
     RepoName = "";
@@ -12,7 +12,7 @@
 	TrackModifiedColumns = false;
 	ExplicitColumns = true;
 	ExcludePrefix = new string[] {}; // Exclude tables by prefix.
-
+	 
     // Read schema
 	var tables = LoadTables();
 
