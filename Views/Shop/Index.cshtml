@@ -1,5 +1,6 @@
 ﻿@model PagedList.IPagedList<WebBanBanhConnection.PRODUCT>
 @using PagedList.Mvc
+@using WebsiteCakeNew.Models.BUS
 @{
     ViewBag.Title = "Shop";
 }
@@ -15,8 +16,8 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="breadcrumb__links">
-                    @Html.ActionLink("Home", "Index", "Home")
-                    <span>Shop</span>
+                    @Html.ActionLink("Trang chủ", "Index", "Home")
+                    <span>Sản phẩm</span>
                 </div>
             </div>
         </div>
@@ -52,7 +53,14 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="../../Content/img/shop/@(item.Image)">
                         <div class="product__label">
-                            <span>Cupcake</span>
+                            @{
+                                var db = new ShopBUS();
+                                string cate = db.GetCategoryProduct(item.ProductID);
+                                if (cate != string.Empty)
+                                {
+                                    <span>@cate</span>
+                                }
+                            }
                         </div>
                     </div>
                     <div class="product__item__text">

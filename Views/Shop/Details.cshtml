@@ -1,21 +1,25 @@
 ﻿@model WebBanBanhConnection.PRODUCT
+@using WebsiteCakeNew.Models.BUS
 @{
     ViewBag.Title = "Details";
 }
-
+@{
+    var db = new ShopBUS();
+    string cate = db.GetCategoryProduct(Model.ProductID);
+}
 <!-- Breadcrumb Begin -->
 <div class="breadcrumb-option">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="breadcrumb__text">
-                    <h2>Product detail</h2>
+                    <h2>Chi tiết sản phẩm</h2>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="breadcrumb__links">
                     @Html.ActionLink("Shop", "Index")
-                    <span>Sweet autumn leaves</span>
+                    <span>@Model.ProductName</span>
                 </div>
             </div>
         </div>
@@ -35,7 +39,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="product__details__text">
-                    <div class="product__label">Cupcake</div>
+                    <div class="product__label">@cate</div>
                     <h4>@Model.ProductName</h4>
                     @{
                         var formattedPrice = string.Format("{0:N0}", Model.Price - Model.Price * (Model.Discount / (float)100));
@@ -46,7 +50,7 @@
                     </p>
                     <ul>
                         <li>Số lượng: <span>@Model.StockNumber</span></li>
-                        <li>Danh mục: <span>Biscuit cake</span></li>
+                        <li>Danh mục: <span>@cate</span></li>
                         <li>Tags: <span>Gadgets, minimalisstic</span></li>
                     </ul>
                     <div class="product__details__option">
@@ -115,115 +119,5 @@
 </section>
 <!-- Shop Details Section End -->
 <!-- Related Products Section Begin -->
-<section class="related-products spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="section-title">
-                    <h2>Related Products</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="related__products__slider owl-carousel">
-                <div class="col-lg-3">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/product-1.jpg">
-                            <div class="product__label">
-                                <span>Cupcake</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Dozen Cupcakes</a></h6>
-                            <div class="product__item__price">$32.00</div>
-                            <div class="cart_add">
-                                <a href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/product-2.jpg">
-                            <div class="product__label">
-                                <span>Cupcake</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Cookies and Cream</a></h6>
-                            <div class="product__item__price">$30.00</div>
-                            <div class="cart_add">
-                                <a href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/product-3.jpg">
-                            <div class="product__label">
-                                <span>Cupcake</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Gluten Free Mini Dozen</a></h6>
-                            <div class="product__item__price">$31.00</div>
-                            <div class="cart_add">
-                                <a href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/product-4.jpg">
-                            <div class="product__label">
-                                <span>Cupcake</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Cookie Dough</a></h6>
-                            <div class="product__item__price">$25.00</div>
-                            <div class="cart_add">
-                                <a href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/product-5.jpg">
-                            <div class="product__label">
-                                <span>Cupcake</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Vanilla Salted Caramel</a></h6>
-                            <div class="product__item__price">$05.00</div>
-                            <div class="cart_add">
-                                <a href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/product-6.jpg">
-                            <div class="product__label">
-                                <span>Cupcake</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">German Chocolate</a></h6>
-                            <div class="product__item__price">$14.00</div>
-                            <div class="cart_add">
-                                <a href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@Html.Partial("_RelatedProducts", WebsiteCakeNew.Models.BUS.ShopBUS.RelatedProduct(Model.ProductID))
 <!-- Related Products Section End -->

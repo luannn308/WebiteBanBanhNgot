@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebBanBanhConnection.PRODUCT>
+﻿@using WebsiteCakeNew.Models.BUS;
+@model IEnumerable<WebBanBanhConnection.PRODUCT>
 @{ var counter = 0; }
 @foreach (var item in Model)
 {
@@ -11,7 +12,14 @@
         <div class="product__item">
             <div class="product__item__pic set-bg" data-setbg="../../Content/img/shop/@(item.Image.ToString())">
                 <div class="product__label">
-                    <span>Cupcake</span>
+                    @{ 
+                        var db = new ShopBUS();
+                        string cate = db.GetCategoryProduct(item.ProductID);
+                        if(cate != string.Empty)
+                        {
+                            <span>@cate</span>
+                        }
+                    }
                 </div>
             </div>
             <div class="product__item__text">

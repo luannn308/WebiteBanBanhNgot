@@ -379,3 +379,4 @@ C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebiteBanBanhNgot\obj\Deb
 C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.CopyComplete
 C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.dll
 C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.pdb
+C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.AssemblyReference.cache

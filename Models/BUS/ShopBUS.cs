@@ -32,6 +32,26 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY Rating DESC");
         }
+        public static IEnumerable<PRODUCT> RelatedProduct(int id)
+        {
+            var db = new WebBanBanhConnectionDB();
+            int pCategory = db.SingleOrDefault<int>("SELECT CategoryID FROM [PRODUCT_CATEGORY] WHERE ProductID = @0", id);
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT p, PRODUCT_CATEGORY pc WHERE p.ProductID = pc.ProductID AND pc.CategoryID = @0 AND p.ProductID <> @1", pCategory, id);
+        }
+        public string GetCategoryProduct(int id)
+        {
+            var db = new WebBanBanhConnectionDB();
+            var pCategory = db.SingleOrDefault<PRODUCT_CATEGORY>("SELECT * FROM [PRODUCT_CATEGORY] WHERE ProductID = @0", id);
+            if (pCategory != null)
+            {
+                var cate = db.SingleOrDefault<CATEGORY>("SELECT * FROM [CATEGORY] WHERE CategoryID = @0", pCategory.CategoryID);
+                if (cate != null)
+                {
+                    return cate.CategoryName;
+                }
+            }
+            return string.Empty;
+        }
         public static void AddProduct(PRODUCT p)
         {
             var db = new WebBanBanhConnectionDB();
