@@ -69,7 +69,26 @@
                         <li>ENG</li>
                     </ul>
                 </li>
-                <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+                @{
+                    if (Session["UserName"] != null)
+                    {
+                        if (Session["Role"] == "Administrator")
+                        {
+                            <li>@Html.ActionLink("Trang Quản Trị", "Index", "MainAdmin")</li>
+                            <li>@Html.ActionLink("Sign Out", "Index", "Home")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "Home")</li>
+                            <li>@Html.ActionLink("Sign Out", "Index", "Home")</li>
+                        }
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                    }
+                }
             </ul>
         </div>
     </div>
@@ -97,7 +116,26 @@
                                             <li>ENG</li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+                                    @{
+                                        if (Session["UserName"] != null)
+                                        {
+                                            if (Session["Role"].ToString() == "Administrator")
+                                            {
+                                                <li>@Html.ActionLink("Trang Quản Trị", "Index", "Admin/MainAdmin")</li>
+                                                <li>@Html.ActionLink("Sign Out", "Index", "Home")</li>
+                                            }
+                                            else
+                                            {
+                                                <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "Home")</li>
+                                                <li>@Html.ActionLink("Sign Out", "Index", "Home")</li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                                        }
+                                    }
                                 </ul>
                             </div>
                             <div class="header__logo">
@@ -150,7 +188,7 @@
         @RenderBody()
     </div>
     <!-- Footer Section Begin -->
-    <footer class="footer set-bg" data-setbg ="../../Content/img/footer-bg.jpg">
+    <footer class="footer set-bg" data-setbg="../../Content/img/footer-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -229,5 +267,6 @@
     <script src="~/Content/js/jquery.slicknav.js"></script>
     <script src="~/Content/js/owl.carousel.min.js"></script>
     <script src="~/Content/js/main.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

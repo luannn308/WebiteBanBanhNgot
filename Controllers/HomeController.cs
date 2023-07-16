@@ -7,8 +7,10 @@ using WebsiteCakeNew.Models.BUS;
 
 namespace WebsiteCakeNew.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var db = ShopBUS.DanhSach();
