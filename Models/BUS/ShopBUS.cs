@@ -65,6 +65,7 @@ namespace WebsiteCakeNew.Models.BUS
         public static void DeleteProduct(int id)
         {
             var db = new WebBanBanhConnectionDB();
+            db.Execute("DELETE FROM PRODUCT_CATEGORY WHERE ProductID = @0", id);
             var product = db.SingleOrDefault<PRODUCT>("SELECT * FROM PRODUCT WHERE ProductID = @0", id);
             if (product != null)
             {
