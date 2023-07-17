@@ -245,6 +245,7 @@ ALTER TABLE USER_SHIPPING
    ADD CONSTRAINT FK_USER_SHIPPING_REFERENCE_USER FOREIGN KEY (UserID)
       REFERENCES "USER" (UserID);
 
+/* Trigger: Tên sản phẩm không trùng */
 ALTER TABLE PRODUCT
 	ADD CONSTRAINT UQ_PRODUCT_ProductName UNIQUE (ProductName);
 
@@ -278,6 +279,7 @@ BEGIN
         RETURN
     END
 END
+
 /*=> Insert ORDER_STATUS*/
 INSERT INTO ORDER_STATUS (OrderStatus) VALUES (N'Đang chờ xử lý');
 INSERT INTO ORDER_STATUS (OrderStatus) VALUES (N'Đã xác nhận');
@@ -334,7 +336,7 @@ BEGIN
     WHERE ShoppingCartId = @ShoppingCartId
 END
 
-/* Trigger: Số tiền trên một cart */
+/* Trigger: Số tiền trên một cart item */
 CREATE TRIGGER CalculateSubTotal
 ON CART_ITEM
 AFTER INSERT, UPDATE
@@ -459,11 +461,16 @@ INSERT INTO [User] (FirstName, LastName, Email, UserName, Password, Telephone)
 VALUES ('Trang', 'Huynh', 'admin@gmail.com', 'admin', '2e4a1210c0dba6e4e6882a40ec773c19467fccb66a9a3049c010320d7a966b07', '1234567890')
 INSERT INTO [User] (FirstName, LastName, Email, UserName, Password, Telephone)
 VALUES ('Luan', 'Nguyen', 'luannn308@gmail.com', 'luannn308', '2e4a1210c0dba6e4e6882a40ec773c19467fccb66a9a3049c010320d7a966b07', '1234567890')
+INSERT INTO [User] (FirstName, LastName, Email, UserName, Password, Telephone)
+VALUES ('Admin', 'Nguyen', 'thnn@gmail.com', 'thnn2023', '2e4a1210c0dba6e4e6882a40ec773c19467fccb66a9a3049c010320d7a966b07', '1234567890')
+INSERT INTO [User] (FirstName, LastName, Email, UserName, Password, Telephone)
+VALUES ('Hoang', 'Nguyen', 'hoang@gmail.com', 'hoangvip', '2e4a1210c0dba6e4e6882a40ec773c19467fccb66a9a3049c010320d7a966b07', '1234567890')
 
 -- Insert User_Role --
 INSERT INTO [USER_ROLE] (RoleID,UserID) VALUES (1,1);
 INSERT INTO [USER_ROLE] (RoleID,UserID) VALUES (2,2);
-
+INSERT INTO [USER_ROLE] (RoleID,UserID) VALUES (2,3);
+INSERT INTO [USER_ROLE] (RoleID,UserID) VALUES (1,4);
 -- Insert Product --
 INSERT INTO PRODUCT (ProductName, Description, ShortDescription, StockNumber, Image, Price, Discount, Rating, PublicationDate)
 VALUES (N'Blueberry Yogurt Cream Cake', N'Blueberry Yogurt Cream Cake là một tuyệt phẩm bánh ngọt thơm ngon kết hợp với vị chua nhẹ từ sữa chua và hương vị đặc trưng của quả blueberry tươi ngon. Bánh được làm từ những nguyên liệu chất lượng cao và tinh túy, mang đến một trải nghiệm ẩm thực tuyệt vời cho những ai yêu thích hương vị ngọt ngào và tươi mát.
@@ -564,9 +571,9 @@ INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (9,2);
 INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (10,2);
 INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (11,2);
 INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (12,2);
-INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (13,2);
-INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (14,2);
-INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (15,2);
+INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (13,5);
+INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (14,5);
+INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (15,5);
 
 -- Tạo login
 CREATE LOGIN adminCake WITH PASSWORD = 'admin123', DEFAULT_DATABASE = QLBB;
