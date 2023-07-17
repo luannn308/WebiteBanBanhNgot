@@ -179,11 +179,26 @@ namespace WebsiteCakeNew.Controllers
             }
             return View(model);
         }
+        [AllowAnonymous]
         public ActionResult SignOut()
         {
-            Session.Clear();
-            return View("/");
+            // Hiển thị pop-up xác nhận đăng xuất
+            // Sử dụng JavaScript để hiển thị pop-up, ví dụ:
+            string confirmScript = "return confirm('Bạn có chắc chắn muốn đăng xuất?');";
+            ViewBag.ConfirmScript = confirmScript;
+
+            return View();
         }
+        [AllowAnonymous]
+        public ActionResult ConfirmSignOut()
+        {
+            // Thực hiện Session.Clear
+            Session.Clear();
+
+            // Chuyển hướng đến trang chủ hoặc trang đăng nhập (tuỳ ý)
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult LogOff()
         {
             Session["UserName"] = null;

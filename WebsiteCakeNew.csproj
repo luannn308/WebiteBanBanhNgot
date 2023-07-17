@@ -214,6 +214,7 @@
     <Content Include="Areas\Admin\AssetsAdmin\dist\css\alt\adminlte.pages.min.css" />
     <Content Include="Areas\Admin\AssetsAdmin\dist\css\alt\adminlte.plugins.css" />
     <Content Include="Areas\Admin\AssetsAdmin\dist\css\alt\adminlte.plugins.min.css" />
+    <Content Include="Areas\Admin\AssetsAdmin\dist\css\more.css" />
     <Content Include="Areas\Admin\AssetsAdmin\dist\img\logoSquare.png" />
     <Content Include="Areas\Admin\AssetsAdmin\dist\js\adminlte.js" />
     <Content Include="Areas\Admin\AssetsAdmin\dist\js\adminlte.min.js" />
@@ -2432,6 +2433,7 @@
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Shared\_RelatedProducts.cshtml" />
+    <Content Include="Views\Account\SignOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

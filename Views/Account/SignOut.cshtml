@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Đăng xuất";
+}
+
+<div class="container d-flex flex-column" style="padding-top: 3em; padding-bottom: 5em">
+    <h2><strong>Đăng Xuất</strong></h2>
+    <div class="row">
+        <div class="col-md-6" style="padding:0">
+            <script>
+    // Khi người dùng xác nhận đăng xuất, chuyển hướng đến action "ConfirmSignOut"
+    function confirmSignOut() {
+        window.location.href = '@Url.Action("ConfirmSignOut", "Account")';
+    }
+            </script>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>Bạn có chắc chắn muốn đăng xuất?</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button onclick="confirmSignOut()" class="btn btn-secondary" style="background-color: #f08632; border-color: #f08632;" >Đăng xuất</button>             
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic">
+                        <img src="~/Content/img/instagram/instagram-1.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic middle__pic">
+                        <img src="~/Content/img/instagram/instagram-2.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic">
+                        <img src="~/Content/img/instagram/instagram-3.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic">
+                        <img src="~/Content/img/instagram/instagram-4.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic middle__pic">
+                        <img src="~/Content/img/instagram/instagram-5.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <div class="instagram__pic">
+                        <img src="~/Content/img/instagram/instagram-6.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

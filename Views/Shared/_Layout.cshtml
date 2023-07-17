@@ -70,12 +70,12 @@
                         if (Session["Role"].ToString() == "Administrator")
                         {
                             <li>@Html.ActionLink("Trang Quản Trị", "Index", "Admin/MainAdmin")</li>
-                            <li>@Html.ActionLink("Đăng xuất", "Login", "Account")</li>
+                            <li>@Html.ActionLink("Đăng xuất", "SignOut", "Account")</li>
                         }
                         else
                         {
                             <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "Home")</li>
-                            <li>@Html.ActionLink("Đăng xuất", "Login", "Account")</li>
+                            <li>@Html.ActionLink("Đăng xuất", "SignOut", "Account")</li>
                         }
                     }
                     else
@@ -110,12 +110,12 @@
                                             if (Session["Role"].ToString() == "Administrator")
                                             {
                                                 <li>@Html.ActionLink("Trang Quản Trị", "Index", "Admin/MainAdmin")</li>
-                                                <li>@Html.ActionLink("Đăng xuất", "Login", "Account")</li>
+                                                <li>@Html.ActionLink("Đăng xuất", "SignOut", "Account")</li>
                                             }
                                             else
                                             {
                                                 <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "Home")</li>
-                                                <li>@Html.ActionLink("Đăng xuất", "Login", "Account")</li>
+                                                <li>@Html.ActionLink("Đăng xuất", "SignOut", "Account")</li>
                                             }
                                         }
                                         else

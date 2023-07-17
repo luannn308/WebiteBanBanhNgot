@@ -17,14 +17,16 @@
     <link rel="stylesheet" href="~/Areas/Admin/AssetsAdmin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="~/Areas/Admin/AssetsAdmin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" />
+    <link href="~/Areas/Admin/AssetsAdmin/dist/css/more.css" rel="stylesheet" />
     <style>
-        td{
-            vertical-align:middle !important;
+        td {
+            vertical-align: middle !important;
         }
-        th{
-            background-color:cadetblue;
-            text-wrap:nowrap;
-            color:white;
+
+        th {
+            background-color: #ff8320;
+            text-wrap: nowrap;
+            color: white;
         }
     </style>
 </head>
@@ -40,9 +42,6 @@
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="@Url.Action("Index","../Home")" class="nav-link">Trang chủ</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
                 </li>
             </ul>
 
@@ -171,17 +170,17 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="~/Areas/Admin/AssetsAdmin/dist/img/logoSquare.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 1">
-                <span class="brand-text font-weight-light"><strong>TRANG QUẢN LÝ</strong></span>
+            <a href="@Url.Action("Index","../Home")" class="brand-link" >
+                <img src="~/Areas/Admin/AssetsAdmin/dist/img/logoSquare.png" alt="AdminLTE Logo" class="brand-image img-circle" style="opacity: 1">
+                <span class="brand-text font-weight-light" style="margin-left:24px;font-weight:bold !important">Trang Quản Lý</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- SidebarSearch Form -->
-                <div class="form-inline">
+                <div class="form-inline"  style="margin-top: 16px!important">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Tìm kiếm" aria-label="Tìm kiếm">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -213,6 +212,30 @@
                                 <i class="nav-icon fas fa-bars"></i>
                                 <p>
                                     Danh mục sản phẩm
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","TagsManager")" class="nav-link @((ViewContext.RouteData.Values["controller"].ToString() == "TagsManager" && ViewContext.RouteData.Values["action"].ToString() == "Index") ? "active" : "")">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>
+                                    Thẻ
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","UsersManager")" class="nav-link @((ViewContext.RouteData.Values["controller"].ToString() == "UsersManager" && ViewContext.RouteData.Values["action"].ToString() == "Index") ? "active" : "")">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Khách hàng
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","SaleManager")" class="nav-link @((ViewContext.RouteData.Values["controller"].ToString() == "SaleManager" && ViewContext.RouteData.Values["action"].ToString() == "Index") ? "active" : "")">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Thống kê
                                 </p>
                             </a>
                         </li>
