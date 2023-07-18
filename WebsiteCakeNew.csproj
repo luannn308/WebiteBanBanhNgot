@@ -2099,6 +2099,7 @@
     <Content Include="Content\css\elegant-icons.css" />
     <Content Include="Content\css\flaticon.css" />
     <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\logoff.css" />
     <Content Include="Content\css\magnific-popup.css" />
     <Content Include="Content\css\more.css" />
     <Content Include="Content\css\nice-select.css" />
@@ -2156,6 +2157,7 @@
     <Content Include="Content\img\shop\buttercream-cake-1.png" />
     <Content Include="Content\img\shop\buttercream-cake-2.png" />
     <Content Include="Content\img\shop\buttercream-cake-3.png" />
+    <Content Include="Content\img\shop\buttercream-cake-4.png" />
     <Content Include="Content\img\shop\cart\cart-1.jpg" />
     <Content Include="Content\img\shop\cart\cart-2.jpg" />
     <Content Include="Content\img\shop\cart\cart-3.jpg" />
@@ -2434,6 +2436,7 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Shared\_RelatedProducts.cshtml" />
     <Content Include="Views\Account\SignOut.cshtml" />
+    <Content Include="Views\Shared\Logoff.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

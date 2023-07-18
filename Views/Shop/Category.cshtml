@@ -4,20 +4,32 @@
 @{
     ViewBag.Title = "Category";
 }
+@{
+    var c = new ShopBUS();
+    string cateshow = "";
+    if (Model.Count <= 0)
+    {
+        cateshow = "Không có sản phẩm nào";
+    }
+    else
+    {
+        cateshow = c.GetCategoryProduct(Model[0].ProductID);
+    }
+}
 <!-- Breadcrumb Begin -->
 <div class="breadcrumb-option">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="breadcrumb__text">
-                    <h2>Shop</h2>
+                    <h2>@cateshow</h2>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="breadcrumb__links">
                     @Html.ActionLink("Trang chủ", "Index", "Home")
                     @Html.ActionLink("Sản phẩm", "Index", "Shop")
-                    <span>Category</span>
+                    <span>@cateshow</span>
                 </div>
             </div>
         </div>
@@ -35,10 +47,10 @@
                 <div class="col-lg-5 col-md-5">
                     <div class="shop__option__right">
                         <select>
-                            <option value="">Default sorting</option>
-                            <option value="">A to Z</option>
+                            <option value="">Xếp mặc định</option>
+                            <option value="">A - Z</option>
                             <option value="">1 - 8</option>
-                            <option value="">Name</option>
+                            <option value="">Tên</option>
                         </select>
                         <a href="#"><i class="fa fa-list"></i></a>
                         <a href="#"><i class="fa fa-reorder"></i></a>
@@ -68,10 +80,9 @@
                             @{
                                 var formattedPrice = string.Format("{0:N0}", item.Price - item.Price / item.Discount);
                             }
-
-                            <div class="product__item__price">@formattedPrice VND</div>
+                            <div class="product__item__price">@formattedPrice VNĐ</div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="#">Thêm vào giỏ hàng</a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +103,7 @@
                             var startProductIndex = (Model.PageNumber - 1) * Model.PageSize + 1;
                             var endProductIndex = startProductIndex + Model.Count - 1;
                         }
-                        <p>Showing @startProductIndex-@endProductIndex of @Model.TotalItemCount results</p>
+                        <p>Hiển thị @startProductIndex-@endProductIndex trên @Model.TotalItemCount kết quả</p>
                     </div>
                 </div>
             </div>

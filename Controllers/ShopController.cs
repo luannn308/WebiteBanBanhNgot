@@ -19,6 +19,10 @@ namespace WebsiteCakeNew.Controllers
         public ActionResult Category(int id, int page = 1, int pagesize = 8)
         {
             var db = ShopBUS.DanhMuc(id).ToPagedList(page, pagesize);
+            if (id == 0)
+            {
+                return RedirectToAction("Index", "Shop");
+            }
             return View(db);
         }
         // GET: Shop/Details/5
