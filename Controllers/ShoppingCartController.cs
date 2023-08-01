@@ -3,40 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebBanBanhConnection;
-using WebsiteCakeNew.Models.BUS;
 
-namespace WebsiteCakeNew.Areas.Admin.Controllers
+namespace WebsiteCakeNew.Controllers
 {
-    public class CategoryManagerController : Controller
+    public class ShoppingCartController : Controller
     {
-        // GET: Admin/CategoryManager
+        // GET: ShoppingCart
         public ActionResult Index()
         {
-            var ds = CategoryBUS.DanhSach();
-            return View(ds);
+            return View();
         }
 
-        // GET: Admin/CategoryManager/Details/5
+        // GET: ShoppingCart/Details/5
         public ActionResult Details(int id)
         {
-            return View(CategoryBUS.ChiTiet(id));
+            return View();
         }
 
-        // GET: Admin/CategoryManager/Create
+        // GET: ShoppingCart/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/CategoryManager/Create
+        // POST: ShoppingCart/Create
         [HttpPost]
-        public ActionResult Create(CATEGORY cate)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
-                CategoryBUS.AddCategory(cate);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -45,21 +42,20 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/CategoryManager/Edit/5
+        // GET: ShoppingCart/Edit/5
         public ActionResult Edit(int id)
         {
-            var db = CategoryBUS.ChiTiet(id);
-            return View(db);
+            return View();
         }
 
-        // POST: Admin/CategoryManager/Edit/5
+        // POST: ShoppingCart/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, CATEGORY cate)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-                CategoryBUS.UpdateCategory(id, cate);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -68,21 +64,20 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/CategoryManager/Delete/5
+        // GET: ShoppingCart/Delete/5
         public ActionResult Delete(int id)
         {
-            var db = CategoryBUS.ChiTiet(id);
-            return View(db);
+            return View();
         }
 
-        // POST: Admin/CategoryManager/Delete/5
+        // POST: ShoppingCart/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-                CategoryBUS.DeleteCategory(id);
+
                 return RedirectToAction("Index");
             }
             catch

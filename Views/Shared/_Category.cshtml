@@ -1,11 +1,21 @@
 ﻿@model IEnumerable<WebBanBanhConnection.CATEGORY>
+@{
+   var cate = ViewData["Category"] as string;
+}
 <div class="shop__option__search">
     <form action="@Url.Action("Category", "Shop")" method="get">
         <select name="id">
             <option value="0">Chọn danh mục</option>
             @foreach (var item in Model)
             {
-                <option value="@item.CategoryID">@item.CategoryName</option>
+                if (item.CategoryName == cate)
+                {
+                    <option value="@item.CategoryID" selected>@item.CategoryName</option>
+                }
+                else
+                {
+                    <option value="@item.CategoryID">@item.CategoryName</option>
+                }
             }
         </select>
         <button type="submit"><i class="fa fa-search"></i></button>

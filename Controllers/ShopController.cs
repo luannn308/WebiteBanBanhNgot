@@ -23,6 +23,7 @@ namespace WebsiteCakeNew.Controllers
             {
                 return RedirectToAction("Index", "Shop");
             }
+            var cateId = id;
             return View(db);
         }
         // GET: Shop/Details/5
@@ -31,7 +32,26 @@ namespace WebsiteCakeNew.Controllers
             var db = ShopBUS.ChiTiet(id);
             return View(db);
         }
+        [HttpPost]
+        public ActionResult SortProducts(string sortBy, int page = 1, int pagesize = 8)
+        {
+            var sortedList = ShopBUS.DanhSach();
+            if (sortBy == "default")
+            {
+                sortedList = ShopBUS.DanhSach();
+            }else if (sortBy == "az")
+            {
+                sortedList = ShopBUS.AtoZ();
+            }else if (sortBy == "za")
+            {
+                sortedList = ShopBUS.ZtoA();
+            }
 
+            var pagedList = sortedList.ToPagedList(page, pagesize);
+
+            // Trả về danh sách sản phẩm mới dưới dạng một partial view hoặc đoạn HTML
+            return PartialView("_ProductList", pagedList);
+        }
         // GET: Shop/Create
         public ActionResult Create()
         {

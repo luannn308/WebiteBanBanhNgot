@@ -177,9 +177,12 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\WishListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2391,6 +2394,10 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Areas\Admin\Views\CategoryManager\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManager\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManager\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManager\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2437,6 +2444,11 @@
     <Content Include="Views\Shared\_RelatedProducts.cshtml" />
     <Content Include="Views\Account\SignOut.cshtml" />
     <Content Include="Views\Shared\Logoff.cshtml" />
+    <Content Include="Views\Shared\_Sort.cshtml" />
+    <Content Include="Views\Shop\_ProductList.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\WishList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

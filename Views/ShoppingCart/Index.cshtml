@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>Giỏ hàng</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    @Html.ActionLink("Trang chủ", "Index", "Home")
+                    <span>Giỏ hàng</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="shopping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="product__cart__item">
+                                    <div class="product__cart__item__pic">
+                                        <img src="~/Content/img/shop/cart/cart-1.jpg" alt="">
+                                    </div>
+                                    <div class="product__cart__item__text">
+                                        <h6>T-shirt Contrast Pocket</h6>
+                                        <h5>$98.49</h5>
+                                    </div>
+                                </td>
+                                <td class="quantity__item">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <input type="text" value="1">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="cart__price">$ 30.00</td>
+                                <td class="cart__close"><span class="icon_close"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="product__cart__item">
+                                    <div class="product__cart__item__pic">
+                                        <img src="~/Content/img/shop/cart/cart-2.jpg" alt="">
+                                    </div>
+                                    <div class="product__cart__item__text">
+                                        <h6>Diagonal Textured Cap</h6>
+                                        <h5>$98.49</h5>
+                                    </div>
+                                </td>
+                                <td class="quantity__item">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <input type="text" value="1">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="cart__price">$ 32.50</td>
+                                <td class="cart__close"><span class="icon_close"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="continue__btn">
+                            <a href="@Url.Action("Index","Shop")">Tiếp tục mua hàng</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="continue__btn update__btn">
+                            <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="cart__discount">
+                    <h6>Mã giảm giá</h6>
+                    <form action="#">
+                        <input type="text" placeholder="Mã giảm giá">
+                        <button type="submit">Áp dụng</button>
+                    </form>
+                </div>
+                <div class="cart__total">
+                    <h6>
+                        TỔNG GIỎ HÀNG
+                    </h6>
+                    <ul>
+                        <li>Tổng tiền hàng<span>$ 169.50</span></li>
+                        <li>Tổng thanh toán <span>$ 169.50</span></li>
+                    </ul>
+                    <a href="@Url.Action("Index", "Checkout")" class="primary-btn">Tiến hành đặt hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shopping Cart Section End -->

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<WebBanBanhConnection.CATEGORY>
+@using WebsiteCakeNew.Models.BUS
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -7,7 +8,7 @@
 <div class="card">
     <div class="d-flex align-items-center justify-content-between" style="padding: 0.75rem 1.25rem; border-bottom: 1px solid rgba(0, 0, 0, 0.125); background-color: rgba(0, 0, 0, 0.03); ">
         <h3 class="card-title"><strong>Danh sách sản phẩm</strong></h3>
-        <a class="btn btn-success btn-sm" href="@Url.Action("Create","ProductManager")">
+        <a class="btn btn-success btn-sm" href="@Url.Action("Create","CategoryManager")">
             <i class="fas fa-plus"></i>
             Thêm
         </a>
@@ -31,19 +32,27 @@
                             @item.CategoryID
                         </td>
                         <td>@item.CategoryName</td>
-                        <td>@item.ParentID</td>
+                        @{ 
+                            var db = new CategoryBUS();
+                            string parentName = "Không có danh mục cha";
+                            if (item.ParentID != null)
+                            {
+                                parentName = db.DanhMucCha((int)item.ParentID);
+                            }
+                        }
+                        <td>@parentName</td>
                         <td class="project-actions text-center">
-                            <a class="btn btn-primary btn-sm" href="#">
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Details","CategoryManager", new { id = item.CategoryID})">
                                 <i class="fas fa-info">
                                 </i>
                                 Chi tiết
                             </a>
-                            <a class="btn btn-info btn-sm" href="#">
+                            <a class="btn btn-info btn-sm" href="@Url.Action("Edit","CategoryManager", new { id = item.CategoryID})">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                                 Sửa
                             </a>
-                            <a class="btn btn-danger btn-sm" href="#">
+                            <a class="btn btn-danger btn-sm" href="@Url.Action("Delete","CategoryManager", new { id = item.CategoryID})">
                                 <i class="fas fa-trash">
                                 </i>
                                 Xóa

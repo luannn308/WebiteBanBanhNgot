@@ -39,7 +39,7 @@
     </div>
     <div id="id01" class="modal">
         <form class="modal-content animate" method="post">
-         @Html.Partial("Logoff")
+            @Html.Partial("Logoff")
         </form>
     </div>
     <!-- Offcanvas Menu Begin -->
@@ -48,15 +48,15 @@
         <div class="offcanvas__cart">
             <div class="offcanvas__cart__links">
                 <a href="#" class="search-switch"><img src="~/Content/img/icon/search.png" alt=""></a>
-                <a href="#"><img src="~/Content/img/icon/heart.png" alt=""></a>
+                <a href="@Url.Action("Index","WishList")"><img src="~/Content/img/icon/heart.png" alt=""></a>
             </div>
             <div class="offcanvas__cart__item">
-                <a href="#"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
+                <a href="@Url.Action("Index","ShoppingCart")"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
                 <div class="cart__price">Cart: <span>$0.00</span></div>
             </div>
         </div>
         <div class="offcanvas__logo">
-            <a href="#"><img src="~/Content/img/logo.png" alt=""></a>
+            <a href="@Url.Action("Index","Home")"><img src="~/Content/img/logo-mini.png" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__option">
@@ -137,10 +137,10 @@
                             <div class="header__top__right">
                                 <div class="header__top__right__links">
                                     <a href="#" class="search-switch"><img src="~/Content/img/icon/search.png" alt=""></a>
-                                    <a href="#"><img src="~/Content/img/icon/heart.png" alt=""></a>
+                                    <a href="@Url.Action("Index","WishList")"><img src="~/Content/img/icon/heart.png" alt=""></a>
                                 </div>
                                 <div class="header__top__right__cart">
-                                    <a href="#"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
+                                    <a href="@Url.Action("Index", "ShoppingCart")"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
                                     <div class="cart__price">Cart: <span>0.00 VNĐ</span></div>
                                 </div>
                             </div>
@@ -248,6 +248,14 @@
             </div>
         </div>
     </footer>
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here....." />
+            </form>
+        </div>
+    </div>
     <!-- Footer Section End -->
     <script src="~/Content/js/bootstrap.min.js"></script>
     <script src="~/Content/js/jquery-3.3.1.min.js"></script>

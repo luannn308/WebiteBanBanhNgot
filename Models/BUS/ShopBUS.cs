@@ -12,6 +12,16 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             return db.Query<PRODUCT>("SELECT * FROM PRODUCT");
         }
+        public static IEnumerable<PRODUCT> AtoZ()
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY ProductName ASC");
+        }
+        public static IEnumerable<PRODUCT> ZtoA()
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY ProductName DESC");
+        }
         public static PRODUCT ChiTiet(int id)
         {
             var db = new WebBanBanhConnectionDB();

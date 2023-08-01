@@ -1,0 +1,41 @@
+﻿<div class="col-lg-5 col-md-5">
+    <div class="shop__option__right">
+        <select id="product-sort" onchange="handleSortChange()">
+            <option value="default">Xếp mặc định</option>
+            <option value="az">A - Z</option>
+            <option value="za">Z - A</option>
+            <option value="desc">Giá: thấp - cao</option>
+            <option value="asc">Giá: cao - thấp</option>
+        </select>
+        <a href="#"><i class="fa fa-list"></i></a>
+        <a href="#"><i class="fa fa-reorder"></i></a>
+    </div>
+</div>
+<script>
+    function handleSortChange() {
+        var selectedValue = document.getElementById("product-sort").value;
+        $.ajax({
+            url: '@Url.Action("SortProducts", "Shop")', // Thay đổi "Shop" thành tên controller của bạn
+            type: 'POST',
+            data: { sortBy: selectedValue },
+            success: function (result) {
+                $('#product-list-container').html(result);
+            },
+            error: function (error) {
+                console.log('Đã xảy ra lỗi: ', error);
+            }
+        });
+    }
+    function handlePaginationClick(pageUrl) {
+        $.ajax({
+            url: pageUrl,
+            type: 'GET',
+            success: function (result) {
+                $('#product-list-container').html(result);
+            },
+            error: function (error) {
+                console.log('Đã xảy ra lỗi: ', error);
+            }
+        });
+    }
+</script>

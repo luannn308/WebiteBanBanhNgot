@@ -6,7 +6,7 @@
 // 
 //     Connection String Name: `WebBanBanhConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=LUAN-LENOVO\LUANNGUYEN;Initial Catalog=QLBB;User ID=adminCake;Password=admin123`
+//     Connection String:      `Data Source=LUAN-LENOVO\LUANNGUYEN;Initial Catalog=QLBB;Integrated Security=True`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -106,6 +106,15 @@ namespace WebBanBanhConnection
 	
 
     
+	[TableName("dbo.CARD_TYPE")]
+	[PrimaryKey("TypeID")]
+	[ExplicitColumns]
+    public partial class CARD_TYPE : WebBanBanhConnectionDB.Record<CARD_TYPE>  
+    {
+		[Column] public int TypeID { get; set; }
+		[Column] public string Type { get; set; }
+	}
+    
 	[TableName("dbo.CART_ITEM")]
 	[PrimaryKey("CartItemID")]
 	[ExplicitColumns]
@@ -126,6 +135,8 @@ namespace WebBanBanhConnection
     {
 		[Column] public int CategoryID { get; set; }
 		[Column] public string CategoryName { get; set; }
+		[Column] public string Description { get; set; }
+		[Column] public DateTime? CreatedDate { get; set; }
 		[Column] public int? ParentID { get; set; }
 	}
     

@@ -1,0 +1,56 @@
+﻿@model WebBanBanhConnection.CATEGORY
+@using WebsiteCakeNew.Models.BUS
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title"><em><strong>Chỉnh sửa danh mục</strong></em></h3>
+        <div class="card-tools">
+            <a style="margin-right:8px;padding:12px" href="@Url.Action("Index","CategoryManager")">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Edit", "CategoryManager", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Tên danh mục</label>
+                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" value="@Model.CategoryName" name="CategoryName" required>
+            </div>
+            <div class="form-group">
+                <label>Mô tả danh mục</label>
+                <textarea class="form-control" rows="4" placeholder="Nhập mô tả dài" name="Description">@Model.Description</textarea>
+            </div>
+            <div class="form-group">
+                <label>Danh mục cha</label>
+                <select class="form-control" name="ParentID">
+                    <option value="">-- Chọn danh mục cha --</option>
+                    @foreach (var category in CategoryBUS.DanhSach())
+                    {
+                        if (category.CategoryID == Model.ParentID)
+                        {
+                            <option value="@category.CategoryID" selected>@category.CategoryName</option>
+                        }
+                        else if(category.CategoryID != Model.CategoryID && category.ParentID != Model.CategoryID)
+                        {
+                            <option value="@category.CategoryID">@category.CategoryName</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Ngày tạo danh mục</label>
+                <input type="text" class="form-control" placeholder="Ngày tạo sản phẩm" value="@Model.CreatedDate" readonly name="CreatedDate">
+            </div>
+            <input type="submit"
+                   value="Lưu chỉnh sửa"
+                   class="btn btn-info float-right" />
+        }
+    </div>
+    <!-- /.card-body -->
+</div>
+

@@ -42,7 +42,7 @@
         <div class="shop__option">
             <div class="row">
                 <div class="col-lg-7 col-md-7">
-                    @Html.Partial("_Category", WebsiteCakeNew.Models.BUS.CategoryBUS.DanhSach())
+                    @Html.Partial("_Category", WebsiteCakeNew.Models.BUS.CategoryBUS.DanhSach(), new ViewDataDictionary { { "Category", cateshow } })
                 </div>
                 <div class="col-lg-5 col-md-5">
                     <div class="shop__option__right">

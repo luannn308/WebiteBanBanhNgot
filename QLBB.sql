@@ -20,6 +20,8 @@ CREATE TABLE PRODUCT (
 CREATE TABLE CATEGORY (
    CategoryID INT NOT NULL IDENTITY(1,1),
    CategoryName NVARCHAR(300) NULL,
+   Description NVARCHAR(MAX) NULL,
+   CreatedDate DATE NULL,
    ParentID INT NULL,
    CONSTRAINT PK_CATEGORY PRIMARY KEY (CategoryID)
 );
@@ -148,7 +150,7 @@ CREATE TABLE USER_PAYMENT (
 /* Table: CARD_TYPE */
 CREATE TABLE CARD_TYPE (
    TypeID INT NOT NULL IDENTITY(1,1),
-   Type VARCHAR(150) NULL,
+   "Type" VARCHAR(150) NULL,
    CONSTRAINT PK_CARD_TYPE PRIMARY KEY (TypeID)
 );
 
@@ -327,7 +329,7 @@ AFTER INSERT, UPDATE
 AS
 BEGIN
     UPDATE CART_ITEM
-    SET SubTotal = c.Quantity * (p.Price - (p.Price * p.Discount * 0.01))
+    SET SubTotal = c.Quantity * (p.Price - (p.Price * p.Discount / 100))
     FROM CART_ITEM c
     JOIN PRODUCT p ON c.ProductId = p.ProductId
     WHERE c.CartItemId IN (SELECT CartItemId FROM INSERTED)
@@ -397,7 +399,7 @@ BEGIN
     END
 END
 
-/* Trigger: Tỷ lệ hóa đơn trên tổng doanh thu */
+/* Trigger: Tỷ lệ hóa đơn trên chi tiết doanh thu */
 CREATE TRIGGER CheckSalesDetailRatio
 ON SALES_DETAIL
 AFTER INSERT, UPDATE
@@ -537,11 +539,11 @@ Khi bạn chạm vào bề mặt mềm mịn của bánh, bạn sẽ cảm nhậ
 Lớp kem sữa béo ngậy là một điểm nhấn hoàn hảo cho bánh Chocolate Cloud Piece. Với vị ngọt nhẹ và độ kem mịn, nó tạo ra một sự kết hợp hoàn hảo với hương vị sô-cô-la. Khi bạn thưởng thức mỗi miếng bánh, sự hòa quyện giữa chocolate và kem sữa mời gọi, mang lại sự thỏa mãn và hạnh phúc tuyệt đối cho vị giác của bạn.
 Bánh Chocolate Cloud Piece không chỉ là một món tráng miệng ngon lành, mà còn là biểu tượng của sự sang trọng và thanh lịch. Nó là lựa chọn hoàn hảo cho các dịp đặc biệt như sinh nhật, kỷ niệm hoặc chỉ đơn giản là để thưởng thức một món quà ngọt ngào cho bản thân. Bánh Chocolate Cloud Piece sẽ mang đến sự hài lòng và niềm vui tuyệt đối cho bạn và những người thân yêu.', N'Chocolate Cloud Piece Cake là một món bánh ngọt ngào và nhẹ nhàng, với hương vị sô-cô-la thượng hạng. Với lớp bên ngoài mịn màng và kem sữa béo ngậy, bánh mang đến cảm giác như đang thưởng thức những mảnh mây sô-cô-la ngọt ngào trên đầu lưỡi.', 2, 'piece-cake-3.png', 220000, 10, 8.9, '2023-06-17');
 -- Insert Category -- 
-INSERT INTO CATEGORY (CategoryName) VALUES (N'Cloud Cake');
-INSERT INTO CATEGORY (CategoryName) VALUES (N'Buttercream Cake');
-INSERT INTO CATEGORY (CategoryName) VALUES (N'Mousse Cake');
-INSERT INTO CATEGORY (CategoryName) VALUES (N'Kids Cake');
-INSERT INTO CATEGORY (CategoryName) VALUES (N'Piece Cake');
+INSERT INTO CATEGORY (CategoryName) VALUES (N'Cloud Cake','','2022-08-13');
+INSERT INTO CATEGORY (CategoryName) VALUES (N'Buttercream Cake','','2022-07-22');
+INSERT INTO CATEGORY (CategoryName) VALUES (N'Mousse Cake','','2023-4-13');
+INSERT INTO CATEGORY (CategoryName) VALUES (N'Kids Cake','','2023-6-30');
+INSERT INTO CATEGORY (CategoryName) VALUES (N'Piece Cake','','2022-08-24');
 -- Insert Product Category -- 
 INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (1,1);
 INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (2,1);
