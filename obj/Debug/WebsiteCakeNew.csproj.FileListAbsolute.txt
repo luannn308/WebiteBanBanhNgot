@@ -483,7 +483,6 @@ C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebBanh\WebiteBanBanhNgot
 C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebBanh\WebiteBanBanhNgot\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebBanh\WebiteBanBanhNgot\bin\fr\Microsoft.AspNet.Identity.EntityFramework.resources.dll
 C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebBanh\WebiteBanBanhNgot\bin\fr\Microsoft.AspNet.Identity.Owin.resources.dll
-C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebBanh\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.AssemblyReference.cache
 C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebBanh\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.CoreCompileInputs.cache
 C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebBanh\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.CopyComplete
 C:\Users\luann\OneDrive\Desktop\DoAnWebsiteBanBanhNgot\WebBanh\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.dll

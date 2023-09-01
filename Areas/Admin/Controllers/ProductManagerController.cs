@@ -32,12 +32,48 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
 
         // POST: Admin/ProductManager/Create
         [HttpPost]
-        public ActionResult Create(PRODUCT p)
+        public ActionResult Create(PRODUCT p, string SelectedCategoryIDs, string SelectedTagIDs)
         {
             try
             {
-                // TODO: Add insert logic here
+                string[] selectedCategoryIDArray = SelectedCategoryIDs.Split(',');
+                string[] selectedTagIDArray = SelectedTagIDs.Split(',');
+                // TODO: Lưu thông tin sản phẩm vào bảng Product
                 ShopBUS.AddProduct(p);
+
+                // TODO: Lấy ID của sản phẩm đã tạo
+                int createdProductID = p.ProductID;
+                if(selectedCategoryIDArray[0] != "")
+                {
+                    foreach (var categoryID in selectedCategoryIDArray)
+                    {
+                        int categoryId = Convert.ToInt32(categoryID);
+                        PRODUCT_CATEGORY productCategory = new PRODUCT_CATEGORY
+                        {
+                            ProductID = createdProductID,
+                            CategoryID = categoryId
+                        };
+
+                        // TODO: Lưu bản ghi vào bảng Product_category
+                        Product_CategoryBUS.AddProductCategory(productCategory);
+                    }
+                }
+                // TODO: Thêm các bản ghi vào bảng Product_category
+                if(selectedTagIDArray[0] != "")
+                {
+                    foreach (var tagID in selectedTagIDArray)
+                    {
+                        int tagId = Convert.ToInt32(tagID);
+                        PRODUCT_TAG productTag = new PRODUCT_TAG
+                        {
+                            ProductID = createdProductID,
+                            TagID = tagId
+                        };
+
+                        // TODO: Lưu bản ghi vào bảng Product_category
+                        Product_TagBUS.AddProductTag(productTag);
+                    }
+                } 
                 return RedirectToAction("Index");
             }
             catch

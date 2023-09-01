@@ -216,7 +216,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("Index","TagsManager")" class="nav-link @((ViewContext.RouteData.Values["controller"].ToString() == "TagsManager" && ViewContext.RouteData.Values["action"].ToString() == "Index") ? "active" : "")">
+                            <a href="@Url.Action("Index","TagManager")" class="nav-link @((ViewContext.RouteData.Values["controller"].ToString() == "TagManager" && ViewContext.RouteData.Values["action"].ToString() == "Index") ? "active" : "")">
                                 <i class="nav-icon fas fa-tags"></i>
                                 <p>
                                     Thẻ
@@ -258,8 +258,8 @@
         <!-- /.control-sidebar -->
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-            All rights reserved.
+            <strong>Cửa hàng bánh ngọt <a href="@Url.Action("Index","../Home")">YummyCookie.com</a>.</strong>
+            Những chiết bánh ngọt ngào!!!
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.2.0
             </div>

@@ -1,0 +1,30 @@
+﻿@using WebsiteCakeNew.Models.BUS
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card card-success">
+    <div class="card-header">
+        <h3 class="card-title"><em><strong>Thêm thẻ mới</strong></em></h3>
+        <div class="card-tools">
+            <a style="margin-right:8px;padding:12px" href="@Url.Action("Index","TagManager")">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "TagManager", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Tên thẻ</label>
+                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="TagName" required>
+            </div>
+            <input type="submit"
+                   value="Thêm danh mục"
+                   class="btn btn-success float-right" />
+        }
+    </div>
+    <!-- /.card-body -->
+</div>
+

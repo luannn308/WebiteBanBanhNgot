@@ -51,7 +51,7 @@ namespace WebsiteCakeNew.Models.BUS
         public string GetCategoryProduct(int id)
         {
             var db = new WebBanBanhConnectionDB();
-            var pCategory = db.SingleOrDefault<PRODUCT_CATEGORY>("SELECT * FROM [PRODUCT_CATEGORY] WHERE ProductID = @0", id);
+            var pCategory = db.Query<PRODUCT_CATEGORY>("SELECT * FROM [PRODUCT_CATEGORY] WHERE ProductID = @0", id).FirstOrDefault();
             if (pCategory != null)
             {
                 var cate = db.SingleOrDefault<CATEGORY>("SELECT * FROM [CATEGORY] WHERE CategoryID = @0", pCategory.CategoryID);
