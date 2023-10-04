@@ -539,11 +539,11 @@ Khi bạn chạm vào bề mặt mềm mịn của bánh, bạn sẽ cảm nhậ
 Lớp kem sữa béo ngậy là một điểm nhấn hoàn hảo cho bánh Chocolate Cloud Piece. Với vị ngọt nhẹ và độ kem mịn, nó tạo ra một sự kết hợp hoàn hảo với hương vị sô-cô-la. Khi bạn thưởng thức mỗi miếng bánh, sự hòa quyện giữa chocolate và kem sữa mời gọi, mang lại sự thỏa mãn và hạnh phúc tuyệt đối cho vị giác của bạn.
 Bánh Chocolate Cloud Piece không chỉ là một món tráng miệng ngon lành, mà còn là biểu tượng của sự sang trọng và thanh lịch. Nó là lựa chọn hoàn hảo cho các dịp đặc biệt như sinh nhật, kỷ niệm hoặc chỉ đơn giản là để thưởng thức một món quà ngọt ngào cho bản thân. Bánh Chocolate Cloud Piece sẽ mang đến sự hài lòng và niềm vui tuyệt đối cho bạn và những người thân yêu.', N'Chocolate Cloud Piece Cake là một món bánh ngọt ngào và nhẹ nhàng, với hương vị sô-cô-la thượng hạng. Với lớp bên ngoài mịn màng và kem sữa béo ngậy, bánh mang đến cảm giác như đang thưởng thức những mảnh mây sô-cô-la ngọt ngào trên đầu lưỡi.', 2, 'piece-cake-3.png', 220000, 10, 8.9, '2023-06-17');
 -- Insert Category -- 
-INSERT INTO CATEGORY (CategoryName) VALUES (N'Cloud Cake','','2022-08-13');
-INSERT INTO CATEGORY (CategoryName) VALUES (N'Buttercream Cake','','2022-07-22');
-INSERT INTO CATEGORY (CategoryName) VALUES (N'Mousse Cake','','2023-4-13');
-INSERT INTO CATEGORY (CategoryName) VALUES (N'Kids Cake','','2023-6-30');
-INSERT INTO CATEGORY (CategoryName) VALUES (N'Piece Cake','','2022-08-24');
+INSERT INTO CATEGORY VALUES (N'Cloud Cake','','2022-08-13', null);
+INSERT INTO CATEGORY VALUES (N'Buttercream Cake','','2022-07-22', null);
+INSERT INTO CATEGORY VALUES (N'Mousse Cake','','2023-4-13', null);
+INSERT INTO CATEGORY VALUES (N'Kids Cake','','2023-6-30', null);
+INSERT INTO CATEGORY VALUES (N'Piece Cake','','2022-08-24', null);
 -- Insert Product Category -- 
 INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (1,1);
 INSERT INTO PRODUCT_CATEGORY(ProductID, CategoryID) VALUES (2,1);

@@ -20,6 +20,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Tên danh mục</th>
+                    <th>Mô tả danh mục</th>
                     <th>Danh mục cha</th>
                     <th>CRUD</th>
                 </tr>
@@ -32,14 +33,21 @@
                             @item.CategoryID
                         </td>
                         <td>@item.CategoryName</td>
-                        @{ 
+                        @{
                             var db = new CategoryBUS();
                             string parentName = "Không có danh mục cha";
                             if (item.ParentID != null)
                             {
                                 parentName = db.DanhMucCha((int)item.ParentID);
                             }
+                            string des = "Không có mô tả";
+                            if (item.Description != "")
+                            {
+                                des = item.Description;
+                            }
                         }
+                            
+                        <td>@des</td>
                         <td>@parentName</td>
                         <td class="project-actions text-center">
                             <a class="btn btn-primary btn-sm" href="@Url.Action("Details","CategoryManager", new { id = item.CategoryID})">

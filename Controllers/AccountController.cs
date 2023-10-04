@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -12,6 +14,8 @@ using Microsoft.Owin.Security;
 using WebBanBanhConnection;
 using WebsiteCakeNew.Models;
 using WebsiteCakeNew.Models.BUS;
+using System.Net;
+using System.Net.Mail;
 
 namespace WebsiteCakeNew.Controllers
 {
@@ -139,7 +143,36 @@ namespace WebsiteCakeNew.Controllers
             }
         }
 
-        //
+        // Send Email
+        public void SendRegistrationConfirmationEmail(string userEmail)
+        {
+            string smtpServer = "smtp.gmail.com";
+            int smtpPort = 587; // Sử dụng 587 cho TLS hoặc 465 cho SSL
+            string smtpUsername = "luannn308@gmail.com";
+            string smtpPassword = "lktu efbb qaya uhlp";
+            string senderEmail = "luannn308@gmail.com";
+
+            // Tạo đối tượng SmtpClient để gửi email
+            SmtpClient smtpClient = new SmtpClient(smtpServer);
+            smtpClient.Port = smtpPort;
+            smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+            smtpClient.EnableSsl = true;
+
+            // Tạo đối tượng MailMessage để thiết lập nội dung email
+            MailMessage mailMessage = new MailMessage(senderEmail, userEmail);
+            mailMessage.Subject = "Đăng ký tài khoản thành công";
+            mailMessage.Body = "Chào mừng bạn đã đăng ký tài khoản thành công.";
+
+            try
+            {
+                smtpClient.Send(mailMessage); // Gửi email
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi nếu có
+                Console.WriteLine("Lỗi gửi email: " + ex.Message);
+            }
+        }
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
@@ -162,6 +195,7 @@ namespace WebsiteCakeNew.Controllers
                 {
                     case 1:
                         db.SetRoleUser(model.UserName);
+                        SendRegistrationConfirmationEmail(model.Email);
                         return RedirectToAction("Login", "Account");
                     case 0:
                         ModelState.AddModelError("", "Username đã tồn tại");
@@ -179,6 +213,7 @@ namespace WebsiteCakeNew.Controllers
             }
             return View(model);
         }
+        
         [AllowAnonymous]
         public ActionResult SignOut()
         {

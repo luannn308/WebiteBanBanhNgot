@@ -6,7 +6,7 @@
 // 
 //     Connection String Name: `WebBanBanhConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=LUAN-LENOVO\LUANNGUYEN;Initial Catalog=QLBB;Integrated Security=True`
+//     Connection String:      `Data Source=DESKTOP-LUANNN;Initial Catalog=QLBB;Integrated Security=True`
 //     Schema:                 ``
 //     Include Views:          `False`
 

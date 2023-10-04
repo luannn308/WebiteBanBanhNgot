@@ -107,11 +107,40 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
 
         // POST: Admin/ProductManager/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, PRODUCT p)
+        public ActionResult Edit(int id, PRODUCT p, string SelectedCategoryIDs, string SelectedTagIDs)
         {
             try
             {
                 // TODO: Add update logic here
+                var selectedCategoryIDArray = SelectedCategoryIDs.Split(',').Select(int.Parse).ToList();
+                Product_CategoryBUS.DeleteCateNotIn(id, selectedCategoryIDArray);
+                int createdProductID = id; 
+                foreach (var categoryID in selectedCategoryIDArray)
+                    {
+                        int categoryId = Convert.ToInt32(categoryID);
+                        PRODUCT_CATEGORY productCategory = new PRODUCT_CATEGORY
+                        {
+                            ProductID = createdProductID,
+                            CategoryID = categoryId
+                        };
+
+                        // TODO: Lưu bản ghi vào bảng Product_category
+                        Product_CategoryBUS.AddProductCategory(productCategory);
+                    }
+                var selectedTagIDArray = SelectedTagIDs.Split(',').Select(int.Parse).ToList();
+                Product_TagBUS.DeleteTagNotIn(id, selectedTagIDArray);
+                foreach (var tagID in selectedTagIDArray)
+                {
+                    int tagId = Convert.ToInt32(tagID);
+                    PRODUCT_TAG productTag = new PRODUCT_TAG
+                    {
+                        ProductID = createdProductID,
+                        TagID = tagId
+                    };
+
+                    // TODO: Lưu bản ghi vào bảng Product_category
+                    Product_TagBUS.AddProductTag(productTag);
+                }
                 ShopBUS.UpdateProduct(id, p);
                 return RedirectToAction("Index");
             }
@@ -135,6 +164,8 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
             try
             {
                 // TODO: Add delete logic here
+                Product_CategoryBUS.DeleteCate(id);
+                Product_TagBUS.DeleteTag(id);
                 ShopBUS.DeleteProduct(id);
                 return RedirectToAction("Index");
             }

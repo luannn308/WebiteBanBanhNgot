@@ -1,4 +1,5 @@
 ﻿@model WebBanBanhConnection.PRODUCT
+@using WebsiteCakeNew.Models.BUS
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -30,6 +31,38 @@
                 <textarea class="form-control" rows="4" placeholder="Nhập mô tả ngắn" name="ShortDescription" required>@Model.ShortDescription</textarea>
             </div>
             <div class="form-group">
+                <label>Danh mục sản phẩm</label>
+                <div class="customCheckBoxHolder d-flex gap-12">
+                    @foreach (var itemCate in CategoryBUS.DanhSach())
+                    {
+                        int checkCate = Product_CategoryBUS.CheckProductCategory(Model.ProductID, itemCate.CategoryID);
+                        <input type="checkbox" id="@itemCate.CategoryID-cate" class="customCheckBoxInputCate" value="@itemCate.CategoryID" @(checkCate > 0 ? "checked" : "")>
+                        <label for="@itemCate.CategoryID-cate" class="customCheckBoxWrapper">
+                            <div class="customCheckBox">
+                                <div class="inner">@itemCate.CategoryName</div>
+                            </div>
+                        </label>
+                    }
+                </div>
+            </div>
+                <input type="hidden" id="selectedCategoryIDs" name="SelectedCategoryIDs" />
+            <div class="form-group">
+                <label>Thẻ của sản phẩm</label>
+                <div class="customCheckBoxHolder d-flex gap-12">
+                    @foreach (var itemTag in TagBUS.DanhSach())
+                    {
+                        int checkTag = Product_TagBUS.CheckProductTag(Model.ProductID, itemTag.TagID);
+                        <input type="checkbox" id="@itemTag.TagID-tag" class="customCheckBoxInputTag" value="@itemTag.TagID" @(checkTag > 0 ? "checked" : "")>
+                        <label for="@itemTag.TagID-tag" class="customCheckBoxWrapper">
+                            <div class="customCheckBox">
+                                <div class="inner">@itemTag.TagName</div>
+                            </div>
+                        </label>
+                    }
+                </div>
+            </div>
+                <input type="hidden" id="selectedTagIDs" name="SelectedTagIDs" />
+            <div class="form-group">
                 <label>Số lượng sản phẩm</label>
                 <input type="number" class="form-control" placeholder="Nhập số lượng" min="0" name="StockNumber" required value="@Model.StockNumber">
             </div>
@@ -47,9 +80,9 @@
             </div>
             <div class="form-group d-flex flex-column">
                 <label>Ảnh sản phẩm</label>
-                <img src="~/Content/img/shop/@Model.Image" alt="Ảnh sản phẩm" class="img-thumbnail" style="margin-bottom:12px; width: 600px"/>
+                <img src="~/Content/img/shop/@Model.Image" alt="Ảnh sản phẩm" class="img-thumbnail" style="margin-bottom:12px; width: 600px" />
                 <div id="dropzoneContainer" class="dropzone"></div>
-                <input type="hidden" id="uploadedImage" name="Image" value="@Model.Image"/>
+                <input type="hidden" id="uploadedImage" name="Image" value="@Model.Image" />
             </div>
             <input type="submit"
                    value="Lưu thay đổi"
@@ -59,3 +92,27 @@
     <!-- /.card-body -->
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const selectedCategoryCheckboxes = document.querySelectorAll(".customCheckBoxInputCate");
+        const selectedCategoryIDsInput = document.querySelector("#selectedCategoryIDs");
+        const selectedTagCheckboxes = document.querySelectorAll(".customCheckBoxInputTag");
+        const selectedTagIDsInput = document.querySelector("#selectedTagIDs");
+
+        selectedCategoryCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", function (event) {
+                const selectedCategoryCheckboxesChecked = document.querySelectorAll(".customCheckBoxInputCate:checked");
+                const selectedCategoryIDs = Array.from(selectedCategoryCheckboxesChecked).map(checkbox => checkbox.value);
+                selectedCategoryIDsInput.value = selectedCategoryIDs.join(",");
+            });
+        });
+        selectedTagCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", function (event) {
+                const selectedTagCheckboxesChecked = document.querySelectorAll(".customCheckBoxInputTag:checked");
+                const selectedTagIDs = Array.from(selectedTagCheckboxesChecked).map(checkbox => checkbox.value);
+                selectedTagIDsInput.value = selectedTagIDs.join(",");
+            });
+        });
+    });
+</script>
