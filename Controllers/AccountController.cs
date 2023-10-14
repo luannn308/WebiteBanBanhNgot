@@ -80,13 +80,21 @@ namespace WebsiteCakeNew.Controllers
                 return View(model);
             }
             var db = new UserBUS();
-            int result = db.Login(model.Email, model.Password);
+            int result = db.Login(model.UsernameOrEmail, model.Password);
             switch (result)
             {
                 case 1:
-                    USER userSession = db.GetItem(model.Email);
+                    USER userSession = db.GetItem(model.UsernameOrEmail);
                     Session["Role"] = db.GetRoleUser(userSession.UserID);
                     Session["UserName"] = userSession.UserName;
+                    if (model.RememberMe)
+                    {
+                        FormsAuthentication.SetAuthCookie(userSession.UserName, true);
+                    }
+                    else
+                    {
+                        FormsAuthentication.SetAuthCookie(userSession.UserName, false);
+                    }
                     return RedirectToAction("Index","Home");
                 case 0:
                     ModelState.AddModelError("", "Mật khẩu không đúng");
@@ -195,6 +203,7 @@ namespace WebsiteCakeNew.Controllers
                 {
                     case 1:
                         db.SetRoleUser(model.UserName);
+                        db.CreateShoppingCart(model.UserName);
                         SendRegistrationConfirmationEmail(model.Email);
                         return RedirectToAction("Login", "Account");
                     case 0:
@@ -217,8 +226,6 @@ namespace WebsiteCakeNew.Controllers
         [AllowAnonymous]
         public ActionResult SignOut()
         {
-            // Hiển thị pop-up xác nhận đăng xuất
-            // Sử dụng JavaScript để hiển thị pop-up, ví dụ:
             string confirmScript = "return confirm('Bạn có chắc chắn muốn đăng xuất?');";
             ViewBag.ConfirmScript = confirmScript;
 
@@ -227,10 +234,8 @@ namespace WebsiteCakeNew.Controllers
         [AllowAnonymous]
         public ActionResult ConfirmSignOut()
         {
-            // Thực hiện Session.Clear
             Session.Clear();
 
-            // Chuyển hướng đến trang chủ hoặc trang đăng nhập (tuỳ ý)
             return RedirectToAction("Index", "Home");
         }
 

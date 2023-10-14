@@ -49,16 +49,15 @@ namespace WebsiteCakeNew.Models
     public class LoginViewModel
     {
         [Required(ErrorMessage = "{0} không được để trống")]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Tên người dùng hoặc Email")]
+        public string UsernameOrEmail { get; set; }
 
         [Required(ErrorMessage = "{0} không được để trống")]
         [DataType(DataType.Password)]
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
-        [Display(Name = "Ghi nhớ?")]
+        [Display(Name = "Ghi nhớ đăng nhập?")]
         public bool RememberMe { get; set; }
     }
 

@@ -22,15 +22,61 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY ProductName DESC");
         }
+        public static IEnumerable<PRODUCT> PriceDESC()
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY Price DESC");
+        }
+        public static IEnumerable<PRODUCT> PriceASC()
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY Price ASC");
+        }
         public static PRODUCT ChiTiet(int id)
         {
             var db = new WebBanBanhConnectionDB();
             return db.SingleOrDefault<PRODUCT>("Select * from PRODUCT WHERE ProductID = @0",id);
         }
-        public static IEnumerable<PRODUCT> DanhMuc(int id)
+        public static IEnumerable<PRODUCT> DanhMuc(int id, string sortBy)
         {
             var db = new WebBanBanhConnectionDB();
-            return db.Query<PRODUCT>("SELECT p.* FROM PRODUCT p INNER JOIN PRODUCT_CATEGORY pc ON p.ProductID = pc.ProductID INNER JOIN Category c ON pc.CategoryID = c.CategoryID WHERE c.CategoryID = @0", id);
+
+            var query = "SELECT p.* FROM PRODUCT p " +
+                        "INNER JOIN PRODUCT_CATEGORY pc ON p.ProductID = pc.ProductID " +
+                        "INNER JOIN CATEGORY c ON pc.CategoryID = c.CategoryID " +
+                        "WHERE c.CategoryID = @0";
+
+            if (!string.IsNullOrEmpty(sortBy))
+            {
+                switch (sortBy)
+                {
+                    case "az":
+                        query += " ORDER BY p.ProductName ASC";
+                        break;
+                    case "za":
+                        query += " ORDER BY p.ProductName DESC";
+                        break;
+                    case "asc":
+                        query += " ORDER BY p.Price ASC";
+                        break;
+                    case "desc":
+                        query += " ORDER BY p.Price DESC";
+                        break;
+                    case "old":
+                        query += " ORDER BY p.PublicationDate ASC";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return db.Query<PRODUCT>(query, id);
+        }
+
+        public static IEnumerable<PRODUCT> OldProduct()
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY PublicationDate ASC");
         }
         public static IEnumerable<PRODUCT> TopNew()
         {
@@ -61,6 +107,23 @@ namespace WebsiteCakeNew.Models.BUS
                 }
             }
             return string.Empty;
+        }
+        public string GetAllCategoriesForProduct(int id)
+        {
+            var query = @"SELECT c.CategoryName FROM PRODUCT_CATEGORY pc JOIN CATEGORY c ON pc.CategoryID = c.CategoryID WHERE pc.ProductID = @0";
+
+            var db = new WebBanBanhConnectionDB();
+            var categories = db.Fetch<string>(query, id);
+            return string.Join(", ", categories);
+        }
+        public string GetAllTagsForProduct(int id)
+        {
+            var query = @"SELECT t.TagName FROM PRODUCT_TAG pt JOIN TAG t ON pt.TagID = t.TagID WHERE pt.ProductID = @0";
+
+            var db = new WebBanBanhConnectionDB();
+            var tags = db.Fetch<string>(query, id);
+
+            return string.Join(", ", tags);
         }
         public static void AddProduct(PRODUCT p)
         {

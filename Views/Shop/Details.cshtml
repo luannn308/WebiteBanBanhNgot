@@ -6,6 +6,12 @@
 @{
     var db = new ShopBUS();
     string cate = db.GetCategoryProduct(Model.ProductID);
+    string allCate = db.GetAllCategoriesForProduct(Model.ProductID);
+    string allTag = db.GetAllTagsForProduct(Model.ProductID);
+    string username = (string)Session["UserName"];
+    var dbu = new UserBUS();
+    int userID = dbu.GetIdByUserName(username);
+    var shoppingCart = ShoppingCartBUS.ViewShoppingCartWithUser(userID);
 }
 <!-- Breadcrumb Begin -->
 <div class="breadcrumb-option">
@@ -43,23 +49,45 @@
                     <h4>@Model.ProductName</h4>
                     @{
                         var formattedPrice = string.Format("{0:N0}", Model.Price - Model.Price * (Model.Discount / (float)100));
-                    }
+                     }
                     <h5>@formattedPrice VNĐ</h5>
                     <p>
                         @Model.ShortDescription
                     </p>
                     <ul>
                         <li>Số lượng: <span>@Model.StockNumber</span></li>
-                        <li>Danh mục: <span>@cate</span></li>
-                        <li>Thẻ: <span>Gadgets, minimalisstic</span></li>
+                        <li>Danh mục: <span>@(allCate == "" ? "Không có" : allCate)</span></li>
+                        <li>Thẻ: <span>@(allTag == "" ? "Không có" : allTag)</span></li>
                     </ul>
                     <div class="product__details__option">
                         <div class="quantity">
                             <div class="pro-qty">
-                                <input type="text" value="1">
+                                <input type="text" id="quantityInput" value="1">
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">Thêm vào giỏ hàng</a>
+                        @{
+                            if (shoppingCart == null)
+                            {
+                                <a href="@Url.Action("../Account/Login")" class="primary-btn">Thêm vào giỏ hàng</a>
+                            }
+                            else
+                            {
+                                if (CartItemBUS.CheckAddedIt(Model.ProductID, shoppingCart.ShoppingCartID) == false)
+                                {
+                                    <a class="add-to-cart-button primary-btn"
+                                       data-product-id="@Model.ProductID"
+                                       data-shopping-cart-id="@shoppingCart.ShoppingCartID">
+                                        Thêm vào giỏ hàng
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="primary-btn">
+                                        Đã thêm vào giỏ hàng
+                                    </a>
+                                }
+                            }
+                        }
                         <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
                     </div>
                 </div>
@@ -121,3 +149,39 @@
 <!-- Related Products Section Begin -->
 @Html.Partial("_RelatedProducts", WebsiteCakeNew.Models.BUS.ShopBUS.RelatedProduct(Model.ProductID))
 <!-- Related Products Section End -->
+<script>
+    var isClickEventAttached = false;
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var button = document.querySelector(".add-to-cart-button");
+        var quantityInput = document.querySelector("#quantityInput");
+        if (!isClickEventAttached) {
+                button.addEventListener("click", function () {
+                    var productId = this.getAttribute("data-product-id");
+                    var shoppingCartId = this.getAttribute("data-shopping-cart-id");
+                    var quantity = quantityInput.value;
+
+                    button.setAttribute("data-quantity", quantity);
+                    // Make an AJAX request to your server
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/CartItem/AddToCart", true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            var response = JSON.parse(xhr.responseText);
+                            if (response.success) {
+                                alert(response.message);
+                                location.reload();
+                            } else {
+                                alert("Lỗi khi thêm sản phẩm vào giỏ hàng");
+                            }
+                        }
+                    };
+
+                    var data = "productId=" + productId + "&shoppingCartId=" + shoppingCartId + "&quantity=" + quantity;
+                    xhr.send(data);
+                });            
+            isClickEventAttached = true;
+        }
+    });
+</script>

@@ -112,34 +112,39 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
             try
             {
                 // TODO: Add update logic here
-                var selectedCategoryIDArray = SelectedCategoryIDs.Split(',').Select(int.Parse).ToList();
-                Product_CategoryBUS.DeleteCateNotIn(id, selectedCategoryIDArray);
-                int createdProductID = id; 
-                foreach (var categoryID in selectedCategoryIDArray)
+                if(SelectedCategoryIDs != "")
+                {
+                    var selectedCategoryIDArray = SelectedCategoryIDs.Split(',').Select(int.Parse).ToList();
+                    Product_CategoryBUS.DeleteCate(id);
+                    foreach (var categoryID in selectedCategoryIDArray)
                     {
                         int categoryId = Convert.ToInt32(categoryID);
                         PRODUCT_CATEGORY productCategory = new PRODUCT_CATEGORY
                         {
-                            ProductID = createdProductID,
+                            ProductID = id,
                             CategoryID = categoryId
                         };
 
                         // TODO: Lưu bản ghi vào bảng Product_category
                         Product_CategoryBUS.AddProductCategory(productCategory);
                     }
+                }
+                if(SelectedTagIDs != "")
+                {
                 var selectedTagIDArray = SelectedTagIDs.Split(',').Select(int.Parse).ToList();
-                Product_TagBUS.DeleteTagNotIn(id, selectedTagIDArray);
+                Product_TagBUS.DeleteTag(id);
                 foreach (var tagID in selectedTagIDArray)
                 {
                     int tagId = Convert.ToInt32(tagID);
                     PRODUCT_TAG productTag = new PRODUCT_TAG
                     {
-                        ProductID = createdProductID,
+                        ProductID = id,
                         TagID = tagId
                     };
 
                     // TODO: Lưu bản ghi vào bảng Product_category
                     Product_TagBUS.AddProductTag(productTag);
+                }
                 }
                 ShopBUS.UpdateProduct(id, p);
                 return RedirectToAction("Index");
@@ -166,6 +171,7 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
                 // TODO: Add delete logic here
                 Product_CategoryBUS.DeleteCate(id);
                 Product_TagBUS.DeleteTag(id);
+                CartItemBUS.DeleteByProductID(id);
                 ShopBUS.DeleteProduct(id);
                 return RedirectToAction("Index");
             }

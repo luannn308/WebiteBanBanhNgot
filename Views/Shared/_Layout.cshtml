@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using WebsiteCakeNew.Models.BUS
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -48,15 +49,15 @@
         <div class="offcanvas__cart">
             <div class="offcanvas__cart__links">
                 <a href="#" class="search-switch"><img src="~/Content/img/icon/search.png" alt=""></a>
-                <a href="@Url.Action("Index","WishList")"><img src="~/Content/img/icon/heart.png" alt=""></a>
+                <a href="@Url.Action("Index", "WishList")"><img src="~/Content/img/icon/heart.png" alt=""></a>
             </div>
             <div class="offcanvas__cart__item">
-                <a href="@Url.Action("Index","ShoppingCart")"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
+                <a href="@Url.Action("Index", "ShoppingCart")"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
                 <div class="cart__price">Cart: <span>$0.00</span></div>
             </div>
         </div>
         <div class="offcanvas__logo">
-            <a href="@Url.Action("Index","Home")"><img src="~/Content/img/logo-mini.png" alt=""></a>
+            <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/logo-mini.png" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__option">
@@ -132,16 +133,21 @@
                                 </ul>
                             </div>
                             <div class="header__logo">
-                                <a href="@Url.Action("Index","Home")"><img src="~/Content/img/logo-mini.png" alt=""></a>
+                                <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/logo-mini.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
                                 <div class="header__top__right__links">
                                     <a href="#" class="search-switch"><img src="~/Content/img/icon/search.png" alt=""></a>
-                                    <a href="@Url.Action("Index","WishList")"><img src="~/Content/img/icon/heart.png" alt=""></a>
+                                    <a href="@Url.Action("Index", "WishList")"><img src="~/Content/img/icon/heart.png" alt=""></a>
                                 </div>
+                                @{
+                                    var db = new UserBUS();
+                                    int userID = db.GetIdByUserName((string)Session["UserName"]);
+                                    var shoppingCart = ShoppingCartBUS.ViewShoppingCartWithUser(userID);
+                                }
                                 <div class="header__top__right__cart">
-                                    <a href="@Url.Action("Index", "ShoppingCart")"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Cart: <span>0.00 VNĐ</span></div>
+                                    <a href="@Url.Action("Index", "ShoppingCart")"><img src="~/Content/img/icon/cart.png" alt=""> <span>@(shoppingCart != null ? ShoppingCartBUS.CountItemInShoppingCart(shoppingCart.ShoppingCartID) : 0)</span></a>
+                                    <div class="cart__price"> : <span>@(shoppingCart != null ? shoppingCart.GrandTotal == null ? "0,00" : string.Format("{0:N0}", shoppingCart.GrandTotal) : "0,00") VNĐ</span></div>
                                 </div>
                             </div>
                         </div>

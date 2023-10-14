@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebBanBanhConnection;
+using WebsiteCakeNew.Models.BUS;
 
 namespace WebsiteCakeNew.Controllers
 {
@@ -11,7 +13,18 @@ namespace WebsiteCakeNew.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
-            return View();
+            string username = (string)Session["UserName"];
+            var db = new UserBUS();
+            int userID = db.GetIdByUserName(username);
+            var shoppingCart = ShoppingCartBUS.ViewShoppingCartWithUser(userID);
+            if(shoppingCart == null)
+            {
+                return RedirectToAction("../Account/Login");
+            }
+            else
+            {
+                return View(shoppingCart);
+            }
         }
 
         // GET: ShoppingCart/Details/5

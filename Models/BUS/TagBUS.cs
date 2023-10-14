@@ -23,5 +23,6 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             db.Insert(tag);
         }
+        
     }
 }

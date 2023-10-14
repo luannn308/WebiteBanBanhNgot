@@ -49,6 +49,10 @@ namespace WebsiteCakeNew.Models.BUS
                 db.Delete(category);
             }
         }
-
+        public static int GetIdByName(string name)
+        {
+            var db=new WebBanBanhConnectionDB();
+            return db.SingleOrDefault<int>("Select CategoryID From CATEGORY WHERE CategoryName = @0", name);
+        }
     }
 }

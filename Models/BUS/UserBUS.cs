@@ -15,6 +15,10 @@ namespace WebsiteCakeNew.Models.BUS
         {
             var db = new WebBanBanhConnectionDB();
             USER u = db.SingleOrDefault<USER>("Select * From [USER] WHERE Email = @0", email);
+            if(u == null)
+            {
+                u = db.SingleOrDefault<USER>("Select * From [USER] WHERE Username = @0", email);
+            }
             return u;
         }
         public int GetIdByUserName(string username)
@@ -22,15 +26,16 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             return db.SingleOrDefault<int>("SELECT [UserID] FROM[QLBB].[dbo].[USER] WHERE[UserName] = @0", username);
         }
-        public int Login(string email, string pass)
+        public int Login(string username, string pass)
         {
             var db = new WebBanBanhConnectionDB();
-            USER user = db.SingleOrDefault<USER>("SELECT * FROM [USER] WHERE Email = @0", email);
+            USER user = db.SingleOrDefault<USER>("SELECT * FROM [USER] WHERE Email = @0", username);
             if (user == null)
             {
-                return -1;
+                user = db.SingleOrDefault<USER>("SELECT * FROM [USER] WHERE Username = @0", username);
+
             }
-            else
+            if(user != null)
             {
                 if (user.Password == HashPassword(pass))
                 {
@@ -40,6 +45,10 @@ namespace WebsiteCakeNew.Models.BUS
                 {
                     return 0;
                 }
+            }
+            else
+            {
+                return -1;
             }
         }
 
@@ -90,6 +99,14 @@ namespace WebsiteCakeNew.Models.BUS
             u_r.UserID = userBus.GetIdByUserName(username);
             var db = new WebBanBanhConnectionDB();
             db.Insert(u_r);
+        }
+        public void CreateShoppingCart(string username)
+        {
+            var userBus = new UserBUS();
+            SHOPPING_CART sc = new SHOPPING_CART();
+            sc.UserID = userBus.GetIdByUserName(username);
+            var db = new WebBanBanhConnectionDB();
+            db.Insert(sc);
         }
         public string GetRoleUser(int id)
         {

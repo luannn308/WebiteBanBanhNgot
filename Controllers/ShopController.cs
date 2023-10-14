@@ -11,19 +11,45 @@ namespace WebsiteCakeNew.Controllers
     public class ShopController : Controller
     {
         // GET: Shop
-        public ActionResult Index(int page = 1, int pagesize = 8)
+        public ActionResult Index(string sortBy, int page = 1, int pagesize = 8)
         {
-            var db = ShopBUS.DanhSach().ToPagedList(page,pagesize);
+            var sortedList = ShopBUS.DanhSach();
+            if (sortBy == "default")
+            {
+                sortedList = ShopBUS.DanhSach();
+            }
+            else if (sortBy == "az")
+            {
+                sortedList = ShopBUS.AtoZ();
+            }
+            else if (sortBy == "za")
+            {
+                sortedList = ShopBUS.ZtoA();
+            }
+            else if (sortBy == "asc")
+            {
+                sortedList = ShopBUS.PriceASC();
+            }
+            else if (sortBy == "desc")
+            {
+                sortedList = ShopBUS.PriceDESC();
+            }
+            else if (sortBy == "old")
+            {
+                sortedList = ShopBUS.OldProduct();
+            }
+            ViewBag.SortBy = sortBy;
+            var db = sortedList.ToPagedList(page,pagesize);
             return View(db);
         }
-        public ActionResult Category(int id, int page = 1, int pagesize = 8)
+        public ActionResult Category(string sortBy, int id, int page = 1, int pagesize = 8)
         {
-            var db = ShopBUS.DanhMuc(id).ToPagedList(page, pagesize);
+            var db = ShopBUS.DanhMuc(id,sortBy).ToPagedList(page, pagesize);
             if (id == 0)
             {
                 return RedirectToAction("Index", "Shop");
             }
-            var cateId = id;
+            ViewBag.SortBy = sortBy;
             return View(db);
         }
         // GET: Shop/Details/5
@@ -31,26 +57,6 @@ namespace WebsiteCakeNew.Controllers
         {
             var db = ShopBUS.ChiTiet(id);
             return View(db);
-        }
-        [HttpPost]
-        public ActionResult SortProducts(string sortBy, int page = 1, int pagesize = 8)
-        {
-            var sortedList = ShopBUS.DanhSach();
-            if (sortBy == "default")
-            {
-                sortedList = ShopBUS.DanhSach();
-            }else if (sortBy == "az")
-            {
-                sortedList = ShopBUS.AtoZ();
-            }else if (sortBy == "za")
-            {
-                sortedList = ShopBUS.ZtoA();
-            }
-
-            var pagedList = sortedList.ToPagedList(page, pagesize);
-
-            // Trả về danh sách sản phẩm mới dưới dạng một partial view hoặc đoạn HTML
-            return PartialView("_ProductList", pagedList);
         }
         // GET: Shop/Create
         public ActionResult Create()

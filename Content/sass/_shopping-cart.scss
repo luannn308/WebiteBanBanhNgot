@@ -2,116 +2,120 @@
   Shopping Cart
 -----------------------*/
 .shopping__cart__table {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 
-  table {
-    width: 100%;
+    table {
+        width: 100%;
 
-    thead {
-      border-bottom: 1px solid #f2f2f2;
-      
-      tr {
-        
-        th {
-          color: $heading-color;
-          font-size: 16px;
-          font-weight: 600;
-          text-transform: uppercase;
-          padding-bottom: 25px;
-        }
-      }
-    }
+        thead {
+            border-bottom: 1px solid #f2f2f2;
 
-    tbody {
+            tr {
 
-      tr {
-        border-bottom: 1px solid #f2f2f2;
-
-        td {
-          padding-bottom: 30px;
-          padding-top: 30px;
-
-          &.product__cart__item {
-            width: 400px;
-
-            .product__cart__item__pic {
-              float: left;
-              margin-right: 30px;
-            }
-
-            .product__cart__item__text {
-              overflow: hidden;
-              padding-top: 21px;
-
-              h6 {
-                color: $heading-color;
-                font-size: 16px;
-                font-weight: 500;
-                text-transform: uppercase;
-                margin-bottom: 10px;
-              }
-
-              h5 {
-                color: $heading-color;
-                font-weight: 600;
-                font-size: 16px;
-              }
-            }
-          }
-
-          &.quantity__item {
-            width: 175px;
-
-            .quantity {
-
-              .pro-qty {
-                width: 90px;
-
-                input {
-                  width: 65px;
-                  border: none;
-                  text-align: center;
-                  color: $heading-color;
-                  font-size: 16px;
-                  font-weight: 500;
+                th {
+                    color: $heading-color;
+                    font-size: 16px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    padding-bottom: 25px;
                 }
-
-                .qtybtn {
-                  font-size: 16px;
-                  color: #888888;
-                  width: 10px;
-                  cursor: pointer;
-                  font-weight: 500;
-                }
-              }
             }
-          }
-
-          &.cart__price {
-            color: $heading-color;
-            font-size: 16px;
-            font-weight: 600;
-            width: 140px;
-          }
-
-          &.cart__close {
-
-            span {
-              font-size: 18px;
-              display: inline-block;
-              color: $heading-color;
-              height: 40px;
-              width: 40px;
-              background: #f2f2f2;
-              border-radius: 50%;
-              line-height: 38px;
-              text-align: center;
-            }
-          }
         }
-      }
+
+        tbody {
+
+            tr {
+                border-bottom: 1px solid #f2f2f2;
+
+                td {
+                    padding-bottom: 30px;
+                    padding-top: 30px;
+
+                    &.product__cart__item {
+                        width: 400px;
+
+                        .product__cart__item__pic {
+                            float: left;
+                            margin-right: 30px;
+
+                            img {
+                                height: 90px;
+                            }
+                        }
+
+                        .product__cart__item__text {
+                            overflow: hidden;
+                            padding-top: 21px;
+
+                            h6 {
+                                color: $heading-color;
+                                font-size: 16px;
+                                font-weight: 500;
+                                text-transform: uppercase;
+                                margin-bottom: 10px;
+                            }
+
+                            h5 {
+                                color: $heading-color;
+                                font-weight: 600;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+
+                    &.quantity__item {
+                        width: 175px;
+
+                        .quantity {
+
+                            .pro-qty {
+                                width: 90px;
+
+                                input {
+                                    width: 65px;
+                                    border: none;
+                                    text-align: center;
+                                    color: $heading-color;
+                                    font-size: 16px;
+                                    font-weight: 500;
+                                }
+
+                                .qtybtn {
+                                    font-size: 16px;
+                                    color: #888888;
+                                    width: 10px;
+                                    cursor: pointer;
+                                    font-weight: 500;
+                                }
+                            }
+                        }
+                    }
+
+                    &.cart__price {
+                        color: $heading-color;
+                        font-size: 16px;
+                        font-weight: 600;
+                        width: 140px;
+                    }
+
+                    &.cart__close {
+
+                        span {
+                            font-size: 18px;
+                            display: inline-block;
+                            color: $heading-color;
+                            height: 40px;
+                            width: 40px;
+                            background: #f2f2f2;
+                            border-radius: 50%;
+                            line-height: 38px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
 }
 
 .continue__btn {

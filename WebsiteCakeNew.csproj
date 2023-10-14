@@ -178,6 +178,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CartItemController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -188,11 +189,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BUS\CartItemBUS.cs" />
     <Compile Include="Models\BUS\CategoryBUS.cs" />
     <Compile Include="Models\BUS\Product_CategoryBUS.cs" />
     <Compile Include="Models\BUS\Product_TagBUS.cs" />
     <Compile Include="Models\BUS\RoleBUS.cs" />
     <Compile Include="Models\BUS\ShopBUS.cs" />
+    <Compile Include="Models\BUS\ShoppingCartBUS.cs" />
     <Compile Include="Models\BUS\TagBUS.cs" />
     <Compile Include="Models\BUS\UserBUS.cs" />
     <Compile Include="Models\Generated\Database.cs">
@@ -2459,6 +2462,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Views\CartItem\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

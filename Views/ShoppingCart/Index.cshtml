@@ -1,4 +1,5 @@
-﻿
+﻿@model WebBanBanhConnection.SHOPPING_CART
+@using WebsiteCakeNew.Models.BUS
 @{
     ViewBag.Title = "Giỏ hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -37,46 +38,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="product__cart__item">
-                                    <div class="product__cart__item__pic">
-                                        <img src="~/Content/img/shop/cart/cart-1.jpg" alt="">
-                                    </div>
-                                    <div class="product__cart__item__text">
-                                        <h6>T-shirt Contrast Pocket</h6>
-                                        <h5>$98.49</h5>
-                                    </div>
-                                </td>
-                                <td class="quantity__item">
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
+                            @{
+                                var cartItemList = CartItemBUS.ListCartItemWithShoppingCart(Model.ShoppingCartID);
+                            }
+                            @foreach (var cart in cartItemList)
+                            {
+                                var product = ShopBUS.ChiTiet((int)cart.ProductID);
+                                var formattedPrice = string.Format("{0:N0}", product.Price - product.Price * (product.Discount / (float)100));
+                                var formattedSub = string.Format("{0:N0}", cart.Subtotal);
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="~/Content/img/shop/@product.Image" alt="">
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="cart__price">$ 30.00</td>
-                                <td class="cart__close"><span class="icon_close"></span></td>
-                            </tr>
-                            <tr>
-                                <td class="product__cart__item">
-                                    <div class="product__cart__item__pic">
-                                        <img src="~/Content/img/shop/cart/cart-2.jpg" alt="">
-                                    </div>
-                                    <div class="product__cart__item__text">
-                                        <h6>Diagonal Textured Cap</h6>
-                                        <h5>$98.49</h5>
-                                    </div>
-                                </td>
-                                <td class="quantity__item">
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
+                                        <div class="product__cart__item__text">
+                                            <h6>@product.ProductName</h6>
+                                            <h5>@formattedPrice VNĐ</h5>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="cart__price">$ 32.50</td>
-                                <td class="cart__close"><span class="icon_close"></span></td>
-                            </tr>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="@cart.Quantity">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">@formattedSub VNĐ</td>
+                                    <td class="cart__close"><a class="close" data-cart-item-id="@cart.CartItemID"><span class="icon_close"></span></a></td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -106,8 +96,8 @@
                         TỔNG GIỎ HÀNG
                     </h6>
                     <ul>
-                        <li>Tổng tiền hàng<span>$ 169.50</span></li>
-                        <li>Tổng thanh toán <span>$ 169.50</span></li>
+                        <li>Tổng tiền hàng<span>@string.Format("{0:N0}", Model.GrandTotal) VNĐ</span></li>
+                        <li>Tổng thanh toán <span>@string.Format("{0:N0}", Model.GrandTotal) VNĐ</span></li>
                     </ul>
                     <a href="@Url.Action("Index", "Checkout")" class="primary-btn">Tiến hành đặt hàng</a>
                 </div>
@@ -116,3 +106,31 @@
     </div>
 </section>
 <!-- Shopping Cart Section End -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var closeButtons = document.querySelectorAll("a.close");
+
+        closeButtons.forEach(function (button) {
+            button.addEventListener("click", function (event) {
+                event.preventDefault(); 
+                var cartItemId = button.dataset.cartItemId;
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/CartItem/DeleteCartItem", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            location.reload();
+                        } else {
+                            alert("Lỗi khi xóa sản phẩm khỏi giỏ hàng");
+                        }
+                    }
+                };
+
+                var data = "cartId=" + cartItemId;
+                xhr.send(data);
+            });
+        });      
+    });
+</script>

@@ -1,41 +1,39 @@
-﻿<div class="col-lg-5 col-md-5">
+﻿@{ 
+    var whatPage = ViewData["CategoryOrIndex"] as string;
+    var cateName = ViewData["CategoryName"] as string;
+    var cateId = WebsiteCakeNew.Models.BUS.CategoryBUS.GetIdByName(cateName);
+}
+<div class="col-lg-5 col-md-5">
     <div class="shop__option__right">
-        <select id="product-sort" onchange="handleSortChange()">
+        <select id="product-sort" onchange="handleSortChange()" value="@sortBy">
             <option value="default">Xếp mặc định</option>
             <option value="az">A - Z</option>
             <option value="za">Z - A</option>
-            <option value="desc">Giá: thấp - cao</option>
-            <option value="asc">Giá: cao - thấp</option>
+            <option value="asc">Giá: thấp - cao</option>
+            <option value="desc">Giá: cao - thấp</option>
+            <option value="old">Cũ nhất</option>
         </select>
         <a href="#"><i class="fa fa-list"></i></a>
         <a href="#"><i class="fa fa-reorder"></i></a>
+        <input hidden class="categoryOrIndex" value="@whatPage" />
+        <input hidden class="categoryId" value="@cateId" />
     </div>
 </div>
 <script>
     function handleSortChange() {
         var selectedValue = document.getElementById("product-sort").value;
-        $.ajax({
-            url: '@Url.Action("SortProducts", "Shop")', // Thay đổi "Shop" thành tên controller của bạn
-            type: 'POST',
-            data: { sortBy: selectedValue },
-            success: function (result) {
-                $('#product-list-container').html(result);
-            },
-            error: function (error) {
-                console.log('Đã xảy ra lỗi: ', error);
+        let categoryOrIndex = document.querySelector(".categoryOrIndex").value;
+        let categoryId = document.querySelector(".categoryId").value;
+        if (categoryOrIndex == "Index") {
+            var url = '@Url.Action("Index", "Shop")';
+            if (selectedValue !== "default") {
+                url = url + "?sortBy=" + selectedValue;
             }
-        });
-    }
-    function handlePaginationClick(pageUrl) {
-        $.ajax({
-            url: pageUrl,
-            type: 'GET',
-            success: function (result) {
-                $('#product-list-container').html(result);
-            },
-            error: function (error) {
-                console.log('Đã xảy ra lỗi: ', error);
-            }
-        });
+            window.location.href = url;
+        } else if (categoryOrIndex == "Category") {
+            var url = '@Url.Action("Category", "Shop")';
+                url = url + "?id=" + categoryId + "&" +  "sortBy=" + selectedValue;
+            window.location.href = url;
+        }
     }
 </script>
