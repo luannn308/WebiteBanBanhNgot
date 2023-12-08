@@ -1,0 +1,401 @@
+﻿@model WebBanBanhConnection.USER
+@using WebsiteCakeNew.Models.BUS
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>Thông tin người dùng</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    @Html.ActionLink("Trang chủ", "Index", "Home")
+                    <span>Thông tin người dùng</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Shopping Cart Section Begin -->
+<section class="user spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="list-group">
+                    <a href="#profile-tab" class="list-group-item list-group-item-action">Thông tin cá nhân</a>
+                    <a href="#address-tab" class="list-group-item list-group-item-action">Địa chỉ</a>
+                    <a href="#history-tab" class="list-group-item list-group-item-action">Lịch sử đơn hàng</a>
+                    <a href="#pass-tab" class="list-group-item list-group-item-action">Chỉnh sửa mật khẩu</a>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <div class="card" id="profile-tab">
+                    <div class="card-header">Thông tin cá nhân</div>
+                    <div class="card-body">
+                        <p>Họ và tên: @Model.FirstName @Model.LastName</p>
+                        <p>Email: @Model.Email</p>
+                        <p>Điện thoại: @Model.Telephone</p>
+                        <!-- Hiển thị các thông tin cá nhân khác -->
+                    </div>
+                </div>
+                <div class="card mt-3" id="address-tab">
+                    <div class="card-header d-flex flex-row justify-content-between align-items-center">
+                        Địa chỉ
+                        <a href="javascript:void(0);" id="addAddressButton" class="btn btn-primary">Thêm địa chỉ mới</a>
+                    </div>
+                    <div class="card-body">
+                        <ul class="address-list">
+                            @{
+                                var dbShipping = new UserShippingBUS();
+                                foreach (var item in dbShipping.GetListShippingByUserID(Model.UserID))
+                                {
+                                    <li class="d-flex justify-content-between" style="margin-bottom:12px">
+                                        <div class="d-flex" style="gap:12px">
+                                            <input type="radio" name="defaultAddress" value="" data-id="@item.UserShippingID" @(item.DefaultShipping == true ? "checked" : "")>
+                                            <span>Địa chỉ: @item.Street, @item.Ward, @item.District, @item.City, @item.Country</span>
+                                        </div>
+                                        <div>
+                                            <a class="text-success" style="margin-left:12px; margin-right:8px" onclick="openEditForm(@Json.Encode(item))">Chỉnh sửa</a>
+                                            <a href="#" class="text-danger" onclick="confirmDelete('@item.UserShippingID')">Xóa</a>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <div id="editAddressForm" style="display: none; margin-top:24px;">
+                            <h4 style="margin-bottom:12px; margin-top:12px"><strong>Chỉnh sửa địa chỉ</strong></h4>
+                            @using (Html.BeginForm("EditShipping", "User", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    <label for="editStreet">Đường</label>
+                                    <input type="text" class="form-control" id="editStreet" name="Street" required>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="editCity">Phường</label>
+                                            <input type="text" class="form-control" id="editWard" name="Ward" required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="editCountry">Quận</label>
+                                            <input type="text" class="form-control" id="editDistrict" name="District" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="editCity">Thành phố</label>
+                                            <input type="text" class="form-control" id="editCity" name="City" required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="editCountry">Quốc gia</label>
+                                            <input type="text" class="form-control" id="editCountry" name="Country" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="editSetAsDefault">
+                                    <label class="form-check-label" for="editSetAsDefault">Đặt làm địa chỉ mặc định</label>
+                                </div>
+                                <input type="hidden" name="DefaultShipping" id="hiddenEditDefaultShipping">
+                                <input type="hidden" name="UserID" id="editUserID" value="@Model.UserID" />
+                                <input type="hidden" name="UserShippingID" id="hiddenUserShippingID">
+                                <input type="submit" value="Lưu chỉnh sửa" class="btn btn-success float-right" style="margin-left:12px" onclick="saveChanges()" />
+                                <input type="button" value="Huỷ" class="btn btn-secondary float-right" onclick="closeEditForm()" />
+                            }
+                        </div>
+                        <div id="addAddressForm" style="display: none; margin-top:24px;">
+                            <h4 style="margin-bottom:12px; margin-top:12px"><strong>Thêm địa chỉ mới</strong></h4>
+                            @using (Html.BeginForm("CreateShipping", "User", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    <label for="newAddress">Đường</label>
+                                    <input type="text" class="form-control" id="newAddress" name="Street" required>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="newCity">Phường</label>
+                                            <input type="text" class="form-control" id="newCity" name="Ward" required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="newCountry">Quận</label>
+                                            <input type="text" class="form-control" id="newCountry" name="District" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="newCity">Thành phố</label>
+                                            <input type="text" class="form-control" id="newCity" name="City" required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="newCountry">Quốc gia</label>
+                                            <input type="text" class="form-control" id="newCountry" name="Country" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="setAsDefault">
+                                    <label class="form-check-label" for="setAsDefault">Đặt làm địa chỉ mặc định</label>
+                                </div>
+                                <input type="hidden" name="DefaultShipping" id="hiddenDefaultShipping" value="false">
+                                <input type="hidden" name="UserID" hidden value="@Model.UserID" />
+                                <input type="submit"
+                                       value="Thêm địa chỉ"
+                                       class="btn btn-success float-right" />
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3" id="payment-tab">
+                    <div class="card-header d-flex flex-row justify-content-between align-items-center">
+                        Liên kết ngân hàng
+                        <a href="javascript:void(0);" id="addPaymentButton" class="btn btn-primary">Thêm liên kết mới</a>
+                    </div>
+                    <div class="card-body">
+                        <ul class="payment-list">
+                            @{
+                                var dbPayment = new UserPaymentBUS();
+                                foreach (var item in dbPayment.GetListPaymentByUserID(Model.UserID))
+                                {
+                                    <li class="d-flex justify-content-between" style="margin-bottom:12px">
+                                        <div class="d-flex" style="gap:12px">
+                                            <input type="radio" name="defaultPayment" value="" data-id="@item.UserPaymentID" @(item.DefaultPayment == true ? "checked" : "")>
+                                            <span>Liên kết ngân hàng: @item.CardNumber - @item.HolderName - @item.BankName</span>
+                                        </div>
+                                        <div>
+                                            <a href="#" class="text-success" style="margin-left:12px; margin-right:8px" @*onclick="openEditForm(@Json.Encode(item))"*@>Chỉnh sửa</a>
+                                            <a href="#" class="text-danger" @*onclick="confirmDelete('@item.UserShippingID')"*@>Xóa</a>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <div id="addPaymentForm" style="display: none; margin-top:24px;">
+                            <h4 style="margin-bottom:12px; margin-top:12px"><strong>Thêm liên kết mới</strong></h4>
+                            @using (Html.BeginForm("CreatePayment", "User", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    <label for="newBankName">Ngân hàng</label>
+                                    <input type="text" class="form-control" id="newBankName" name="BankName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newCardNumber">Số tài khoản</label>
+                                    <input type="text" class="form-control" id="newCardNumber" name="CardNumber" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newHolderName">Tên chủ sỡ hữu</label>
+                                    <input type="text" class="form-control" id="newHolderName" name="HolderName" required>
+                                </div>
+                                <div class="form-row" style="margin-bottom:12px">
+                                    <select name="id">
+                                        <option value="0">Chọn loại thẻ</option>
+                                        @{
+                                            var dbCardType = new CardTypeBUS();
+                                            foreach (var item in dbCardType.GetListCardType())
+                                            {
+                                                <option value="@item.TypeID">@item.Type</option>
+                                            }
+                                        }
+                                    </select>
+                                    <label for="exampleSelect"></label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="setAsDefaultPayment">
+                                    <label class="form-check-label" for="setAsDefaultPayment">Đặt làm liên kết mặc định</label>
+                                </div>
+                                <input type="hidden" name="DefaultPayment" id="hiddenDefaultPayment" value="false">
+                                <input type="hidden" name="UserID" hidden value="@Model.UserID" />
+                                <input type="submit"
+                                       value="Thêm liên kết"
+                                       class="btn btn-success float-right" />
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!-- Lịch sử đơn hàng -->
+                <div class="card mt-3" id="history-tab">
+                    <div class="card-header">Lịch sử đơn hàng</div>
+                    <div class="card-body">
+                        <!-- Hiển thị danh sách các đơn hàng của người dùng -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Ngày đặt hàng</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Sản phẩm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>2023-10-21</td>
+                                    <td>$100.00</td>
+                                    <td>$100.00</td>
+                                </tr>
+                                <!-- Hiển thị các dòng khác tương tự -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Chỉnh sửa mật khẩu -->
+                <div class="card mt-3" id="pass-tab">
+                    <div class="card-header">Chỉnh sửa mật khẩu</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="currentPassword">Mật khẩu hiện tại</label>
+                                <input type="password"
+                                       class="form-control"
+                                       id="currentPassword"
+                                       name="currentPassword" />
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">Mật khẩu mới</label>
+                                <input type="password"
+                                       class="form-control"
+                                       id="newPassword"
+                                       name="newPassword" />
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Xác nhận mật khẩu mới</label>
+                                <input type="password"
+                                       class="form-control"
+                                       id="confirmPassword"
+                                       name="confirmPassword" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Lưu mật khẩu mới</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var addAddressButton = document.getElementById("addAddressButton");
+        var addAddressForm = document.getElementById("addAddressForm");
+        addAddressButton.addEventListener("click", function () {
+            if (addAddressForm.style.display === "none") {
+                closeEditForm();
+                addAddressForm.style.display = "block";
+            } else {
+                addAddressForm.style.display = "none";
+            }
+        });
+    });
+    document.getElementById('setAsDefault').addEventListener('change', function () {
+        document.getElementById('hiddenDefaultShipping').value = this.checked ? true : false;
+    });
+    document.getElementById('editSetAsDefault').addEventListener('change', function () {
+        document.getElementById('hiddenEditDefaultShipping').value = this.checked ? true : false;
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var radioButtons = document.getElementsByName('defaultAddress');
+
+        radioButtons.forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                console.log('Script executed successfully');
+                var addressId = this.getAttribute('data-id');
+                fetch('/User/UpdateDefaultShipping/' + addressId, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ addressId: addressId })
+                })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+    });
+    function confirmDelete(userShippingID) {
+        var result = window.confirm("Bạn có chắc chắn muốn xóa địa chỉ này?");
+        if (result) {
+            // Sử dụng Fetch API để gửi yêu cầu xóa đến máy chủ
+            fetch('/User/DeleteShipping', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userShippingID: userShippingID }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log("Đã xóa thành công. UserShippingID: " + userShippingID);
+                        location.reload();
+                    } else {
+                        console.error("Lỗi khi xóa. UserShippingID: " + userShippingID);
+                    }
+                })
+                .catch(error => console.error('Lỗi:', error));
+        } else {
+            console.log("Hủy xóa. UserShippingID: " + userShippingID);
+        }
+    }
+    function openEditForm(selectedAddress) {
+        document.getElementById('addAddressForm').style.display = 'none';
+        document.getElementById('editStreet').value = selectedAddress.Street;
+        document.getElementById('editWard').value = selectedAddress.Ward;
+        document.getElementById('editDistrict').value = selectedAddress.District;
+        document.getElementById('editCity').value = selectedAddress.City;
+        document.getElementById('editCountry').value = selectedAddress.Country;
+        document.getElementById('editSetAsDefault').checked = selectedAddress.DefaultShipping;
+        document.getElementById('hiddenEditDefaultShipping').value = selectedAddress.DefaultShipping;
+        document.getElementById('hiddenUserShippingID').value = selectedAddress.UserShippingID;
+        document.getElementById('editUserID').value = selectedAddress.UserID;
+        document.getElementById('editAddressForm').style.display = 'block';
+    }
+    function closeEditForm() {
+        document.getElementById('editAddressForm').style.display = 'none';
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        var addPaymentButton = document.getElementById("addPaymentButton");
+        var addPaymentForm = document.getElementById("addPaymentForm");
+        addPaymentButton.addEventListener("click", function () {
+            if (addPaymentForm.style.display === "none") {
+                addPaymentForm.style.display = "block";
+            } else {
+                addPaymentForm.style.display = "none";
+            }
+        });
+    });
+    document.getElementById('setAsDefaultPayment').addEventListener('change', function () {
+        document.getElementById('hiddenDefaultPayment').value = this.checked ? true : false;
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var radioButtons = document.getElementsByName('defaultPayment');
+        console.log("Helllooo")
+        radioButtons.forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                var paymentId = this.getAttribute('data-id');
+                fetch('/User/UpdateDefaultPayment/' + paymentId, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ paymentId: paymentId })
+                })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+    });
+</script>

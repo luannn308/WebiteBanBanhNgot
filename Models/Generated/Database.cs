@@ -121,11 +121,10 @@ namespace WebBanBanhConnection
     public partial class CART_ITEM : WebBanBanhConnectionDB.Record<CART_ITEM>  
     {
 		[Column] public int CartItemID { get; set; }
-		[Column] public int? Quantity { get; set; }
-		[Column] public double? Subtotal { get; set; }
-		[Column] public int? ProductID { get; set; }
-		[Column] public int? OrderID { get; set; }
-		[Column] public int? ShoppingCartID { get; set; }
+		[Column] public int Quantity { get; set; }
+		[Column] public double Subtotal { get; set; }
+		[Column] public int ProductID { get; set; }
+		[Column] public int ShoppingCartID { get; set; }
 	}
     
 	[TableName("dbo.CATEGORY")]
@@ -140,6 +139,19 @@ namespace WebBanBanhConnection
 		[Column] public int? ParentID { get; set; }
 	}
     
+	[TableName("dbo.DISCOUNT")]
+	[PrimaryKey("DiscountID")]
+	[ExplicitColumns]
+    public partial class DISCOUNT : WebBanBanhConnectionDB.Record<DISCOUNT>  
+    {
+		[Column] public int DiscountID { get; set; }
+		[Column] public string DiscountCode { get; set; }
+		[Column] public string DiscountName { get; set; }
+		[Column] public int? DiscountPercentage { get; set; }
+		[Column] public DateTime? StartDate { get; set; }
+		[Column] public DateTime? EndDate { get; set; }
+	}
+    
 	[TableName("dbo.ORDER")]
 	[PrimaryKey("OrderID")]
 	[ExplicitColumns]
@@ -149,9 +161,23 @@ namespace WebBanBanhConnection
 		[Column] public DateTime? OrderDate { get; set; }
 		[Column] public string OrderStatus { get; set; }
 		[Column] public string ShippingMethod { get; set; }
+		[Column] public string PaymentStatus { get; set; }
 		[Column] public DateTime? ShippingDate { get; set; }
 		[Column] public double? OrderTotal { get; set; }
+		[Column] public string DeliveryAddress { get; set; }
+		[Column] public string Payment { get; set; }
 		[Column] public int? UserID { get; set; }
+	}
+    
+	[TableName("dbo.ORDER_DETAIL")]
+	[PrimaryKey("OrderID", AutoIncrement=false)]
+	[ExplicitColumns]
+    public partial class ORDER_DETAIL : WebBanBanhConnectionDB.Record<ORDER_DETAIL>  
+    {
+		[Column] public int OrderID { get; set; }
+		[Column] public int ProductID { get; set; }
+		[Column] public int Quantity { get; set; }
+		[Column] public double ProductPrice { get; set; }
 	}
     
 	[TableName("dbo.ORDER_SHIPPING_METHOD")]
@@ -170,6 +196,14 @@ namespace WebBanBanhConnection
 		[Column] public string OrderStatus { get; set; }
 	}
     
+	[TableName("dbo.PAYMENT_STATUS")]
+	[PrimaryKey("PaymentStatus", AutoIncrement=false)]
+	[ExplicitColumns]
+    public partial class PAYMENT_STATUS : WebBanBanhConnectionDB.Record<PAYMENT_STATUS>  
+    {
+		[Column] public string PaymentStatus { get; set; }
+	}
+    
 	[TableName("dbo.PRODUCT")]
 	[PrimaryKey("ProductID")]
 	[ExplicitColumns]
@@ -183,7 +217,6 @@ namespace WebBanBanhConnection
 		[Column] public string Image { get; set; }
 		[Column] public double? Price { get; set; }
 		[Column] public int? Discount { get; set; }
-		[Column] public double? Rating { get; set; }
 		[Column] public DateTime? PublicationDate { get; set; }
 	}
     
@@ -233,7 +266,6 @@ namespace WebBanBanhConnection
     {
 		[Column] public int SalesID { get; set; }
 		[Column] public int OrderID { get; set; }
-		[Column] public double? TotalAmount { get; set; }
 		[Column] public double? Percent { get; set; }
 	}
     
@@ -245,6 +277,18 @@ namespace WebBanBanhConnection
 		[Column] public int ShoppingCartID { get; set; }
 		[Column] public double? GrandTotal { get; set; }
 		[Column] public int? UserID { get; set; }
+	}
+    
+	[TableName("dbo.sysdiagrams")]
+	[PrimaryKey("diagram_id")]
+	[ExplicitColumns]
+    public partial class sysdiagram : WebBanBanhConnectionDB.Record<sysdiagram>  
+    {
+		[Column] public string name { get; set; }
+		[Column] public int principal_id { get; set; }
+		[Column] public int diagram_id { get; set; }
+		[Column] public int? version { get; set; }
+		[Column] public byte[] definition { get; set; }
 	}
     
 	[TableName("dbo.TAG")]
@@ -276,12 +320,9 @@ namespace WebBanBanhConnection
     public partial class USER_PAYMENT : WebBanBanhConnectionDB.Record<USER_PAYMENT>  
     {
 		[Column] public int UserPaymentID { get; set; }
-		[Column] public string CardName { get; set; }
+		[Column] public string BankName { get; set; }
 		[Column] public string CardNumber { get; set; }
-		[Column] public int? CVC { get; set; }
-		[Column] public string DefaultPayment { get; set; }
-		[Column] public int? ExpiryMonth { get; set; }
-		[Column] public int? ExpiryYear { get; set; }
+		[Column] public bool? DefaultPayment { get; set; }
 		[Column] public string HolderName { get; set; }
 		[Column] public int? TypeID { get; set; }
 		[Column] public int? UserID { get; set; }
@@ -309,5 +350,16 @@ namespace WebBanBanhConnection
 		[Column] public string Street { get; set; }
 		[Column] public bool? DefaultShipping { get; set; }
 		[Column] public int? UserID { get; set; }
+	}
+    
+	[TableName("dbo.WISH_LIST_ITEM")]
+	[PrimaryKey("WishListItemID")]
+	[ExplicitColumns]
+    public partial class WISH_LIST_ITEM : WebBanBanhConnectionDB.Record<WISH_LIST_ITEM>  
+    {
+		[Column] public int WishListItemID { get; set; }
+		[Column] public int ProductID { get; set; }
+		[Column] public DateTime AddedDate { get; set; }
+		[Column] public int UserID { get; set; }
 	}
 }

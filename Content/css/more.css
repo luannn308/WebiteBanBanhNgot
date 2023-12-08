@@ -34,3 +34,9 @@
     position: relative;
     top: 50%;
 }
+.address-list, .payment-list {
+    list-style: none !important;
+}
+.address-list > li, .payment-list > li {
+    margin-bottom: 12px !important;
+}

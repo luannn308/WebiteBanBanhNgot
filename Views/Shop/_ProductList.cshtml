@@ -27,7 +27,7 @@
                 <div class="product__item__text">
                     <h6><a href="@Url.Action("Details", new { id = @item.ProductID})">@item.ProductName</a></h6>
                     @{
-                        var formattedPrice = string.Format("{0:N0}", item.Price - item.Price * (item.Discount / (float)100));
+                        var formattedPrice = string.Format("{0:N0}", item.Price - item.Price * (DiscountBUS.GetPercentByID(item.Discount) / (float)100));
                     }
                     <div class="product__item__price">@formattedPrice VNĐ</div>
                     <div class="cart_add">

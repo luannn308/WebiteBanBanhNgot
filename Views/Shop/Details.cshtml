@@ -48,7 +48,7 @@
                     <div class="product__label">@cate</div>
                     <h4>@Model.ProductName</h4>
                     @{
-                        var formattedPrice = string.Format("{0:N0}", Model.Price - Model.Price * (Model.Discount / (float)100));
+                        var formattedPrice = string.Format("{0:N0}", Model.Price - Model.Price * (DiscountBUS.GetPercentByID(Model.Discount)/ (float)100));
                      }
                     <h5>@formattedPrice VNĐ</h5>
                     <p>

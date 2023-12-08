@@ -26,6 +26,11 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             return db.SingleOrDefault<int>("SELECT [UserID] FROM[QLBB].[dbo].[USER] WHERE[UserName] = @0", username);
         }
+        public static USER GetById(int? id)
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.SingleOrDefault<USER>("SELECT * FROM[QLBB].[dbo].[USER] WHERE [UserID] = @0", id);
+        }
         public int Login(string username, string pass)
         {
             var db = new WebBanBanhConnectionDB();

@@ -17,7 +17,7 @@ namespace WebsiteCakeNew.Models.BUS
         public static void AddCartItem(CART_ITEM cart)
         {
             var db = new WebBanBanhConnectionDB();
-            string sql = "INSERT INTO CART_ITEM (Quantity, Subtotal, ProductID, OrderID, ShoppingCartID) VALUES (@Quantity, @Subtotal, @ProductID, @OrderID, @ShoppingCartID)";
+            string sql = "INSERT INTO CART_ITEM (Quantity, Subtotal, ProductID, ShoppingCartID) VALUES (@Quantity, @Subtotal, @ProductID, @ShoppingCartID)";
             _ = db.Execute(sql, cart);
         }
         public static void DeleteCartItem(int id)

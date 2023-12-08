@@ -13,10 +13,10 @@ namespace WebsiteCakeNew.Controllers
         // GET: Shop
         public ActionResult Index(string sortBy, int page = 1, int pagesize = 8)
         {
-            var sortedList = ShopBUS.DanhSach();
+            var sortedList = ShopBUS.DanhSachCon();
             if (sortBy == "default")
             {
-                sortedList = ShopBUS.DanhSach();
+                sortedList = ShopBUS.DanhSachCon();
             }
             else if (sortBy == "az")
             {

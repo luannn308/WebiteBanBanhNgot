@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<WebBanBanhConnection.PRODUCT>
-
+@using WebsiteCakeNew.Models.BUS
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -33,7 +33,7 @@
                 {
                 <tr>
                     @{
-                        var formattedPriceSale = string.Format("{0:N0}", item.Price - item.Price * (item.Discount / (float)100));
+                        var formattedPriceSale = string.Format("{0:N0}", item.Price - item.Price * (DiscountBUS.GetPercentByID(item.Discount) / (float)100));
                         var formattedPrice = string.Format("{0:N0}", item.Price);
                     }
                     <td>@item.ProductID</td>

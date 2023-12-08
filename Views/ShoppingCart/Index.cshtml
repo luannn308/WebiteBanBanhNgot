@@ -44,7 +44,7 @@
                             @foreach (var cart in cartItemList)
                             {
                                 var product = ShopBUS.ChiTiet((int)cart.ProductID);
-                                var formattedPrice = string.Format("{0:N0}", product.Price - product.Price * (product.Discount / (float)100));
+                                var formattedPrice = string.Format("{0:N0}", product.Price - product.Price * (DiscountBUS.GetPercentByID(product.Discount) / (float)100));
                                 var formattedSub = string.Format("{0:N0}", cart.Subtotal);
                                 <tr>
                                     <td class="product__cart__item">
@@ -99,7 +99,14 @@
                         <li>Tổng tiền hàng<span>@string.Format("{0:N0}", Model.GrandTotal) VNĐ</span></li>
                         <li>Tổng thanh toán <span>@string.Format("{0:N0}", Model.GrandTotal) VNĐ</span></li>
                     </ul>
-                    <a href="@Url.Action("Index", "Checkout")" class="primary-btn">Tiến hành đặt hàng</a>
+                    @if (Model.GrandTotal == null)
+                    {
+                        <a href="" class="primary-btn" id="none-cart">Tiến hành đặt hàng</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Index", "Checkout", new { shoppingCartId = Model.ShoppingCartID})" class="primary-btn">Tiến hành đặt hàng</a>
+                    }
                 </div>
             </div>
         </div>
@@ -133,4 +140,7 @@
             });
         });      
     });
+    document.getElementById("none-cart").addEventListener("click", function () {
+        alert("Giỏ hàng chưa có sản phẩm !!!");
+    })
 </script>

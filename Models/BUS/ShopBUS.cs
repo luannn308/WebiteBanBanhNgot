@@ -12,25 +12,30 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             return db.Query<PRODUCT>("SELECT * FROM PRODUCT");
         }
+        public static IEnumerable<PRODUCT> DanhSachCon()
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT WHERE StockNumber > 0");
+        }
         public static IEnumerable<PRODUCT> AtoZ()
         {
             var db = new WebBanBanhConnectionDB();
-            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY ProductName ASC");
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT WHERE StockNumber > 0 ORDER BY ProductName ASC ");
         }
         public static IEnumerable<PRODUCT> ZtoA()
         {
             var db = new WebBanBanhConnectionDB();
-            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY ProductName DESC");
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT WHERE StockNumber > 0 ORDER BY ProductName DESC");
         }
         public static IEnumerable<PRODUCT> PriceDESC()
         {
             var db = new WebBanBanhConnectionDB();
-            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY Price DESC");
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT WHERE StockNumber > 0 ORDER BY Price DESC");
         }
         public static IEnumerable<PRODUCT> PriceASC()
         {
             var db = new WebBanBanhConnectionDB();
-            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY Price ASC");
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT WHERE StockNumber > 0 ORDER BY Price ASC");
         }
         public static PRODUCT ChiTiet(int id)
         {
@@ -44,7 +49,7 @@ namespace WebsiteCakeNew.Models.BUS
             var query = "SELECT p.* FROM PRODUCT p " +
                         "INNER JOIN PRODUCT_CATEGORY pc ON p.ProductID = pc.ProductID " +
                         "INNER JOIN CATEGORY c ON pc.CategoryID = c.CategoryID " +
-                        "WHERE c.CategoryID = @0";
+                        "WHERE c.CategoryID = @0 AND p.StockNumber > 0";
 
             if (!string.IsNullOrEmpty(sortBy))
             {
@@ -76,23 +81,23 @@ namespace WebsiteCakeNew.Models.BUS
         public static IEnumerable<PRODUCT> OldProduct()
         {
             var db = new WebBanBanhConnectionDB();
-            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY PublicationDate ASC");
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT WHERE StockNumber > 0 ORDER BY PublicationDate ASC");
         }
         public static IEnumerable<PRODUCT> TopNew()
         {
             var db = new WebBanBanhConnectionDB();
-            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY PublicationDate DESC");
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT WHERE StockNumber > 0 ORDER BY PublicationDate DESC");
         }
         public static IEnumerable<PRODUCT> TopHot()
         {
             var db = new WebBanBanhConnectionDB();
-            return db.Query<PRODUCT>("SELECT * FROM PRODUCT ORDER BY Rating DESC");
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT WHERE StockNumber > 0 ORDER BY ProductName DESC");
         }
         public static IEnumerable<PRODUCT> RelatedProduct(int id)
         {
             var db = new WebBanBanhConnectionDB();
             int pCategory = db.SingleOrDefault<int>("SELECT CategoryID FROM [PRODUCT_CATEGORY] WHERE ProductID = @0", id);
-            return db.Query<PRODUCT>("SELECT * FROM PRODUCT p, PRODUCT_CATEGORY pc WHERE p.ProductID = pc.ProductID AND pc.CategoryID = @0 AND p.ProductID <> @1", pCategory, id);
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT p, PRODUCT_CATEGORY pc WHERE p.ProductID = pc.ProductID AND pc.CategoryID = @0 AND p.ProductID <> @1 AND p.StockNumber > 0", pCategory, id);
         }
         public string GetCategoryProduct(int id)
         {
@@ -144,6 +149,12 @@ namespace WebsiteCakeNew.Models.BUS
             {
                 db.Delete(product);
             }
+        }
+        public static void UpdateQuantityAfterOrder(int productID, int count)
+        {
+            PRODUCT productUpdate = ChiTiet(productID);
+            productUpdate.StockNumber = productUpdate.StockNumber - count;
+            UpdateProduct(productID, productUpdate);
         }
     }
 }

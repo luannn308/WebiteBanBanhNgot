@@ -35,9 +35,9 @@
 </head>
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
+    @*<div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div>*@
     <div id="id01" class="modal">
         <form class="modal-content animate" method="post">
             @Html.Partial("Logoff")
@@ -62,13 +62,6 @@
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__option">
             <ul>
-                <li>
-                    VN <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <li>VN</li>
-                        <li>USD</li>
-                    </ul>
-                </li>
                 @{
                     if (Session["UserName"] != null)
                     {
@@ -79,7 +72,7 @@
                         }
                         else
                         {
-                            <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "Home")</li>
+                            <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "User")</li>
                             <li><a onclick="document.getElementById('id01').style.display='block'">Đăng xuất</a></li>
                         }
                     }
@@ -99,16 +92,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="header__top__inner">
+                        <div class="d-flex flex-row justify-content-sm-between align-items-center" style="height:104px">
                             <div class="header__top__left">
                                 <ul>
-                                    <li>
-                                        VN <span class="arrow_carrot-down"></span>
-                                        <ul>
-                                            <li>VN</li>
-                                            <li>USD</li>
-                                        </ul>
-                                    </li>
                                     @{
                                         if (Session["UserName"] != null)
                                         {
@@ -120,7 +106,7 @@
                                             }
                                             else
                                             {
-                                                <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "Home")</li>
+                                                <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "User")</li>
                                                 <li><a onclick="document.getElementById('id01').style.display='block'">Đăng xuất</a></li>
                                             }
                                         }
@@ -132,8 +118,8 @@
                                     }
                                 </ul>
                             </div>
-                            <div class="header__logo">
-                                <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/logo-mini.png" alt=""></a>
+                            <div class="">
+                                <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/logo.png" alt="" style="width:240px"></a>
                             </div>
                             <div class="header__top__right">
                                 <div class="header__top__right__links">
@@ -147,7 +133,7 @@
                                 }
                                 <div class="header__top__right__cart">
                                     <a href="@Url.Action("Index", "ShoppingCart")"><img src="~/Content/img/icon/cart.png" alt=""> <span>@(shoppingCart != null ? ShoppingCartBUS.CountItemInShoppingCart(shoppingCart.ShoppingCartID) : 0)</span></a>
-                                    <div class="cart__price"> : <span>@(shoppingCart != null ? shoppingCart.GrandTotal == null ? "0,00" : string.Format("{0:N0}", shoppingCart.GrandTotal) : "0,00") VNĐ</span></div>
+                                    <div class="cart__price"><span>@(shoppingCart != null ? shoppingCart.GrandTotal == null ? ": 0,00 VNĐ" : ": " + string.Format("{0:N0}", shoppingCart.GrandTotal) + " VNĐ" : "")</span></div>
                                 </div>
                             </div>
                         </div>

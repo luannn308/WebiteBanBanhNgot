@@ -71,8 +71,25 @@
                 <input type="number" class="form-control" placeholder="Nhập giá sản phẩm" min="0" name="Price" required value="@Model.Price">
             </div>
             <div class="form-group">
-                <label>Phần trăm giảm giá</label>
-                <input type="number" class="form-control" placeholder="Nhập phần trăm giảm giá" min="0" name="Discount" required value="@Model.Discount">
+                <label>Mã giảm giá</label>
+                <select class="form-control" id="discountSelect">
+                    <option value="">Không chọn mã giảm</option>
+                    @{
+                        var dbDiscount = new DiscountBUS();
+                        foreach (var item in dbDiscount.GetListDiscount())
+                        {
+                            if (Model.Discount == item.DiscountID)
+                            {
+                                <option value="@item.DiscountID" selected>@item.DiscountCode - @item.DiscountName</option>
+                            }
+                            else
+                            {
+                                <option value="@item.DiscountID">@item.DiscountCode - @item.DiscountName</option>
+                            }
+                        }
+                    }
+                </select>
+                <input type="hidden" class="form-control" min="0" name="Discount" value="@Model.Discount" id="discountInput">
             </div>
             <div class="form-group">
                 <label>Ngày tạo sản phẩm</label>
@@ -114,5 +131,8 @@
                 selectedTagIDsInput.value = selectedTagIDs.join(",");
             });
         });
+    });
+    document.getElementById('discountSelect').addEventListener('change', function () {
+        document.getElementById('discountInput').value = this.value;
     });
 </script>
