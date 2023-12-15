@@ -327,7 +327,7 @@ ol {
   float: left;
 }
 .header__top__left ul li {
-  font-size: 14px;
+  font-size: 16px;
   color: #111111;
   list-style: none;
   display: inline-block;
@@ -504,7 +504,7 @@ ol {
   display: none;
 }
 .header__menu ul li a {
-  font-size: 16px;
+  font-size: 20px;
   color: #ffffff;
   display: block;
   font-weight: 600;
@@ -959,7 +959,7 @@ ol {
   margin-bottom: 30px;
 }
 .instagram__pic.middle__pic {
-  padding-top: 30px;
+  padding-top: 52px;
   margin-bottom: 0;
 }
 .instagram__pic img {

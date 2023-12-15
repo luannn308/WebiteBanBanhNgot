@@ -67,8 +67,8 @@ namespace WebsiteCakeNew.Models.BUS
                     case "desc":
                         query += " ORDER BY p.Price DESC";
                         break;
-                    case "old":
-                        query += " ORDER BY p.PublicationDate ASC";
+                    case "new":
+                        query += " ORDER BY p.PublicationDate DESC";
                         break;
                     default:
                         break;

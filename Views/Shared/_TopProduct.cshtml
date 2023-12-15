@@ -6,103 +6,103 @@
     int userID = dbu.GetIdByUserName(username);
     var shoppingCart = ShoppingCartBUS.ViewShoppingCartWithUser(userID);
 }
-@foreach (var item in Model)
-{
-    if (counter >= 4)
+<div class="related__products__slider owl-carousel">
+    @foreach (var item in Model)
     {
-        break; // Exit the loop if 8 items have been displayed
-    }
-
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="product__item">
-            <div class="product__item__pic set-bg" data-setbg="../../Content/img/shop/@(item.Image.ToString())">
-                <div class="product__label">
-                    @{
-                        var db = new ShopBUS();
-                        string cate = db.GetCategoryProduct(item.ProductID);
-                        if (cate != string.Empty)
-                        {
-                            <span>@cate</span>
-                        }
-                    }
-                </div>
-            </div>
-            <div class="product__item__text">
-                <h6><a href="@Url.Action("../Shop/Details", new { id = @item.ProductID})">@item.ProductName</a></h6>
-                @{
-                    var formattedPrice = string.Format("{0:N0}", item.Price - item.Price * (DiscountBUS.GetPercentByID(item.Discount) / (float)100));
-                }
-
-                <div class="product__item__price">@formattedPrice VNĐ</div>
-                <div class="cart_add">
-                    @{
-                        if (shoppingCart == null)
-                        {
-                            <a href="@Url.Action("../Account/Login")">Thêm vào giỏ hàng</a>
-                        }
-                        else
-                        {
-                            if (CartItemBUS.CheckAddedIt(item.ProductID, shoppingCart.ShoppingCartID) == false)
+        if (counter >= 6)
+        {
+            break; // Exit the loop if 8 items have been displayed
+        }
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="product__item">
+                <div class="product__item__pic set-bg" data-setbg="../../Content/img/shop/@(item.Image.ToString())">
+                    <div class="product__label">
+                        @{
+                            var db = new ShopBUS();
+                            string cate = db.GetCategoryProduct(item.ProductID);
+                            if (cate != string.Empty)
                             {
-                                <a class="add-to-cart-button"
-                                   data-product-id="@item.ProductID"
-                                   data-shopping-cart-id="@shoppingCart.ShoppingCartID"
-                                   data-quantity="1">
-                                    Thêm vào giỏ hàng
-                                </a>
+                                <span>@cate</span>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="product__item__text">
+                    <h6><a href="@Url.Action("../Shop/Details", new { id = @item.ProductID})">@item.ProductName</a></h6>
+                    @{
+                        var formattedPrice = string.Format("{0:N0}", item.Price - item.Price * (DiscountBUS.GetPercentByID(item.Discount) / (float)100));
+                    }
+
+                    <div class="product__item__price">@formattedPrice VNĐ</div>
+                    <div class="cart_add">
+                        @{
+                            if (shoppingCart == null)
+                            {
+                                <a href="@Url.Action("../Account/Login")">Thêm vào giỏ hàng</a>
                             }
                             else
                             {
-                                <a class="">
-                                    Đã thêm vào giỏ hàng
-                                </a>
+                                if (CartItemBUS.CheckAddedIt(item.ProductID, shoppingCart.ShoppingCartID) == false)
+                                {
+                                    <a class="add-to-cart-button"
+                                       data-product-id="@item.ProductID"
+                                       data-shopping-cart-id="@shoppingCart.ShoppingCartID"
+                                       data-quantity="1">
+                                        Thêm vào giỏ hàng
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="">
+                                        Đã thêm vào giỏ hàng
+                                    </a>
+                                }
                             }
                         }
-                    }
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    counter++;
-  }
+        counter++;
+    }
+</div>
+    <script>
+        var isClickEventAttached = false;
 
-<script>
-    var isClickEventAttached = false;
+        document.addEventListener("DOMContentLoaded", function () {
+            var buttons = document.querySelectorAll(".add-to-cart-button");
 
-    document.addEventListener("DOMContentLoaded", function () {
-        var buttons = document.querySelectorAll(".add-to-cart-button");
+            if (!isClickEventAttached) {
+                buttons.forEach(function (button) {
+                    button.addEventListener("click", function () {
+                        var productId = this.getAttribute("data-product-id");
+                        var shoppingCartId = this.getAttribute("data-shopping-cart-id");
+                        var quantity = this.getAttribute("data-quantity");
 
-        if (!isClickEventAttached) {
-            buttons.forEach(function (button) {
-                button.addEventListener("click", function () {
-                    var productId = this.getAttribute("data-product-id");
-                    var shoppingCartId = this.getAttribute("data-shopping-cart-id");
-                    var quantity = this.getAttribute("data-quantity");
-
-                    // Make an AJAX request to your server
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("POST", "/CartItem/AddToCart", true);
-                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-                    xhr.onreadystatechange = function () {
-                        if (xhr.readyState === 4 && xhr.status === 200) {
-                            var response = JSON.parse(xhr.responseText);
-                            if (response.success) {
-                                alert(response.message);
-                                location.reload();
-                            } else {
-                                alert("Lỗi khi thêm sản phẩm vào giỏ hàng");
+                        // Make an AJAX request to your server
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("POST", "/CartItem/AddToCart", true);
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                var response = JSON.parse(xhr.responseText);
+                                if (response.success) {
+                                    alert(response.message);
+                                    location.reload();
+                                } else {
+                                    alert("Lỗi khi thêm sản phẩm vào giỏ hàng");
+                                }
                             }
-                        }
-                    };
+                        };
 
-                    var data = "productId=" + productId + "&shoppingCartId=" + shoppingCartId + "&quantity=" + quantity;
-                    xhr.send(data);
+                        var data = "productId=" + productId + "&shoppingCartId=" + shoppingCartId + "&quantity=" + quantity;
+                        xhr.send(data);
+                    });
                 });
-            });
 
-            isClickEventAttached = true;
-        }
-    });
+                isClickEventAttached = true;
+            }
+        });
 
-</script>
+    </script>

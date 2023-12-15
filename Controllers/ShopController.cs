@@ -34,7 +34,7 @@ namespace WebsiteCakeNew.Controllers
             {
                 sortedList = ShopBUS.PriceDESC();
             }
-            else if (sortBy == "old")
+            else if (sortBy == "new")
             {
                 sortedList = ShopBUS.OldProduct();
             }

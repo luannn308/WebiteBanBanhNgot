@@ -100,19 +100,21 @@
                                         {
                                             if (Session["Role"].ToString() == "Administrator")
                                             {
-                                                <li>@Html.ActionLink("Trang Quản Trị", "Index", "Admin/ProductManager")</li>
-                                                <li><a onclick="document.getElementById('id01').style.display='block'">Đăng xuất</a></li>
-
+                                                <li><a href="@Url.Action("Index", "Admin/ProductManager")" class="d-flex flex-row align-items-baseline" style="gap: 8px;"><i class="fa fa-area-chart" aria-hidden="true" style="font-size: 18px;"></i> Trang Quản Trị</a></li>
+                                                <li><a onclick="document.getElementById('id01').style.display='block'" class="d-flex flex-row align-items-baseline" style="gap: 8px;"><i class="fa fa-sign-out" aria-hidden="true" style="font-size: 18px;"></i> Đăng xuất</a></li>
                                             }
                                             else
                                             {
-                                                <li>@Html.ActionLink(Session["UserName"].ToString(), "Index", "User")</li>
-                                                <li><a onclick="document.getElementById('id01').style.display='block'">Đăng xuất</a></li>
+                                                <li><a href="@Url.Action("Index", "User")" class="d-flex flex-row align-items-baseline" style="gap: 8px;"><i class="fa fa-user" aria-hidden="true" style="font-size: 18px;"></i> @Session["UserName"].ToString()</a></li>
+
+                                                <li><a onclick="document.getElementById('id01').style.display='block'" class="d-flex flex-row align-items-baseline" style="gap: 8px;"><i class="fa fa-sign-out" aria-hidden="true" style="font-size: 18px;"></i> Đăng xuất</a></li>
                                             }
                                         }
                                         else
                                         {
-                                            <li>@Html.ActionLink("Đăng nhập", "Login", "Account")</li>
+                                            <li>
+                                                <a href="@Url.Action("Login", "Account")" class="d-flex flex-row align-items-baseline" style="gap: 12px;"><i class="fa fa-user" aria-hidden="true" style="font-size: 18px;"></i> Đăng nhập</a>
+                                            </li>
                                             <li>@Html.ActionLink("Đăng ký", "Register", "Account")</li>
                                         }
                                     }
@@ -148,19 +150,19 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index") ? "active" : "")">
-                                @Html.ActionLink("Trang chủ", "Index", "Home")
+                                <a href="@Url.Action("Index", "Home")" class="d-flex flex-row align-items-baseline" style="gap: 12px;"><i class="fa fa-home" aria-hidden="true" style="font-size: 20px;"></i> Trang chủ</a>
                             </li>
                             <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "Shop") ? "active" : "")">
-                                @Html.ActionLink("Sản phẩm", "Index", "Shop")
+                                <a href="@Url.Action("Index", "Shop")" class="d-flex flex-row align-items-baseline" style="gap: 12px;"><i class="fa fa-birthday-cake" aria-hidden="true" style="font-size: 20px;"></i> Sản phẩm</a>
                             </li>
                             <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "About") ? "active" : "")">
-                                @Html.ActionLink("Giới thiệu", "Index", "About")
-                            </li>
-                            <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "Contact") ? "active" : "")">
-                                @Html.ActionLink("Liên hệ", "Index", "Contact")
+                                <a href="@Url.Action("Index", "About")" class="d-flex flex-row align-items-baseline" style="gap: 12px;"><i class="fa fa-info" aria-hidden="true" style="font-size: 20px;"></i> Giới thiệu</a>
                             </li>
                             <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "Blog") ? "active" : "")">
-                                @Html.ActionLink("Bài viết", "Index", "Blog")
+                                <a href="@Url.Action("Index", "Blog")" class="d-flex flex-row align-items-baseline" style="gap: 12px;"><i class="fa fa-book" aria-hidden="true" style="font-size: 20px;"></i> Bài viết</a>
+                            </li>
+                            <li class="@((ViewContext.RouteData.Values["controller"].ToString() == "Contact") ? "active" : "")">
+                                <a href="@Url.Action("Index", "Contact")" class="d-flex flex-row align-items-baseline" style="gap: 12px;"><i class="fa fa-phone-square" aria-hidden="true" style="font-size: 20px;"></i> Liên hệ</a>
                             </li>
                         </ul>
                     </nav>
