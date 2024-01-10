@@ -4,7 +4,10 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger"><i class="fas fa-times" style="margin-right:8px"></i>@ViewBag.Error</div>
+}
 <div class="card card-info">
     <div class="card-header">
         <h3 class="card-title"><em><strong>Chỉnh sửa danh mục</strong></em></h3>
@@ -35,7 +38,7 @@
                         {
                             <option value="@category.CategoryID" selected>@category.CategoryName</option>
                         }
-                        else if(category.CategoryID != Model.CategoryID && category.ParentID != Model.CategoryID)
+                        else if (category.CategoryID != Model.CategoryID && category.ParentID != Model.CategoryID)
                         {
                             <option value="@category.CategoryID">@category.CategoryName</option>
                         }

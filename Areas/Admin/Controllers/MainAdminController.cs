@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebsiteCakeNew.App_Start;
+using WebsiteCakeNew.Models.BUS;
 
 namespace WebsiteCakeNew.Areas.Admin.Controllers
 {
     public class MainAdminController : Controller
     {
-        // GET: Admin/MainAdmin
+        [RoleUser]
         public ActionResult Index()
         {
             return View();
@@ -84,6 +86,20 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
             {
                 return View();
             }
+        }
+        [HttpPost]
+        public ActionResult GetProductStatistics(string year, int quy)
+        {
+            var statisticsData = OrderDetailBUS.StatisticProduct(year, quy);
+
+            return Json(statisticsData);
+        }
+        [HttpPost]
+        public ActionResult GetStockProduct()
+        {
+            var statisticsData = ShopBUS.DanhSach();
+
+            return Json(statisticsData);
         }
     }
 }

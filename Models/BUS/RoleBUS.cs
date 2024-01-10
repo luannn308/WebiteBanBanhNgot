@@ -13,5 +13,10 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             return db.SingleOrDefault<int>("SELECT [RoleID] FROM[QLBB].[dbo].[ROLE] WHERE[RoleName] = @0", role);
         }
+        public static IEnumerable<ROLE> GetListRole()
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.Query<ROLE>("SELECT * FROM [ROLE]");
+        }
     }
 }

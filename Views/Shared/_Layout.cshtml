@@ -32,6 +32,51 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        #orderDetailModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .modal-content {
+            position: relative;
+        }
+
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #ff5252;
+            color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+            .custom-alert.show {
+                display: block;
+            }
+
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <!-- Page Preloder -->
@@ -67,7 +112,7 @@
                     {
                         if (Session["Role"].ToString() == "Administrator")
                         {
-                            <li>@Html.ActionLink("Trang Quản Trị", "Index", "Admin/ProductManager")</li>
+                            <li>@Html.ActionLink("Trang Quản Trị", "Index", "Admin/MainAdmin")</li>
                             <li><a onclick="document.getElementById('id01').style.display='block'">Đăng xuất</a></li>
                         }
                         else
@@ -100,7 +145,7 @@
                                         {
                                             if (Session["Role"].ToString() == "Administrator")
                                             {
-                                                <li><a href="@Url.Action("Index", "Admin/ProductManager")" class="d-flex flex-row align-items-baseline" style="gap: 8px;"><i class="fa fa-area-chart" aria-hidden="true" style="font-size: 18px;"></i> Trang Quản Trị</a></li>
+                                                <li><a href="@Url.Action("Index", "Admin/MainAdmin")" class="d-flex flex-row align-items-baseline" style="gap: 8px;"><i class="fa fa-area-chart" aria-hidden="true" style="font-size: 18px;"></i> Trang Quản Trị</a></li>
                                                 <li><a onclick="document.getElementById('id01').style.display='block'" class="d-flex flex-row align-items-baseline" style="gap: 8px;"><i class="fa fa-sign-out" aria-hidden="true" style="font-size: 18px;"></i> Đăng xuất</a></li>
                                             }
                                             else

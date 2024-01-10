@@ -1,0 +1,74 @@
+﻿@using WebsiteCakeNew.Models.BUS
+@model WebBanBanhConnection.USER
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{ 
+    var dbUser = new UserBUS();
+}
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title"><em><strong>CHỈNH SỬA NGƯỜI DÙNG</strong></em></h3>
+
+        <div class="card-tools">
+            <a style="margin-right:8px;padding:12px" href="@Url.Action("Index","UserManager")">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Edit", "UserManager", FormMethod.Post))
+        {
+            <div class="form-group row">
+                <div class="col-6">
+                    <label>Họ và tên đệm</label>
+                    <input type="text" class="form-control" placeholder="Nhập họ và tên đệm" name="LastName" value="@Model.LastName" required>
+                </div>
+                <div class="col-6">
+                    <label>Tên</label>
+                    <input class="form-control" type="text" placeholder="Nhập tên" name="FirstName" value="@Model.FirstName" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Tên tài khoản</label>
+                <input class="form-control" type="text" placeholder="Nhập tên tài khoản" name="Username" value="@Model.UserName" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" placeholder="Nhập email" name="Email" value="@Model.Email" required>
+            </div>
+            <div class="form-group">
+                <label>Số điện thoại</label>
+                <input class="form-control" type="number" placeholder="Nhập số điện thoại" name="Telephone" value="@Model.Telephone" required>
+            </div>
+            <div class="form-group">
+                <label>Chọn phân quyền</label>
+                <select class="form-control" name="roleID">
+                    @foreach (var roles in RoleBUS.GetListRole())
+                    {
+                        if (dbUser.GetRoleUser(Model.UserID) == roles.RoleName)
+                        {
+                            <option value="@roles.RoleID" selected>@roles.RoleName</option>
+                        }
+                        else
+                        {
+                            <option value="@roles.RoleID">@roles.RoleName</option>
+                        }
+                    }
+                </select>
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger list-danger" })
+            <input type="submit"
+                   value="Lưu thay đổi"
+                   class="btn btn-info float-right" />
+        }
+    </div>
+</div>
+
+
+
+
+
+
+

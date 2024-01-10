@@ -4,6 +4,13 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!-- The Modal -->
+<div id="orderDetailModal" class="modal" style="background-color:rgba(0,0,0,0.3);">
+    <div class="modal-content">
+        <span class="close" onclick="closeOrderDetailModal()" style="cursor: pointer; text-align:right;">&times;</span>
+        <div id="orderDetailContent" class="d-flex flex-column" style="gap:18px;"></div>
+    </div>
+</div>
 
 <div class="breadcrumb-option">
     <div class="container">
@@ -32,7 +39,6 @@
                     <a href="#profile-tab" class="list-group-item list-group-item-action">Thông tin cá nhân</a>
                     <a href="#address-tab" class="list-group-item list-group-item-action">Địa chỉ</a>
                     <a href="#history-tab" class="list-group-item list-group-item-action">Lịch sử đơn hàng</a>
-                    <a href="#pass-tab" class="list-group-item list-group-item-action">Chỉnh sửa mật khẩu</a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">
@@ -157,7 +163,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mt-3" id="payment-tab">
+                <div class="card mt-3" id="payment-tab" hidden>
                     <div class="card-header d-flex flex-row justify-content-between align-items-center">
                         Liên kết ngân hàng
                         <a href="javascript:void(0);" id="addPaymentButton" class="btn btn-primary">Thêm liên kết mới</a>
@@ -219,7 +225,7 @@
                                 <input type="submit"
                                        value="Thêm liên kết"
                                        class="btn btn-success float-right" />
-                            }
+                                            }
                         </div>
                     </div>
                 </div>
@@ -231,27 +237,60 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Ngày đặt hàng</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Sản phẩm</th>
+                                    <th style="text-align:center">STT</th>
+                                    <th style="text-align:center">Ngày đặt hàng</th>
+                                    <th style="text-align:center">Tổng tiền</th>
+                                    <th style="text-align:center">Tình trạng</th>
+                                    <th style="text-align:center">Chi tiết</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>12345</td>
-                                    <td>2023-10-21</td>
-                                    <td>$100.00</td>
-                                    <td>$100.00</td>
-                                </tr>
-                                <!-- Hiển thị các dòng khác tương tự -->
+                                @{
+                                    var stt = 1;
+                                    var orders = OrderBUS.GetListOrderByUser(Model.UserID);
+                                }
+                                @if (orders != null && orders.Any())
+                                {
+                                    foreach (var item in orders)
+                                    {
+                                        <tr>
+                                            <td style="font-weight:500; text-align:center">@stt</td>
+                                            <td style="font-weight: 500; text-align: center">@item.OrderDate</td>
+                                            <td style="font-weight: 500; text-align: center">@string.Format("{0:N0}", item.OrderTotal) VNĐ</td>
+                                            @if (item.OrderStatus == "Đang chờ xử lý")
+                                            {
+                                                <td class="text-warning font-weight-bold" style="text-align:center">@item.OrderStatus</td>
+                                            }
+                                            @if (item.OrderStatus == "Đã xác nhận" || item.OrderStatus == "Giao hàng thành công")
+                                            {
+                                                <td class="text-success font-weight-bold" style="text-align:center">@item.OrderStatus</td>
+                                            }
+                                            @if (item.OrderStatus == "Đang giao")
+                                            {
+                                                <td class="text-primary font-weight-bold" style="text-align:center">@item.OrderStatus</td>
+                                            }
+                                            @if (item.OrderStatus == "Đã huỷ")
+                                            {
+                                                <td class="text-danger font-weight-bold" style="text-align:center">@item.OrderStatus</td>
+                                            }
+                                            <td style="text-align:center"><a class="btn btn-info btn-sm" style="color:white;" onclick="showOrderDetail('@item.OrderID')">Xem</a></td>
+                                        </tr>
+                                        stt++;
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="5" style="text-align: center; font-weight: 500; font-size: 18px; background-color: rgba(52, 58, 64, 0.1); color: black; ">Chưa có đơn hàng</td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
                 </div>
 
                 <!-- Chỉnh sửa mật khẩu -->
-                <div class="card mt-3" id="pass-tab">
+                <div class="card mt-3" id="pass-tab" hidden>
                     <div class="card-header">Chỉnh sửa mật khẩu</div>
                     <div class="card-body">
                         <form>
@@ -284,7 +323,6 @@
         </div>
     </div>
 </section>
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var addAddressButton = document.getElementById("addAddressButton");
@@ -381,7 +419,6 @@
     });
     document.addEventListener('DOMContentLoaded', function () {
         var radioButtons = document.getElementsByName('defaultPayment');
-        console.log("Helllooo")
         radioButtons.forEach(function (radio) {
             radio.addEventListener('change', function () {
                 var paymentId = this.getAttribute('data-id');
@@ -396,6 +433,36 @@
                     .then(data => console.log(data))
                     .catch(error => console.error('Error:', error));
             });
+        });
+    });
+    function showOrderDetail(orderID) {
+        $.ajax({
+            url: '/User/GetOrderDetails',
+            method: 'GET',
+            data: { orderID: orderID },
+            success: function (htmlContent) {
+                var orderDetailContent = document.getElementById('orderDetailContent');
+                orderDetailContent.innerHTML = htmlContent;
+
+                var modal = document.getElementById('orderDetailModal');
+                modal.style.display = 'block';
+            },
+            error: function () {
+                console.error('Failed to fetch order details.');
+            }
+        });
+    }
+
+    function closeOrderDetailModal() {
+        var modal = document.getElementById('orderDetailModal');
+        modal.style.display = 'none';
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById('orderDetailModal');
+        window.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                closeOrderDetailModal();
+            }
         });
     });
 </script>

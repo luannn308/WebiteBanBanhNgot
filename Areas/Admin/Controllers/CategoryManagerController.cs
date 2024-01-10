@@ -4,16 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBanBanhConnection;
+using WebsiteCakeNew.App_Start;
 using WebsiteCakeNew.Models.BUS;
 
 namespace WebsiteCakeNew.Areas.Admin.Controllers
 {
+    [RoleUser]
     public class CategoryManagerController : Controller
     {
         // GET: Admin/CategoryManager
         public ActionResult Index()
         {
             var ds = CategoryBUS.DanhSach();
+            ViewBag.SuccessMessage = TempData["SuccessMessage"] as string;
             return View(ds);
         }
 
@@ -37,10 +40,12 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
             {
                 // TODO: Add insert logic here
                 CategoryBUS.AddCategory(cate);
+                TempData["SuccessMessage"] = "Thêm danh mục thành công";
                 return RedirectToAction("Index");
             }
             catch
             {
+                ViewBag.Error = "Thêm danh mục thất bại";
                 return View();
             }
         }
@@ -60,11 +65,14 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
             {
                 // TODO: Add update logic here
                 CategoryBUS.UpdateCategory(id, cate);
+                TempData["SuccessMessage"] = "Lưu thay đổi danh mục thành công";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                ViewBag.Error = "Lưu thay đổi danh mục thất bại";
+                var db = CategoryBUS.ChiTiet(id);
+                return View(db);
             }
         }
 
@@ -83,11 +91,14 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
             {
                 // TODO: Add delete logic here
                 CategoryBUS.DeleteCategory(id);
+                TempData["SuccessMessage"] = "Xoá danh mục thành công";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                ViewBag.Error = "Xoá danh mục thất bại";
+                var db = CategoryBUS.ChiTiet(id);
+                return View(db);
             }
         }
     }

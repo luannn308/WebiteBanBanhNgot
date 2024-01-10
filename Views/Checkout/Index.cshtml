@@ -10,7 +10,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger"><i class="fa fa-close"></i> @ViewBag.Error</div>
+}
 <!-- Breadcrumb Begin -->
 <div class="breadcrumb-option">
     <div class="container">
@@ -53,13 +56,13 @@
                                     @{
                                         var name = @user.FirstName + " " + user.LastName;
                                     }
-                                    <input type="text" value="@name" style="font-size: 1em;">
+                                    <input type="text" value="@name" style="font-size: 1em;" disabled>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Số điện thoại</p>
-                                    <input type="text" value="@user.Telephone" style="font-size: 1em;">
+                                    <input type="text" value="@user.Telephone" style="font-size: 1em;" disabled>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +88,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email</p>
-                                    <input type="text" value="@user.Email" style="font-size: 1em;">
+                                    <input type="text" value="@user.Email" style="font-size: 1em;" disabled>
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -98,12 +101,12 @@
                         <div class="row">
                             <div class="col-lg-6 d-flex flex-row align-items-center" style="gap:24px; margin-bottom: 18px">
                                 <div>
-                                    <input type="radio" id="afterPlacing" name="ShippingMethod" value="Giao sau khi đặt" checked>
-                                    <label for="afterPlacing">Giao sau khi đặt</label>
+                                    <input type="radio" id="afterPlacing" name="ShippingMethod" value="Giao ngay" checked>
+                                    <label for="afterPlacing">Giao ngay</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="chooseDate" name="ShippingMethod" value="Giao theo ngày chọn">
-                                    <label for="chooseDate">Giao theo ngày chọn</label>
+                                    <input type="radio" id="chooseDate" name="ShippingMethod" value="Hẹn lịch giao">
+                                    <label for="chooseDate">Hẹn lịch giao</label>
                                 </div>
                             </div>
                         </div>
@@ -136,20 +139,21 @@
                                         }
                                     </tbody>
                                 </table>
-                                <input type="hidden" id="listCartID" name="listCartID"/>
+                                <input type="hidden" id="listCartID" name="listCartID" />
                             </div>
                             <ul class="checkout__total__all">
                                 <li>Tổng tiền thanh toán <span>@string.Format("{0:N0}", Model.GrandTotal) VNĐ</span></li>
                             </ul>
                             <div>
-                                <input type="radio" id="momoPayment" name="Payment" value="Thanh toán qua MOMO" checked>
-                                <label for="momoPayment">Thanh toán bằng MoMo</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="cashOnDelivery" name="Payment" value="Thanh toán khi nhận hàng">
+                                <input type="radio" id="cashOnDelivery" name="Payment" value="Thanh toán khi nhận hàng" checked onclick="showMomoForm()">
                                 <label for="cashOnDelivery">Thanh toán khi nhận hàng</label>
                             </div>
-                            <input type="hidden" name="PaymentStatus" id="paymentStatus" style="font-size: 1em;" value="Chưa thanh toán trực tuyến">
+                            <div>
+                                <input type="radio" id="momoPayment" name="Payment" value="Thanh toán qua VNPAY" onclick="showMomoForm()">
+                                <label for="momoPayment">Thanh toán bằng VNPAY</label>
+                            </div>
+                            <input type="hidden" name="TypePaymentVN" value="0" />
+                            <input type="hidden" name="PaymentStatus" id="paymentStatus" style="font-size: 1em;" value="Chưa thanh toán trực tiếp">
                             <button type="submit" class="site-btn">Đặt hàng</button>
                         </div>
                     </div>
@@ -165,6 +169,13 @@
     document.getElementById('chooseDate').addEventListener('change', function () {
         if (this.checked) {
             document.getElementById('dateShipping').removeAttribute('disabled');
+            var currentDate = new Date();
+
+            // Format ngày và giờ thành chuỗi phù hợp cho input datetime-local
+            var currentDateString = currentDate.toISOString().slice(0, -8);
+
+            // Set giá trị min cho input datetime-local
+            document.getElementById('dateShipping').setAttribute('min', currentDateString);
         }
     });
     document.getElementById('afterPlacing').addEventListener('change', function () {

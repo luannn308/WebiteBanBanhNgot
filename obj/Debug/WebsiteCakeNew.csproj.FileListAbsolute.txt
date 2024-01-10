@@ -595,3 +595,219 @@ C:\Users\Luan Nguyen\Documents\GitHub\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew
 C:\Users\Luan Nguyen\Documents\GitHub\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.CopyComplete
 C:\Users\Luan Nguyen\Documents\GitHub\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.dll
 C:\Users\Luan Nguyen\Documents\GitHub\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.pdb
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\WebsiteCakeNew.dll.config
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\WebsiteCakeNew.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\WebsiteCakeNew.pdb
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\csc.exe
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\csc.exe.config
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\csc.rsp
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\csi.exe
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\csi.exe.config
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\csi.rsp
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.AppContext.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Collections.Immutable.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Console.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Globalization.Calendars.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.IO.Compression.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.IO.FileSystem.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Net.Http.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Net.Sockets.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Reflection.Metadata.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.ValueTuple.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Xml.XPath.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\vbc.exe
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\vbc.exe.config
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\vbc.rsp
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\VBCSCompiler.exe
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\roslyn\VBCSCompiler.exe.config
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Antlr3.Runtime.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\EntityFramework.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\EntityFramework.SqlServer.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.Google.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Web.Infrastructure.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Newtonsoft.Json.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Owin.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\PagedList.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\PagedList.Mvc.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.Helpers.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.Mvc.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.Optimization.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.Razor.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.WebPages.Deployment.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.WebPages.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.WebPages.Razor.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\WebGrease.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\EntityFramework.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\EntityFramework.SqlServer.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.Google.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\PagedList.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\PagedList.Mvc.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.Helpers.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.Mvc.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.Optimization.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.Razor.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.WebPages.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.WebPages.Deployment.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\System.Web.WebPages.Razor.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Newtonsoft.Json.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Antlr3.Runtime.pdb
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\fr\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\bin\fr\Microsoft.AspNet.Identity.Owin.resources.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.AssemblyReference.cache
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.CoreCompileInputs.cache
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.CopyComplete
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.dll
+C:\Trang\KLTN-TU\2021010321_HuynhThiKieuTrang_KLTN_HK3.2023\ChuongTrinhCaiDat\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.pdb
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\WebsiteCakeNew.dll.config
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\WebsiteCakeNew.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\WebsiteCakeNew.pdb
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\csc.exe
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\csc.exe.config
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\csc.rsp
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\csi.exe
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\csi.exe.config
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\csi.rsp
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.AppContext.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Console.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.IO.Compression.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Net.Http.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.ValueTuple.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\vbc.exe
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\vbc.exe.config
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\vbc.rsp
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\VBCSCompiler.exe
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Antlr3.Runtime.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\EntityFramework.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\EntityFramework.SqlServer.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Newtonsoft.Json.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Owin.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\PagedList.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\PagedList.Mvc.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.Helpers.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.Mvc.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.Optimization.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.Razor.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.WebPages.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.WebPages.Razor.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\WebGrease.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\EntityFramework.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\EntityFramework.SqlServer.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\PagedList.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\PagedList.Mvc.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.Helpers.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.Mvc.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.Optimization.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.Razor.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.WebPages.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\System.Web.WebPages.Razor.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Newtonsoft.Json.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Antlr3.Runtime.pdb
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\fr\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\bin\fr\Microsoft.AspNet.Identity.Owin.resources.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.AssemblyReference.cache
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.CoreCompileInputs.cache
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.csproj.CopyComplete
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.dll
+C:\Users\Luan Nguyen\Downloads\Telegram Desktop\WebiteBanBanhNgot\WebiteBanBanhNgot\obj\Debug\WebsiteCakeNew.pdb

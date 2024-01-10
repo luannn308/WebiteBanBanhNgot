@@ -11,6 +11,11 @@ namespace WebsiteCakeNew.Models.BUS
 {
     public class UserBUS
     {
+        public IEnumerable<USER> GetList()
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.Query<USER>("SELECT * FROM [USER]");
+        }
         public USER GetItem(string email)
         {
             var db = new WebBanBanhConnectionDB();
@@ -20,6 +25,11 @@ namespace WebsiteCakeNew.Models.BUS
                 u = db.SingleOrDefault<USER>("Select * From [USER] WHERE Username = @0", email);
             }
             return u;
+        }
+        public static int CountUser()
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.SingleOrDefault<int>("SELECT COUNT(U.UserID) AS UserCount FROM [USER] U JOIN USER_ROLE UR ON U.UserID = UR.UserID JOIN ROLE R ON UR.RoleID = R.RoleID WHERE R.RoleName = 'User';");
         }
         public int GetIdByUserName(string username)
         {
@@ -129,9 +139,13 @@ namespace WebsiteCakeNew.Models.BUS
         }
         public bool IsPasswordValid(string password)
         {
-            // Kiểm tra mật khẩu phải có ít nhất một chữ thường, một chữ hoa và một số
             var regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$");
             return regex.IsMatch(password);
+        }
+        public bool IsEmailValid(string email)
+        {
+            var emailRegex = new Regex(@"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
+            return emailRegex.IsMatch(email);
         }
         public string HashPassword(string password)
         {
@@ -145,6 +159,87 @@ namespace WebsiteCakeNew.Models.BUS
                 }
                 return stringBuilder.ToString();
             }
+        }
+        public int AddUser(USER user)
+        {
+            var db = new WebBanBanhConnectionDB();
+            var existingEmailUser = db.SingleOrDefault<USER>("SELECT * FROM [USER] WHERE Email = @0", user.Email);
+            if (existingEmailUser != null)
+            {
+                return -1;
+            }
+            var existingUsernameUser = db.SingleOrDefault<USER>("SELECT * FROM [USER] WHERE UserName = @0", user.UserName);
+            if (existingUsernameUser != null)
+            {
+                return 0;
+            }
+            if (!IsPasswordValid(user.Password))
+            {
+                return -2;
+            }
+            if (!IsEmailValid(user.Email))
+            {
+                return -3;
+            }
+            var userNew = new USER
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                UserName = user.UserName,
+                Password = HashPassword(user.Password),
+                Telephone = user.Telephone
+            };
+            var sql = "INSERT INTO [USER] (FirstName, LastName, Email, UserName, Password, Telephone) " +
+              "VALUES (@FirstName, @LastName, @Email, @UserName, @Password, @Telephone)";
+
+            var result = db.Execute(sql, userNew);
+
+            if (result <= 0)
+            {
+                return -2;
+            }
+            return 1;
+        }
+        public void DeleteUser(int id)
+        {
+            var db = new WebBanBanhConnectionDB();
+            db.Execute("DELETE FROM [USER_ROLE] WHERE UserID = @0", id);
+            db.Execute("UPDATE [ORDER] SET UserID = null  WHERE UserID = @0", id);
+            db.Execute("DELETE FROM [SHOPPING_CART] WHERE UserID = @0", id);
+            db.Execute("DELETE FROM [USER_SHIPPING] WHERE UserID = @0", id);
+            var user = db.SingleOrDefault<USER>("SELECT * FROM [USER] WHERE UserID = @0", id);
+            if (user != null)
+            {
+                db.Execute("DELETE FROM [USER] WHERE UserID = @0", user.UserID);
+            }
+        }
+        public int UpdateUser(int id, USER u, int roleID)
+        {
+            var db = new WebBanBanhConnectionDB();
+            var existingEmailUser = db.SingleOrDefault<USER>("SELECT * FROM [USER] WHERE Email = @0", u.Email);
+            if (existingEmailUser != null && existingEmailUser.UserID != id)
+            {
+                return -1;
+            }
+            var existingUsernameUser = db.SingleOrDefault<USER>("SELECT * FROM [USER] WHERE UserName = @0", u.UserName);
+            if (existingUsernameUser != null && existingUsernameUser.UserID != id)
+            {
+                return 0;
+            }
+            if (!IsEmailValid(u.Email))
+            {
+                return -2;
+            }
+            db.Execute("DELETE FROM USER_ROLE WHERE UserID = @0", id);
+            USER_ROLE userRole = new USER_ROLE
+            {
+                UserID = id,
+                RoleID = roleID
+            };
+            User_RoleBUS.AddUserRole(userRole);
+            db.Execute("UPDATE [USER] SET FirstName = @0, LastName = @1, Email = @2, Telephone = @3, Username = @4 WHERE UserID = @5;", u.FirstName, u.LastName,u.Email,u.Telephone, u.UserName, id);
+            return 1;
         }
     }
 }

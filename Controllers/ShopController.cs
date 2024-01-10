@@ -44,6 +44,7 @@ namespace WebsiteCakeNew.Controllers
         }
         public ActionResult Category(string sortBy, int id, int page = 1, int pagesize = 8)
         {
+            ViewBag.CategoryID = id;
             var db = ShopBUS.DanhMuc(id,sortBy).ToPagedList(page, pagesize);
             if (id == 0)
             {

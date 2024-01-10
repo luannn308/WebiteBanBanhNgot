@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="col" style="margin-bottom: 42px">
+        <h2 style="margin-bottom: 44px; margin-top: 32px; color: black !important; font-weight: bold">Đã mua hàng thành công! Hãy kiểm tra email</h2>
+        <p class="text-success" style="font-size: 18px; font-weight: 600;">Thông tin chi tiết về đơn hàng sẽ được gửi qua email của bạn</p>
+        <div class="d-flex flex-row  justify-content-between align-items-center">
+            <a href="@Url.Action("Index","Home")">< Quay lại trang chủ</a>
+            <a href="@Url.Action("Index","Shop")" class="primary-btn">Tiếp tục mua hàng</a>
+        </div>
+    </div>
+</div>

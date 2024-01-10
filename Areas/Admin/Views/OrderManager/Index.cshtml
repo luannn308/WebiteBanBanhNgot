@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model IEnumerable<WebBanBanhConnection.ORDER>
+@using WebsiteCakeNew.Models.BUS
+<section class="content" style="padding-top:18px;background-color: #fcfcfc">
+    <div class="container-fluid" style="background-color: #fcfcfc">
+        <div class="card card-default">
+            <div class="card-header flex-row row">
+                <label><strong>Trạng thái đơn hàng:</strong></label>
+                <select class="form-control" id="order-sort" onchange="handleSortChange()" style="border-color: #939393">
+                    @if (ViewBag.sortBy == "default")
+                    {
+                        <option value="default" selected>Mặc định</option>
+                        foreach (var item in OrderStatusBUS.GetList())
+                        {
+                            <option value="@item.OrderStatus">@item.OrderStatus</option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="default">Mặc định</option>
+                        foreach (var item in OrderStatusBUS.GetList())
+                        {
+                            if (ViewBag.sortBy == item.OrderStatus)
+                            {
+                                <option value="@item.OrderStatus" selected>@item.OrderStatus</option>
+                            }
+                            else
+                            {
+                                <option value="@item.OrderStatus">@item.OrderStatus</option>
+                            }
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+</section>
+    
+        @foreach (var item in Model)
+        {
+            var user = UserBUS.GetById(item.UserID);
+            <section class="content" style="background-color: #fcfcfc; padding-top:18px; @if (item.OrderStatus == "Đã huỷ") { <text> opacity: 0.7;</text>}">
+                <div class="container-fluid" style="background-color: #fcfcfc;">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <div class="d-flex flex-row align-items-center justify-content-between">
+                                <div class="d-flex flex-column" style="gap:8px">
+                                    @if (item.OrderStatus == "Đang chờ xử lý")
+                                    {
+                                        <h3 class="card-title">
+                                            <strong>Đơn hàng #@item.OrderID</strong>
+                                            - @item.OrderDate - <span class="badge bg-primary">@item.OrderStatus</span>
+                                        </h3>
+                                    }
+                                    else if (item.OrderStatus == "Đã huỷ")
+                                    {
+                                        <h3 class="card-title">
+                                            <strong>Đơn hàng #@item.OrderID</strong>
+                                            - @item.OrderDate - <span class="badge bg-danger">@item.OrderStatus</span>
+                                        </h3>
+                                    }
+                                    else
+                                    {
+                                        <h3 class="card-title">
+                                            <strong>Đơn hàng #@item.OrderID</strong>
+                                            - @item.OrderDate - <span class="badge bg-success">@item.OrderStatus</span>
+                                        </h3>
+                                    }
+                                    <h3 class="card-title">
+                                        <strong>Tổng:</strong> @string.Format("{0:N0}", item.OrderTotal) VNĐ
+                                    </h3>
+                                </div>
+                                @if (item.OrderStatus == "Đang chờ xử lý")
+                                {
+                                    <a class="btn btn-primary btn-sm" href="@Url.Action("UpdateStatus", "OrderManager", new { orderID = item.OrderID, status = "Đã xác nhận" })">
+                                        <i class="fas fa-check" style="margin-right:8px"></i>
+                                        Xác nhận đơn
+                                    </a>
+                                }
+                                else if (item.OrderStatus == "Đã xác nhận")
+                                {
+                                    <a class="btn btn-primary btn-sm" href="@Url.Action("UpdateStatus", "OrderManager", new { orderID = item.OrderID, status = "Đang giao" })">
+                                        <i class="fas fa-truck-moving" style="margin-right:8px"></i>
+                                        Giao hàng
+                                    </a>
+                                }
+                                else if (item.OrderStatus == "Đang giao")
+                                {
+                                    <a class="btn btn-success btn-sm" href="@Url.Action("UpdateStatus", "OrderManager", new { orderID = item.OrderID, status = "Giao hàng thành công" })">
+                                        <i class="fas fa-check" style="margin-right:8px"></i>
+                                        Hoàn thành đơn hàng
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column" style="gap:18px">
+                            @{
+                                var OrderDetail = OrderDetailBUS.GetByOrderID(item.OrderID);
+                            }
+
+                            <div class="row">
+                                <div class="col-6" style="gap:18px">
+                                    @foreach (var itemDetail in OrderDetail)
+                                    {
+                                        var product = ShopBUS.ChiTiet(itemDetail.ProductID);
+                                        <div style="margin-bottom:18px">
+                                            <div class="d-flex flex-row" style="gap:18px">
+                                                <img src="~/Content/img/shop/@product.Image" width="320px" />
+                                                <div class="d-flex flex-column" style="gap:16px">
+                                                    <h4><strong>Sản phẩm:</strong> @product.ProductName</h4>
+                                                    <h4><strong>Số lượng:</strong> @itemDetail.Quantity</h4>
+                                                    <h4><strong>Tổng:</strong> @string.Format("{0:N0}", itemDetail.ProductPrice * itemDetail.Quantity) VNĐ</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex flex-row" style="gap:18px">
+                                        <div class="d-flex flex-column" style="gap:16px">
+                                            @if (user != null)
+                                            {
+                                                <div class="d-flex flex-row align-items-center" style="gap: 24px">
+                                                    <h4><strong>Họ tên người nhận:</strong>@user.LastName @user.FirstName</h4>
+                                                    <h4><strong>Số điện thoại:</strong> @user.Telephone</h4>
+                                                </div>
+                                            }
+                                            <h4><strong>Địa chỉ:</strong> @item.DeliveryAddress</h4>
+                                            <h4><strong>Phương thức thanh toán:</strong> @item.Payment</h4>
+                                            <h4><strong>Trạng thái thanh toán:</strong> @item.PaymentStatus</h4>
+                                            <h4><strong>Phương thức giao hàng:</strong> @item.ShippingMethod</h4>
+                                            @if (item.ShippingDate != null)
+                                            {
+                                                <h4><strong>Ngày giao hàng:</strong> @item.ShippingDate</h4>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @if (item.OrderStatus != "Đã huỷ" && item.OrderStatus != "Đang giao" && item.OrderStatus != "Giao hàng thành công")
+                        {
+                            <div class="card-footer" style="gap:18px">
+                                <div class="d-flex flex-row align-items-center justify-content-end">
+                                    <a class="btn btn-danger btn-sm" onclick="confirmCancelOrder(@item.OrderID)">
+                                        <i class="fas fa-times" style="margin-right:8px"></i>
+                                        Huỷ đơn hàng
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+            }
+<script>
+    function confirmCancelOrder(orderID) {
+        var result = confirm("Bạn có chắc chắn muốn huỷ đơn hàng?");
+        if (result) {
+            window.location.href = '@Url.Action("CancelOrder", "OrderManager")?orderID=' + orderID;
+        }
+    }
+    function handleSortChange() {
+        var selectedValue = document.getElementById("order-sort").value;
+        var url = '@Url.Action("Index", "OrderManager")';
+        if (selectedValue !== "default") {
+          url = url + "?sortBy=" + selectedValue;
+        }
+        window.location.href = url;
+    }
+</script>
+

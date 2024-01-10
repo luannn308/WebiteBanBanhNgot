@@ -66,7 +66,14 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="shop__pagination">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortBy = ViewBag.SortBy }))
+                @if (ViewBag.CategoryID != null)
+                {
+                    @Html.PagedListPager(Model, page => Url.Action("Category", new { id = ViewBag.CategoryID, page, sortBy = ViewBag.SortBy }))
+                }
+                else
+                {
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortBy = ViewBag.SortBy }))
+                }
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6">

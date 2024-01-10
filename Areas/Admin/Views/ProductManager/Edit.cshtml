@@ -4,7 +4,10 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger"><i class="fas fa-times" style="margin-right:8px"></i>@ViewBag.Error</div>
+}
 <div class="card card-info">
     <div class="card-header">
         <h3 class="card-title"><em><strong>Chỉnh sửa sản phẩm</strong></em></h3>
@@ -45,7 +48,7 @@
                     }
                 </div>
             </div>
-                <input type="hidden" id="selectedCategoryIDs" name="SelectedCategoryIDs" />
+            <input type="hidden" id="selectedCategoryIDs" name="SelectedCategoryIDs" />
             <div class="form-group">
                 <label>Thẻ của sản phẩm</label>
                 <div class="customCheckBoxHolder d-flex gap-12">
@@ -61,7 +64,7 @@
                     }
                 </div>
             </div>
-                <input type="hidden" id="selectedTagIDs" name="SelectedTagIDs" />
+            <input type="hidden" id="selectedTagIDs" name="SelectedTagIDs" />
             <div class="form-group">
                 <label>Số lượng sản phẩm</label>
                 <input type="number" class="form-control" placeholder="Nhập số lượng" min="0" name="StockNumber" required value="@Model.StockNumber">

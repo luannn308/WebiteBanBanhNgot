@@ -30,7 +30,7 @@ namespace WebsiteCakeNew.Models.BUS
         public static IEnumerable<PRODUCT> PriceDESC()
         {
             var db = new WebBanBanhConnectionDB();
-            return db.Query<PRODUCT>("SELECT * FROM PRODUCT WHERE StockNumber > 0 ORDER BY Price DESC");
+            return db.Query<PRODUCT>("SELECT * FROM PRODUCT,  WHERE StockNumber > 0 ORDER BY Price DESC");
         }
         public static IEnumerable<PRODUCT> PriceASC()
         {
@@ -45,7 +45,6 @@ namespace WebsiteCakeNew.Models.BUS
         public static IEnumerable<PRODUCT> DanhMuc(int id, string sortBy)
         {
             var db = new WebBanBanhConnectionDB();
-
             var query = "SELECT p.* FROM PRODUCT p " +
                         "INNER JOIN PRODUCT_CATEGORY pc ON p.ProductID = pc.ProductID " +
                         "INNER JOIN CATEGORY c ON pc.CategoryID = c.CategoryID " +
@@ -155,6 +154,12 @@ namespace WebsiteCakeNew.Models.BUS
             PRODUCT productUpdate = ChiTiet(productID);
             productUpdate.StockNumber = productUpdate.StockNumber - count;
             UpdateProduct(productID, productUpdate);
+            CartItemBUS.RemoveExceededCartItems(productID, (int)productUpdate.StockNumber);
+        }
+        public static int CountProduct()
+        {
+            var db = new WebBanBanhConnectionDB();
+            return db.SingleOrDefault<int>("SELECT COUNT(ProductID) AS ProductCount FROM [PRODUCT]");
         }
     }
 }

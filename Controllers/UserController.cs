@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebBanBanhConnection;
 using WebsiteCakeNew.Models.BUS;
+using WebsiteCakeNew.Models;
 
 namespace WebsiteCakeNew.Controllers
 {
@@ -86,5 +87,13 @@ namespace WebsiteCakeNew.Controllers
 
             return Json(new { success = true });
         }
+        [AllowAnonymous]
+        public ActionResult GetOrderDetails(int orderID)
+        {
+            var orderDetails = OrderDetailBUS.GetByOrderID(orderID);
+            ViewBag.OrderId = orderID;
+            return PartialView("_OrderDetails", orderDetails);
+        }
+
     }
 }

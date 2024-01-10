@@ -168,13 +168,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RoleUser.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SessionConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductManagerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SaleController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagManagerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserManagerController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -196,6 +201,8 @@
     <Compile Include="Models\BUS\DiscountBUS.cs" />
     <Compile Include="Models\BUS\OrderBUS.cs" />
     <Compile Include="Models\BUS\OrderDetailBUS.cs" />
+    <Compile Include="Models\BUS\OrderStatusBUS.cs" />
+    <Compile Include="Models\BUS\PaymentStatusBUS.cs" />
     <Compile Include="Models\BUS\Product_CategoryBUS.cs" />
     <Compile Include="Models\BUS\Product_TagBUS.cs" />
     <Compile Include="Models\BUS\RoleBUS.cs" />
@@ -206,6 +213,7 @@
     <Compile Include="Models\BUS\UserBUS.cs" />
     <Compile Include="Models\BUS\UserPaymentBUS.cs" />
     <Compile Include="Models\BUS\UserShippingBUS.cs" />
+    <Compile Include="Models\BUS\User_RoleBUS.cs" />
     <Compile Include="Models\Generated\Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -214,6 +222,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\PetaPoco.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\VNPAY_PAYMENT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2171,22 +2180,27 @@
     <Content Include="Content\img\logo-mini.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\outline_warning_amber_black_24dp.png" />
-    <Content Include="Content\img\shop\buttercream-cake-1.png" />
-    <Content Include="Content\img\shop\buttercream-cake-2.png" />
-    <Content Include="Content\img\shop\buttercream-cake-3.png" />
-    <Content Include="Content\img\shop\buttercream-cake-4.png" />
+    <Content Include="Content\img\shop\banh-bong-giay-7-mau.png" />
+    <Content Include="Content\img\shop\banh-bong-lan-dao.png" />
+    <Content Include="Content\img\shop\banh-bong-lan-mut-cam.png" />
+    <Content Include="Content\img\shop\banh-bong-lan-socola.png" />
+    <Content Include="Content\img\shop\banh-kem-dao.jpg" />
+    <Content Include="Content\img\shop\banh-kem-dau-3-vi.png" />
+    <Content Include="Content\img\shop\banh-kem-dau-mam-xoi.png" />
+    <Content Include="Content\img\shop\banh-kem-dau-ngot-ngao.png" />
+    <Content Include="Content\img\shop\banh-kem-dau-tay.jpg" />
+    <Content Include="Content\img\shop\banh-kem-nhung-do.png" />
+    <Content Include="Content\img\shop\banh-kem-socola-trai-tim.png" />
+    <Content Include="Content\img\shop\banh-kem-socola.jpg" />
+    <Content Include="Content\img\shop\banh-kem-tra-xanh.jpg" />
+    <Content Include="Content\img\shop\banh-kem-viet-quat.jpg" />
+    <Content Include="Content\img\shop\banh-kem-xoai-db.png" />
+    <Content Include="Content\img\shop\banh-kem-xoai.jpg" />
+    <Content Include="Content\img\shop\banh-mocha-dau-tay.png" />
     <Content Include="Content\img\shop\cart\cart-1.jpg" />
     <Content Include="Content\img\shop\cart\cart-2.jpg" />
     <Content Include="Content\img\shop\cart\cart-3.jpg" />
     <Content Include="Content\img\shop\cart\cart-4.jpg" />
-    <Content Include="Content\img\shop\cloud-cake-1.png" />
-    <Content Include="Content\img\shop\cloud-cake-2.png" />
-    <Content Include="Content\img\shop\cloud-cake-3.png" />
-    <Content Include="Content\img\shop\cloud-cake-4.png" />
-    <Content Include="Content\img\shop\cloud-cake-5.png" />
-    <Content Include="Content\img\shop\cloud-cake-6.png" />
-    <Content Include="Content\img\shop\cloud-cake-7.png" />
-    <Content Include="Content\img\shop\cloud-cake-8.png" />
     <Content Include="Content\img\shop\details\product-big-1-1.jpg" />
     <Content Include="Content\img\shop\details\product-big-1-2.jpg" />
     <Content Include="Content\img\shop\details\product-big-1-3.jpg" />
@@ -2198,9 +2212,6 @@
     <Content Include="Content\img\shop\details\thumb-4.jpg" />
     <Content Include="Content\img\shop\details\thumb-5.jpg" />
     <Content Include="Content\img\shop\mousse-cake-1.png" />
-    <Content Include="Content\img\shop\piece-cake-1.png" />
-    <Content Include="Content\img\shop\piece-cake-2.png" />
-    <Content Include="Content\img\shop\piece-cake-3.png" />
     <Content Include="Content\img\team\team-1.jpg" />
     <Content Include="Content\img\team\team-2.jpg" />
     <Content Include="Content\img\team\team-3.jpg" />
@@ -2414,6 +2425,10 @@
     <Content Include="Areas\Admin\Views\CategoryManager\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\TagManager\Index.cshtml" />
     <Content Include="Areas\Admin\Views\TagManager\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderManager\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManager\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManager\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManager\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2466,10 +2481,14 @@
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\WishList\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Checkout\Success.cshtml" />
+    <Content Include="Views\Checkout\VnPayReturn.cshtml" />
+    <Content Include="Views\Shared\_OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Sale\" />
     <Folder Include="Views\CartItem\" />
   </ItemGroup>
   <ItemGroup>

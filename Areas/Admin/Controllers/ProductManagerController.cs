@@ -5,15 +5,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBanBanhConnection;
+using WebsiteCakeNew.App_Start;
 using WebsiteCakeNew.Models.BUS;
 
 namespace WebsiteCakeNew.Areas.Admin.Controllers
 {
+    [RoleUser]
     public class ProductManagerController : Controller
     {
         // GET: Admin/ProductManager
         public ActionResult Index()
         {
+            ViewBag.SuccessMessage = TempData["SuccessMessage"] as string;
             var ds = ShopBUS.DanhSach();
             return View(ds);
         }
@@ -73,11 +76,13 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
                         // TODO: Lưu bản ghi vào bảng Product_category
                         Product_TagBUS.AddProductTag(productTag);
                     }
-                } 
+                }
+                TempData["SuccessMessage"] = "Thêm sản phẩm thành công";
                 return RedirectToAction("Index");
             }
             catch
             {
+                ViewBag.Error = "Thêm sản phẩm thất bại";
                 return View();
             }
         }
@@ -111,7 +116,6 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
         {
             try
             {
-                // TODO: Add update logic here
                 if(SelectedCategoryIDs != "")
                 {
                     var selectedCategoryIDArray = SelectedCategoryIDs.Split(',').Select(int.Parse).ToList();
@@ -147,11 +151,14 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
                 }
                 }
                 ShopBUS.UpdateProduct(id, p);
+                TempData["SuccessMessage"] = "Lưu thay đổi thành công";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                ViewBag.Error = "Lưu thay đổi sản phẩm thất bại";
+                var db = ShopBUS.ChiTiet(id);
+                return View(db);
             }
         }
 
@@ -173,10 +180,12 @@ namespace WebsiteCakeNew.Areas.Admin.Controllers
                 Product_TagBUS.DeleteTag(id);
                 CartItemBUS.DeleteByProductID(id);
                 ShopBUS.DeleteProduct(id);
+                TempData["SuccessMessage"] = "Sản phẩm đã xoá thành công";
                 return RedirectToAction("Index");
             }
             catch
             {
+                ViewBag.Error = "Xoá sản phẩm không thành công";
                 return View();
             }
         }

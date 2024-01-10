@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebBanBanhConnection.ORDER_DETAIL>
+@{
+    var orderId = ViewBag.OrderId;
+    var order = WebsiteCakeNew.Models.BUS.OrderBUS.GetByID((int)orderId);
+}
+<div class="d-flex flex-row" style="gap:32px; padding:12px">
+    <div style="padding-right: 12px; border-right: 1px solid #ccc">
+        <h4 style="color: black; margin-bottom: 12px"><strong>Thông tin sản phẩm:</strong></h4>
+        @foreach (var itemDetail in Model)
+        {
+            var product = WebsiteCakeNew.Models.BUS.ShopBUS.ChiTiet(itemDetail.ProductID);
+            <div style="margin-bottom: 18px;">
+                <div class="d-flex flex-row" style="gap: 18px;">
+                    <img src="~/Content/img/shop/@product.Image" width="150px" />
+                    <div class="d-flex flex-column" style="gap: 16px;">
+                        <h5 style="color:black"><strong>Sản phẩm:</strong> @product.ProductName</h5>
+                        <h5 style="color:black"><strong>Số lượng:</strong> @itemDetail.Quantity</h5>
+                        <h5 style="color:black"><strong>Tổng:</strong> @string.Format("{0:N0}", itemDetail.ProductPrice * itemDetail.Quantity) VNĐ</h5>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+        <div>
+            <h4 style="color: black; margin-bottom: 12px"><strong>Thông tin đơn hàng:</strong></h4>
+            <p style="color: black; font-weight:500"><strong>Ngày đặt hàng:</strong> @order.OrderDate</p>
+            <p style="color: black; font-weight: 500"><strong>Tổng tiền đơn hàng:</strong> @string.Format("{0:N0}", order.OrderTotal) VNĐ</p>
+            <p style="color: black; font-weight: 500"><strong>Tình trạng đơn hàng:</strong> @order.OrderStatus</p>
+            <p style="color: black; font-weight: 500"><strong>Tình trạng thanh toán:</strong> @order.PaymentStatus</p>
+            <p style="color: black; font-weight: 500"><strong>Địa chỉ:</strong> @order.DeliveryAddress</p>
+        </div>
+</div>
+

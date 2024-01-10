@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBanBanhConnection;
+using WebsiteCakeNew.App_Start;
 using WebsiteCakeNew.Models.BUS;
 
 namespace WebsiteCakeNew.Areas.Admin.Controllers
 {
+    [RoleUser]
     public class TagManagerController : Controller
     {
-        // GET: Admin/Tag
         public ActionResult Index()
         {
             var ds = TagBUS.DanhSach();

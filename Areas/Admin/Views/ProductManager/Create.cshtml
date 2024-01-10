@@ -3,7 +3,10 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger"><i class="fas fa-times" style="margin-right:8px"></i>@ViewBag.Error</div>
+}
 <div class="card card-success">
     <div class="card-header">
         <h3 class="card-title"><em><strong>Thêm sản phẩm mới</strong></em></h3>
@@ -122,9 +125,9 @@
         });
     });
     document.getElementById('discountSelect').addEventListener('change', function () {
-       document.getElementById('discountInput').value = this.value;
+        document.getElementById('discountInput').value = this.value;
     });
-    
+
 </script>
 
 

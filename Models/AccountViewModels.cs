@@ -91,6 +91,9 @@ namespace WebsiteCakeNew.Models
         [Compare("Password", ErrorMessage = "Mật khẩu và mật khẩu xác nhận không khớp")]
         public string ConfirmPassword { get; set; }
 
+        [Required(ErrorMessage = "{0} không được để trống")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$", ErrorMessage = "Số điện thoại không hợp lệ")]
+        [Phone]
         [Display(Name = "Số điện thoại")]
         public string Telephone { get; set; }  
         public bool Confirm { get; set; }

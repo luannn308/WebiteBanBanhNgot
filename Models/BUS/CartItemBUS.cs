@@ -51,5 +51,10 @@ namespace WebsiteCakeNew.Models.BUS
             var db = new WebBanBanhConnectionDB();
             db.Execute("DELETE FROM CART_ITEM WHERE ProductID = @0", id);
         }
+        public static void RemoveExceededCartItems(int productID, int stock)
+        {
+            var db = new WebBanBanhConnectionDB();
+            db.Execute("DELETE FROM CART_ITEM WHERE ProductID = @0 AND Quantity > @1", productID,stock );
+        }
     }
 }

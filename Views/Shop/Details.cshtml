@@ -14,6 +14,7 @@
     var shoppingCart = ShoppingCartBUS.ViewShoppingCartWithUser(userID);
 }
 <!-- Breadcrumb Begin -->
+<div id="customAlert" class="custom-alert"></div>
 <div class="breadcrumb-option">
     <div class="container">
         <div class="row">
@@ -57,7 +58,6 @@
                     <ul>
                         <li>Số lượng: <span>@Model.StockNumber</span></li>
                         <li>Danh mục: <span>@(allCate == "" ? "Không có" : allCate)</span></li>
-                        <li>Thẻ: <span>@(allTag == "" ? "Không có" : allTag)</span></li>
                     </ul>
                     <div class="product__details__option">
                         <div class="quantity">
@@ -150,17 +150,37 @@
 @Html.Partial("_RelatedProducts", WebsiteCakeNew.Models.BUS.ShopBUS.RelatedProduct(Model.ProductID))
 <!-- Related Products Section End -->
 <script>
+    function showCustomAlert(message) {
+        var customAlert = document.getElementById("customAlert");
+        customAlert.innerHTML = '<span class="close-btn" onclick="closeCustomAlert()">&times;</span>' + message;
+        customAlert.classList.add("show");
+
+        // Hide the alert after 3 seconds (adjust as needed)
+        setTimeout(function () {
+            closeCustomAlert();
+        }, 7000);
+    }
+
+    // Function to close custom alert
+    function closeCustomAlert() {
+        var customAlert = document.getElementById("customAlert");
+        customAlert.classList.remove("show");
+    }
     var isClickEventAttached = false;
 
     document.addEventListener("DOMContentLoaded", function () {
         var button = document.querySelector(".add-to-cart-button");
         var quantityInput = document.querySelector("#quantityInput");
+        var stockNumber = @Model.StockNumber;
         if (!isClickEventAttached) {
                 button.addEventListener("click", function () {
                     var productId = this.getAttribute("data-product-id");
                     var shoppingCartId = this.getAttribute("data-shopping-cart-id");
                     var quantity = quantityInput.value;
-
+                    if (parseInt(quantity) > stockNumber) {
+                        showCustomAlert("Không đủ số lượng sản phẩm để thêm vào giỏ hàng");
+                        return;
+                    }
                     button.setAttribute("data-quantity", quantity);
                     // Make an AJAX request to your server
                     var xhr = new XMLHttpRequest();
@@ -180,7 +200,7 @@
 
                     var data = "productId=" + productId + "&shoppingCartId=" + shoppingCartId + "&quantity=" + quantity;
                     xhr.send(data);
-                });            
+                });
             isClickEventAttached = true;
         }
     });
